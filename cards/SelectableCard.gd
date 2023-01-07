@@ -63,3 +63,8 @@ func _physics_process(delta):
 				get_parent().get_parent().deselect_all()
 			
 	update_transform()
+
+func destroy_card_child():
+	if is_instance_valid(card_child):
+		card_child.queue_free()
+		card_child = null

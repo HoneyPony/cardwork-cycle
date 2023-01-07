@@ -79,3 +79,24 @@ func _on_GoldButton_pressed():
 		
 	# If the gold button is also not pressed, we can't confirm.
 	$ConfirmButton.disabled = not $GoldButton.pressed
+
+func _on_ConfirmButton_pressed():
+	get_parent().hide()
+	
+	for card in $Cards.get_children():
+		if card.is_selected:
+			card.is_selected = false
+			# Add new cards to discard pile
+			GS.discard_pile.push_back(card.associated_card)
+			
+	if $GoldButton.pressed:
+		$GoldButton.pressed = false
+		GS.gold += 1
+	
+	$Cards/Card.destroy_card_child()
+	$Cards/Card2.destroy_card_child()
+	$Cards/Card3.destroy_card_child()
+	
+	GS.waiting_for_card_selection = false
+	
+	

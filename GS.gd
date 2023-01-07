@@ -19,6 +19,7 @@ var turn_state = TurnState.UNDEFINED
 var waiting_for_card_selection = false
 
 var card_selector_ui = null
+var gold = 0
 
 func popup_card_selection(card_set: Array):
 	waiting_for_card_selection = true
@@ -170,6 +171,7 @@ func deal_new_hand():
 func _physics_process(delta):
 	if current_turns != null:
 		if current_obj.turn_over():
+			current_obj.finalize_turn()
 			current_turns = current_turns.resume()
 			
 			if current_turns == null:

@@ -4,6 +4,10 @@ var health = 3
 var water = 0
 var defense = 0
 
+# If the plant is "consumed", that means the card / gold popup has been
+# shown, and the plant should be queue_freed()
+var consumed = false
+
 func _ready():
 	pass
 
@@ -61,6 +65,7 @@ func take_turn():
 		#print($Plant.frames.frames.size() - 1)
 		if $Plant.frame == $Plant.frames.get_frame_count("default") - 1:
 			anim.queue("PlantIsDone")
+			consumed = true
 		else:
 			anim.queue("WaterPlant")
 	else:
@@ -84,3 +89,7 @@ func turn_over():
 	if GS.waiting_for_card_selection:
 		return false
 	return not $AnimationPlayer.is_playing()
+	
+func finalize_turn():
+	if consumed:
+		queue_free()

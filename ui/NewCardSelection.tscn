@@ -96,3 +96,4 @@ margin_right = 342.0
 margin_bottom = 141.0
 
 [connection signal="pressed" from="Menu/GoldButton" to="Menu" method="_on_GoldButton_pressed"]
+[connection signal="pressed" from="Menu/ConfirmButton" to="Menu" method="_on_ConfirmButton_pressed"]
