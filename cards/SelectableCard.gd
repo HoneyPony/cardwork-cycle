@@ -36,6 +36,8 @@ func update_transform():
 	position += (target_pos - position) * 0.15
 	
 func _physics_process(delta):
+	print(get_world_2d())
+	
 	if is_hovered:
 		if Input.is_action_just_released("mouse"):
 			is_selected = !is_selected

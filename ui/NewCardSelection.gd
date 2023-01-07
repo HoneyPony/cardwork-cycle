@@ -7,7 +7,7 @@ func _ready():
 
 func find_card_under_mouse():
 	var space = get_world_2d().direct_space_state
-	var mouse = get_global_mouse_position()
+	var mouse = get_parent().get_local_mouse_position()
 
 	var collisions = space.intersect_point(mouse, 32, [], 0x7FFFFFFF, false, true)
 	

@@ -26,6 +26,7 @@ margin_left = -384.0
 margin_top = -231.0
 margin_right = 385.0
 margin_bottom = 263.0
+mouse_filter = 1
 script = ExtResource( 3 )
 
 [node name="Explanation" type="Label" parent="Menu"]
@@ -83,26 +84,11 @@ margin_left = 0.5
 margin_top = 25.0
 margin_right = 0.5
 margin_bottom = nan
+mouse_filter = 1
 
 [node name="Card" parent="Menu/Cards" instance=ExtResource( 4 )]
 
 [node name="CardBase" parent="Menu/Cards/Card" instance=ExtResource( 2 )]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Card2" parent="Menu/Cards" instance=ExtResource( 4 )]
-position = Vector2( -237, 1 )
-
-[node name="CardBase" parent="Menu/Cards/Card2" instance=ExtResource( 2 )]
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Card3" parent="Menu/Cards" instance=ExtResource( 4 )]
-position = Vector2( 242, -1 )
-
-[node name="CardBase" parent="Menu/Cards/Card3" instance=ExtResource( 2 )]
 __meta__ = {
 "_edit_lock_": true
 }

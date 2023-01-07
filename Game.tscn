@@ -63,14 +63,23 @@
 
 [node name="Game" type="Node2D"]
 
+[node name="Control" parent="." instance=ExtResource( 7 )]
+mouse_filter = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
 [node name="Cards" type="Node2D" parent="."]
+visible = false
 z_index = 100
 script = ExtResource( 3 )
 
 [node name="Camera" type="Camera2D" parent="."]
+visible = false
 current = true
 
 [node name="TileMap" type="TileMap" parent="."]
+visible = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 128, 128 )
 format = 1
@@ -78,9 +87,6 @@ tile_data = PoolIntArray( -655373, 2, 8, -655372, 2, 10, -655371, 2, 10, -655370
 
 [node name="Cursor" parent="TileMap" instance=ExtResource( 2 )]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Control" parent="CanvasLayer" instance=ExtResource( 7 )]
-
 [node name="PauseMenu" parent="." instance=ExtResource( 1 )]
+layer = -1
 visible = false
