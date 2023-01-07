@@ -5,6 +5,15 @@ onready var camera = get_node("../Camera")
 # Nullable! Be careful
 var current_card = null
 
+func _ready():
+	GS.hand = self
+	
+	call_deferred("starting_hand")
+
+func starting_hand():
+	GS.add_card_to_hand(GS.card_basic_plant)
+	GS.add_card_to_hand(GS.card_basic_plant)
+
 func find_card_under_mouse():
 	var space = get_world_2d().direct_space_state
 	var mouse = get_global_mouse_position()
@@ -45,7 +54,7 @@ func organize_cards(card_is_picked_up):
 	var angle_step = deg2rad(4)
 	
 	var num_cards = get_child_count()
-	var start = -(num_cards - 1) / 2
+	var start = -(num_cards - 1.0) / 2
 	
 	var y_base = -260
 	if card_is_picked_up:
