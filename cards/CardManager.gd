@@ -104,6 +104,7 @@ func card_is_picked_up():
 func _physics_process(delta):
 	# This node is offset off the bottom of the camera viewport.size.y / 2
 	position.y = camera.position.y + get_viewport().size.y / 2
+	#position.y = get_viewport().size.y / 2
 	
 	var card_picked_up = card_is_picked_up()
 	if not card_picked_up:
