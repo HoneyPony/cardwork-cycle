@@ -1,0 +1,110 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://cards/CardBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/NewCardSelection.gd" type="Script" id=3]
+[ext_resource path="res://cards/SelectableCard.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+
+[node name="NewCardSelection" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 3 )
+
+[node name="Menu" type="Control" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -384.0
+margin_top = -231.0
+margin_right = 385.0
+margin_bottom = 263.0
+script = ExtResource( 3 )
+
+[node name="Explanation" type="Label" parent="Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -135.0
+margin_right = 135.0
+margin_bottom = 69.0
+text = "Choose a card to add to your deck,
+OR
+Earn 1 gold."
+align = 1
+
+[node name="Bonus" type="Label" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -134.5
+margin_top = -61.0
+margin_right = 135.5
+margin_bottom = -40.0
+theme = SubResource( 3 )
+text = "(OR)"
+align = 1
+
+[node name="GoldButton" type="Button" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -49.5
+margin_top = -27.0
+margin_right = 49.5
+toggle_mode = true
+text = "Earn 1 gold"
+
+[node name="ConfirmButton" type="Button" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 214.0
+margin_top = -25.5
+margin_right = 323.0
+margin_bottom = 3.5
+text = "Confirm"
+
+[node name="Cards" type="Control" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 0.5
+margin_top = 25.0
+margin_right = 0.5
+margin_bottom = nan
+
+[node name="Card" parent="Menu/Cards" instance=ExtResource( 4 )]
+
+[node name="CardBase" parent="Menu/Cards/Card" instance=ExtResource( 2 )]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Card2" parent="Menu/Cards" instance=ExtResource( 4 )]
+position = Vector2( -237, 1 )
+
+[node name="CardBase" parent="Menu/Cards/Card2" instance=ExtResource( 2 )]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Card3" parent="Menu/Cards" instance=ExtResource( 4 )]
+position = Vector2( 242, -1 )
+
+[node name="CardBase" parent="Menu/Cards/Card3" instance=ExtResource( 2 )]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="pressed" from="Menu/GoldButton" to="Menu" method="_on_GoldButton_pressed"]

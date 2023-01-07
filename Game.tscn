@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/PauseMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cursor/Cursor.tscn" type="PackedScene" id=2]
@@ -6,8 +6,7 @@
 [ext_resource path="res://farm/plant_spot.png" type="Texture" id=4]
 [ext_resource path="res://farm/plain_dirt.svg" type="Texture" id=5]
 [ext_resource path="res://farm/grass.svg" type="Texture" id=6]
-[ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://cards/CardBase.tscn" type="PackedScene" id=8]
+[ext_resource path="res://ui/NewCardSelection.tscn" type="PackedScene" id=7]
 
 [sub_resource type="TileSet" id=1]
 1/name = "plain_dirt.svg 1"
@@ -62,13 +61,6 @@
 3/shapes = [  ]
 3/z_index = 0
 
-[sub_resource type="DynamicFont" id=2]
-size = 18
-font_data = ExtResource( 7 )
-
-[sub_resource type="Theme" id=3]
-default_font = SubResource( 2 )
-
 [node name="Game" type="Node2D"]
 
 [node name="Cards" type="Node2D" parent="."]
@@ -88,75 +80,7 @@ tile_data = PoolIntArray( -655373, 2, 8, -655372, 2, 10, -655371, 2, 10, -655370
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme = SubResource( 3 )
-
-[node name="Control" type="Control" parent="CanvasLayer/Control"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -384.5
-margin_top = -231.5
-margin_right = 384.5
-margin_bottom = 231.5
-
-[node name="Label" type="Label" parent="CanvasLayer/Control/Control"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -135.0
-margin_right = 135.0
-margin_bottom = 69.0
-text = "Choose a card to add to your deck,
-OR
-Earn 1 gold."
-align = 1
-
-[node name="Label2" type="Label" parent="CanvasLayer/Control/Control"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -134.5
-margin_top = -61.0
-margin_right = 135.5
-margin_bottom = -40.0
-theme = SubResource( 3 )
-text = "(OR)"
-align = 1
-
-[node name="CardBase" parent="CanvasLayer/Control/Control" instance=ExtResource( 8 )]
-position = Vector2( 165, 231 )
-
-[node name="CardBase2" parent="CanvasLayer/Control/Control" instance=ExtResource( 8 )]
-position = Vector2( 386, 230 )
-
-[node name="CardBase3" parent="CanvasLayer/Control/Control" instance=ExtResource( 8 )]
-position = Vector2( 610, 229 )
-
-[node name="Button" type="Button" parent="CanvasLayer/Control/Control"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -49.5
-margin_top = -27.0
-margin_right = 49.5
-toggle_mode = true
-text = "Earn 1 gold"
-
-[node name="Button2" type="Button" parent="CanvasLayer/Control/Control"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 214.0
-margin_top = -25.5
-margin_right = 323.0
-margin_bottom = 3.5
-text = "Confirm"
+[node name="Control" parent="CanvasLayer" instance=ExtResource( 7 )]
 
 [node name="PauseMenu" parent="." instance=ExtResource( 1 )]
 visible = false
