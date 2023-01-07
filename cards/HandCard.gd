@@ -48,6 +48,9 @@ func update_transform():
 	position += (target_pos - position) * 0.15
 	
 func play_self():
+	if associated_card.action == GS.Action.PLANT:
+		GS.cursor.new_plant(associated_card)
+	
 	queue_free()
 	
 func try_play_self():

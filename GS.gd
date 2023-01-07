@@ -31,6 +31,8 @@ var MainMenu = preload("res://MainMenu.tscn")
 var HandCard = preload("res://cards/HandCard.tscn")
 var CardBase = preload("res://cards/CardBase.tscn")
 
+var Plant1 = preload("res://plants/plant1/Plant1.tscn")
+
 var hand = null
 
 var current_picked_up_card = null
@@ -51,6 +53,13 @@ func get_card_base(card: Card):
 	b.get_node("Title").text = card.title
 	b.get_node("Desc").text = card.desc
 	return b
+	
+func get_object_at_map_lcoord(coord: Vector2):
+	for obj in get_tree().get_nodes_in_group("Object"):
+		var p = obj.position
+		if (p - coord).length_squared() < 16:
+			return obj
+	return null
 
 func add_card_to_hand(card: Card):
 	var h = HandCard.instance()

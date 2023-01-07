@@ -11,6 +11,13 @@ func may_play_card():
 
 func _ready():
 	GS.cursor = self
+	
+func new_plant(associated_card):
+	# My understanding is that these are reference types.
+	if associated_card == GS.card_basic_plant:
+		var p = GS.Plant1.instance()
+		p.position = position
+		get_parent().add_child(p)
 
 func get_tile():
 	var p: TileMap = get_parent()
@@ -20,6 +27,13 @@ func get_tile():
 	var map_coord = p.world_to_map(position)
 	
 	return p.get_cellv(map_coord)
+	
+func is_tile_clear_and_type(tile_type):
+	var obj = GS.get_object_at_map_lcoord(position)
+	if obj != null:
+		return false
+		
+	return get_tile() == tile_type
 
 func update_playable_and_display():
 	for c in cursors:
@@ -33,7 +47,7 @@ func update_playable_and_display():
 	var card = GS.current_picked_up_card.associated_card
 	
 	if card.action == GS.Action.PLANT:
-		if get_tile() == TILE_PLANTABLE:
+		if is_tile_clear_and_type(TILE_PLANTABLE):
 			$CursorPlant.show()
 			may_play = true
 
