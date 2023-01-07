@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var cursors = [$Red, $CursorPlant]
+onready var cursors = [$Red, $CursorPlant, $CursorWater1x1]
 
 const TILE_PLANTABLE = 3
 
@@ -34,6 +34,14 @@ func is_tile_clear_and_type(tile_type):
 		return false
 		
 	return get_tile() == tile_type
+	
+func is_tile_plant():
+	var p = GS.get_plant_at_map_lcoord(position)
+	return p != null
+	
+func show_water_cursor(card):
+	if card.water_shape == GS.Water.W1x1:
+		$CursorWater1x1.show()
 
 func update_playable_and_display():
 	for c in cursors:
@@ -50,10 +58,15 @@ func update_playable_and_display():
 		if is_tile_clear_and_type(TILE_PLANTABLE):
 			$CursorPlant.show()
 			may_play = true
+	
+	if card.action == GS.Action.WATER:
+		if is_tile_plant():
+			show_water_cursor(card)
+			may_play = true
 
 func _physics_process(delta):
 	var p = get_global_mouse_position()
-	p = (p / 64).floor() * 64
+	p = (p / 128).floor() * 128
 	
 	global_position = p #+ Vector2(32, 32)
 	

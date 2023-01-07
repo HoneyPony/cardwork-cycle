@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://cursor/cursor_red_box.svg" type="Texture" id=1]
 [ext_resource path="res://cursor/Cursor.gd" type="Script" id=2]
 [ext_resource path="res://cursor/cursor_plant.png" type="Texture" id=3]
+[ext_resource path="res://cursor/cursor_water_1x1.svg" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Loop"
@@ -48,6 +49,10 @@ centered = false
 position = Vector2( 64, 64 )
 rotation = 0.00023353
 texture = ExtResource( 3 )
+
+[node name="CursorWater1x1" type="Sprite" parent="."]
+position = Vector2( 64, 64 )
+texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Loop"

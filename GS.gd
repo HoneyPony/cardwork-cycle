@@ -5,17 +5,27 @@ enum Action {
 	WATER
 }
 
+enum Water {
+	W1x1
+}
+
 class Card:
 	var title: String
 	var desc: String
 	var cost: int
 	var action
 	
+	var water_shape
+	
 	func _init(title_: String, desc_: String, cost_: int, action_):
 		title = title_
 		desc = desc_
 		cost = cost_
 		action = action_
+		
+	func shape(water_shape_):
+		water_shape = water_shape_
+		return self
 
 # The "global state" node. This is where global variables are usually stored,
 # as well as things like scene preloads.
@@ -25,6 +35,13 @@ var card_basic_plant : Card = Card.new(
 	"Plant a basic plant that can be harvested for basic cards",
 	3,
 	Action.PLANT)
+	
+var card_free_1x1_water : Card = Card.new(
+	"Water Drop",
+	"Apply 1 water to a 1x1 patch of tiles.",
+	0,
+	Action.WATER
+).shape(Water.W1x1)
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
@@ -56,6 +73,13 @@ func get_card_base(card: Card):
 	
 func get_object_at_map_lcoord(coord: Vector2):
 	for obj in get_tree().get_nodes_in_group("Object"):
+		var p = obj.position
+		if (p - coord).length_squared() < 16:
+			return obj
+	return null
+	
+func get_plant_at_map_lcoord(coord: Vector2):
+	for obj in get_tree().get_nodes_in_group("Plant"):
 		var p = obj.position
 		if (p - coord).length_squared() < 16:
 			return obj

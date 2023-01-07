@@ -56,7 +56,7 @@ func play_self():
 func try_play_self():
 	GS.release_current_card(self)
 	
-	if associated_card.action == GS.Action.PLANT:
+	if associated_card.action == GS.Action.PLANT or associated_card.action == GS.Action.WATER:
 		if GS.cursor.may_play_card():
 			play_self()
 			return

@@ -13,6 +13,7 @@ func _ready():
 func starting_hand():
 	GS.add_card_to_hand(GS.card_basic_plant)
 	GS.add_card_to_hand(GS.card_basic_plant)
+	GS.add_card_to_hand(GS.card_free_1x1_water)
 
 func find_card_under_mouse():
 	var space = get_world_2d().direct_space_state
