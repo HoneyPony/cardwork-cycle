@@ -6,6 +6,8 @@ const STATE_PICKUP = 2
 
 var state = STATE_IN_HAND
 
+var associated_card
+
 # The rotation of the card while it is not hovered. Updated by the CardManager
 var in_hand_rotation = 0
 
@@ -48,13 +50,15 @@ func update_transform():
 func _physics_process(delta):
 	if state == STATE_PICKUP:
 		global_position = get_global_mouse_position()
-		position.y += 98
+		position.y += 98 + 30
 		
 		if Input.is_action_just_released("mouse"):
 			state = STATE_HOVER # TODO: Be able to play card!
+			GS.release_current_card(self)
 	
 	if state == STATE_HOVER:
 		if Input.is_action_just_pressed("mouse"):
 			state = STATE_PICKUP
+			GS.set_current_card(self)
 			
 	update_transform()

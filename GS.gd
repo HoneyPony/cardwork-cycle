@@ -1,19 +1,30 @@
 extends Node
 
+enum Action {
+	PLANT,
+	WATER
+}
+
 class Card:
 	var title: String
 	var desc: String
 	var cost: int
+	var action
 	
-	func _init(title_: String, desc_: String, cost_: int):
+	func _init(title_: String, desc_: String, cost_: int, action_):
 		title = title_
 		desc = desc_
 		cost = cost_
+		action = action_
 
 # The "global state" node. This is where global variables are usually stored,
 # as well as things like scene preloads.
 
-var card_basic_plant : Card = Card.new("Basic Seeds", "Plant a basic plant that can be harvested for basic cards", 3)
+var card_basic_plant : Card = Card.new(
+	"Basic Seeds",
+	"Plant a basic plant that can be harvested for basic cards",
+	3,
+	Action.PLANT)
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
@@ -21,6 +32,18 @@ var HandCard = preload("res://Cards/HandCard.tscn")
 var CardBase = preload("res://Cards/CardBase.tscn")
 
 var hand
+
+var current_picked_up_card = null
+
+func set_current_card(card: Node):
+	if current_picked_up_card != null:
+		current_picked_up_card.release()
+		current_picked_up_card = null
+	current_picked_up_card = card
+	
+func release_current_card(card: Node):
+	if current_picked_up_card == card:
+		current_picked_up_card = null
 
 func get_card_base(card: Card):
 	var b = CardBase.instance()
@@ -31,6 +54,8 @@ func get_card_base(card: Card):
 func add_card_to_hand(card: Card):
 	var h = HandCard.instance()
 	var b = get_card_base(card)
+	
+	h.associated_card = card
 	
 	h.add_child(b)
 	

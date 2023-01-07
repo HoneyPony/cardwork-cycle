@@ -1,13 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/PauseMenu.tscn" type="PackedScene" id=1]
+[ext_resource path="res://cursor/Cursor.tscn" type="PackedScene" id=2]
 [ext_resource path="res://cards/CardManager.gd" type="Script" id=3]
 [ext_resource path="res://farm/plant_spot.png" type="Texture" id=4]
 [ext_resource path="res://farm/plain_dirt.svg" type="Texture" id=5]
 [ext_resource path="res://farm/grass.svg" type="Texture" id=6]
 [ext_resource path="res://plants/plant1/seeds.svg" type="Texture" id=7]
-[ext_resource path="res://cursor/cursor_red_box.svg" type="Texture" id=8]
-[ext_resource path="res://cursor/Cursor.gd" type="Script" id=9]
 
 [sub_resource type="TileSet" id=1]
 1/name = "plain_dirt.svg 1"
@@ -82,9 +81,7 @@ tile_data = PoolIntArray( -655373, 2, 8, -655372, 2, 10, -655371, 2, 10, -655370
 position = Vector2( -188.333, -703.333 )
 texture = ExtResource( 7 )
 
-[node name="Cursor" type="Sprite" parent="TileMap"]
-texture = ExtResource( 8 )
-script = ExtResource( 9 )
+[node name="Cursor" parent="TileMap" instance=ExtResource( 2 )]
 
 [node name="PauseMenu" parent="." instance=ExtResource( 1 )]
 visible = false
