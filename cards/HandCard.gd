@@ -53,6 +53,7 @@ func play_self():
 	if associated_card.action == GS.Action.WATER:
 		GS.cursor.water(associated_card)
 	
+	GS.discard_pile.push_back(associated_card)
 	queue_free()
 	
 func try_play_self():

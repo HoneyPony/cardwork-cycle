@@ -136,5 +136,6 @@ func _physics_process(delta):
 	
 	if get_child_count() == 0 and GS.turn_state == GS.TurnState.PLAYING_CARDS:
 		GS.end_turn()
+		
 			
 	

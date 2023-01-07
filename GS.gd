@@ -130,7 +130,37 @@ func _process(delta):
 	if global_sine_timer >= 1:
 		global_sine_timer -= 1
 		
+var draw_pile = []
+var discard_pile = []
+	
+func shuffle_cards():
+	discard_pile.shuffle()
+	draw_pile = discard_pile
+	discard_pile = []
+	
+func draw_card():
+	if not draw_pile.empty():
+		return draw_pile.pop_front()
+		
+	if discard_pile.empty():
+		return null
+		
+	shuffle_cards()
+	return draw_pile.pop_front()
+		
+func deal_new_hand():
+	for i in range(0, 5):
+		var c = draw_card()
+		if c == null:
+			break
+		add_card_to_hand(c)
+	
+	turn_state = TurnState.PLAYING_CARDS
+		
 func _physics_process(delta):
 	if current_turns != null:
 		if current_obj.turn_over():
 			current_turns = current_turns.resume()
+			
+			if current_turns == null:
+				deal_new_hand()
