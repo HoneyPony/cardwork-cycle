@@ -3,5 +3,13 @@
 [ext_resource path="res://cards/SelectableCard.gd" type="Script" id=1]
 
 [node name="Card" type="Control" groups=["SelectableCard"]]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -99.0
+margin_top = -140.0
+margin_right = 99.0
+margin_bottom = 140.0
 rect_min_size = Vector2( 198, 280 )
 script = ExtResource( 1 )

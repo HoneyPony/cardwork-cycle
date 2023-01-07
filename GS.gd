@@ -20,8 +20,9 @@ var waiting_for_card_selection = false
 
 var card_selector_ui = null
 
-func popup_card_selection():
+func popup_card_selection(card_set: Array):
 	waiting_for_card_selection = true
+	card_selector_ui.setup_cards(card_set)
 	card_selector_ui.get_parent().show()
 
 class Card:

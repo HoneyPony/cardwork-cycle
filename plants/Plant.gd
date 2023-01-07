@@ -73,7 +73,7 @@ func water_plant():
 	water -= 1
 	
 func popup_menu():
-	GS.popup_card_selection()
+	GS.popup_card_selection(CardCreation.pick_plant1_cards(health))
 	
 func upgrade_plant():
 	$Plant.frame += 1

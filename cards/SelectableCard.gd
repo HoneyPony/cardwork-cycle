@@ -1,4 +1,5 @@
 extends Control
+class_name SelectableCard
 
 var is_selected = false
 var is_hovered = false
@@ -14,7 +15,7 @@ var in_hand_hover_position = Vector2.ZERO
 var card_child
 
 func _ready():
-	card_child = $CardBase
+	card_child = null
 
 #func _ready():
 #	in_hand_position = 
@@ -48,6 +49,9 @@ func check_hover():
 	return m.x >= 0 && m.y >= 0 && m.x <= rect_size.x && m.y <= rect_size.y
 	
 func _physics_process(delta):
+	if card_child == null:
+		return
+	
 	is_hovered = check_hover()
 	
 	if is_hovered:

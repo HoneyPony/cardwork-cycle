@@ -35,6 +35,17 @@ func release_current_card():
 		
 	current_card.is_hovered = false
 	current_card = null
+	
+func setup_card(node: SelectableCard, card):
+	var b = GS.get_card_base(card)
+	node.add_child(b)
+	node.card_child = b
+	node.associated_card = card
+	
+func setup_cards(cards: Array):
+	setup_card($Cards/Card, cards[0])
+	setup_card($Cards/Card2, cards[1])
+	setup_card($Cards/Card3, cards[2])
 
 #func _physics_process(delta):
 #	var under_mouse = find_card_under_mouse()
