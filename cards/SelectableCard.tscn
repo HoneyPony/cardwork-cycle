@@ -1,12 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://cards/SelectableCard.gd" type="Script" id=1]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 99, 140 )
-
-[node name="Card" type="Area2D" groups=["SelectableCard"]]
+[node name="Card" type="Control" groups=["SelectableCard"]]
+rect_min_size = Vector2( 198, 280 )
 script = ExtResource( 1 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
