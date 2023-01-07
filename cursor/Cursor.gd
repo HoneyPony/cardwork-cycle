@@ -4,6 +4,14 @@ onready var cursors = [$Red, $CursorPlant]
 
 const TILE_PLANTABLE = 3
 
+var may_play = false
+
+func may_play_card():
+	return may_play
+
+func _ready():
+	GS.cursor = self
+
 func get_tile():
 	var p: TileMap = get_parent()
 	
@@ -13,18 +21,21 @@ func get_tile():
 	
 	return p.get_cellv(map_coord)
 
-func choose_display():
+func update_playable_and_display():
 	for c in cursors:
 		c.hide()
 		
 	if GS.current_picked_up_card == null:
 		return
 		
+	may_play = false
+		
 	var card = GS.current_picked_up_card.associated_card
 	
 	if card.action == GS.Action.PLANT:
 		if get_tile() == TILE_PLANTABLE:
 			$CursorPlant.show()
+			may_play = true
 
 func _physics_process(delta):
 	var p = get_global_mouse_position()
@@ -32,4 +43,4 @@ func _physics_process(delta):
 	
 	global_position = p #+ Vector2(32, 32)
 	
-	choose_display()
+	update_playable_and_display()

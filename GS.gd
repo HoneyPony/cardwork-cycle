@@ -28,12 +28,13 @@ var card_basic_plant : Card = Card.new(
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
-var HandCard = preload("res://Cards/HandCard.tscn")
-var CardBase = preload("res://Cards/CardBase.tscn")
+var HandCard = preload("res://cards/HandCard.tscn")
+var CardBase = preload("res://cards/CardBase.tscn")
 
-var hand
+var hand = null
 
 var current_picked_up_card = null
+var cursor = null
 
 func set_current_card(card: Node):
 	if current_picked_up_card != null:

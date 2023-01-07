@@ -46,15 +46,28 @@ func update_transform():
 	
 	rotation += (target_rot - rotation) * 0.1
 	position += (target_pos - position) * 0.15
-
+	
+func play_self():
+	queue_free()
+	
+func try_play_self():
+	GS.release_current_card(self)
+	
+	if associated_card.action == GS.Action.PLANT:
+		if GS.cursor.may_play_card():
+			play_self()
+			return
+	
+	# If we can't play the card, simply return to hover state.
+	state = STATE_HOVER
+	
 func _physics_process(delta):
 	if state == STATE_PICKUP:
 		global_position = get_global_mouse_position()
 		position.y += 98 + 30
 		
 		if Input.is_action_just_released("mouse"):
-			state = STATE_HOVER # TODO: Be able to play card!
-			GS.release_current_card(self)
+			try_play_self()
 	
 	if state == STATE_HOVER:
 		if Input.is_action_just_pressed("mouse"):
