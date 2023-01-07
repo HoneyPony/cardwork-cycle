@@ -23,9 +23,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="px"
      showgrid="false"
-     inkscape:zoom="0.90583672"
-     inkscape:cx="246.73321"
-     inkscape:cy="210.3028"
+     inkscape:zoom="0.64052329"
+     inkscape:cx="-117.87237"
+     inkscape:cy="253.69882"
      inkscape:window-width="1620"
      inkscape:window-height="1018"
      inkscape:window-x="-6"
@@ -51,24 +51,15 @@
        x="0.47464165"
        y="0.47464174"
        ry="10.807228" />
-    <rect
-       style="fill:#666666;stroke:#000000;stroke-width:0.873125;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
-       id="rect3063"
-       width="14.897884"
-       height="18.40975"
-       x="81.753395"
-       y="2.359777"
-       ry="5.1804843" />
-    <text
-       xml:space="preserve"
-       style="font-size:10.5833px;line-height:1.25;font-family:'Segoe UI';-inkscape-font-specification:'Segoe UI';word-spacing:0px;stroke-width:0.264583"
-       x="86.875504"
-       y="15.369279"
-       id="text3067"><tspan
-         sodipodi:role="line"
-         id="tspan3065"
-         style="stroke-width:0.264583"
-         x="86.875504"
-         y="15.369279">3</tspan></text>
+    <path
+       style="fill:#7a7a7a;fill-opacity:1;stroke:none;stroke-width:0.873125;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="M 0.82614746,18.175244 V 37.58971 L 93.148126,0.82614746 56.445057,0.83133694 Z"
+       id="path50774"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="fill:#7a7a7a;fill-opacity:1;stroke:none;stroke-width:0.873125;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 1.1787279,55.849461 v 5.83241 L 104.89211,31.49027 l -0.0195,-7.254205 z"
+       id="path50845"
+       sodipodi:nodetypes="ccccc" />
   </g>
 </svg>
