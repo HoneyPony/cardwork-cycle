@@ -124,6 +124,11 @@ func turn_processor():
 		plant.take_turn()
 		yield()
 		
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		current_obj = enemy
+		enemy.take_turn()
+		yield()
+		
 	current_obj = null
 	return null
 	

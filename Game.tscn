@@ -9,7 +9,7 @@
 [ext_resource path="res://ui/NewCardSelection.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/MainUITheme.tres" type="Theme" id=8]
 [ext_resource path="res://ui/EndTurnButton.gd" type="Script" id=9]
-[ext_resource path="res://bugs/bug1.svg" type="Texture" id=10]
+[ext_resource path="res://bugs/Bug.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=1]
 1/name = "plain_dirt.svg 1"
@@ -81,9 +81,8 @@ tile_data = PoolIntArray( -655373, 2, 8, -655372, 2, 10, -655371, 2, 10, -655370
 
 [node name="Cursor" parent="TileMap" instance=ExtResource( 2 )]
 
-[node name="Sprite" type="Sprite" parent="TileMap"]
-position = Vector2( 64, -196 )
-texture = ExtResource( 10 )
+[node name="Bug" parent="TileMap" instance=ExtResource( 10 )]
+position = Vector2( 0, -256 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
