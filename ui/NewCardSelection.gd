@@ -87,7 +87,6 @@ func _on_GoldButton_pressed():
 	$ConfirmButton.disabled = not $GoldButton.pressed
 
 func _on_ConfirmButton_pressed():
-	get_parent().hide()
 	
 	for card in $Cards.get_children():
 		if card.is_selected:
@@ -99,10 +98,16 @@ func _on_ConfirmButton_pressed():
 		$GoldButton.pressed = false
 		GS.gold += 1
 	
+	GS.waiting_for_card_selection = false
+	
+	$AnimationPlayer.play("Popdown")
+	
+func remove_card_children():
 	$Cards/Card.destroy_card_child()
 	$Cards/Card2.destroy_card_child()
 	$Cards/Card3.destroy_card_child()
 	
-	GS.waiting_for_card_selection = false
+	get_parent().hide()
+	
 	
 	

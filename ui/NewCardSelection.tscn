@@ -1,8 +1,50 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/MainUITheme.tres" type="Theme" id=1]
 [ext_resource path="res://ui/NewCardSelection.gd" type="Script" id=3]
 [ext_resource path="res://cards/SelectableCard.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=3]
+resource_name = "Popdown"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "remove_card_children"
+} ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Popup"
@@ -152,6 +194,7 @@ margin_right = 342.0
 margin_bottom = 141.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Menu"]
+anims/Popdown = SubResource( 3 )
 anims/Popup = SubResource( 1 )
 anims/RESET = SubResource( 2 )
 
