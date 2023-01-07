@@ -57,7 +57,12 @@ func take_turn():
 	var anim = $AnimationPlayer
 	
 	if water >= 1:
-		anim.queue("WaterPlant")
+		#print($Plant.frame)
+		#print($Plant.frames.frames.size() - 1)
+		if $Plant.frame == $Plant.frames.get_frame_count("default") - 1:
+			anim.queue("PlantIsDone")
+		else:
+			anim.queue("WaterPlant")
 	else:
 		anim.queue("NoWater")
 	
@@ -67,8 +72,15 @@ func dec_health():
 func water_plant():
 	water -= 1
 	
+func popup_menu():
+	GS.popup_card_selection()
+	
 func upgrade_plant():
 	$Plant.frame += 1
 	
 func turn_over():
+	# If we are being polled about our turn, then the card selection
+	# dialog must be related to this plant.
+	if GS.waiting_for_card_selection:
+		return false
 	return not $AnimationPlayer.is_playing()

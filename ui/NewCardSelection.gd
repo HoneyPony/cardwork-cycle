@@ -4,6 +4,10 @@ var current_card = null
 
 func _ready():
 	$ConfirmButton.disabled = true
+	get_parent().hide()
+	
+	GS.card_selector_ui = self
+
 
 #func find_card_under_mouse():
 #	var space = get_world_2d().direct_space_state

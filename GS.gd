@@ -16,6 +16,13 @@ enum TurnState {
 }
 
 var turn_state = TurnState.UNDEFINED
+var waiting_for_card_selection = false
+
+var card_selector_ui = null
+
+func popup_card_selection():
+	waiting_for_card_selection = true
+	card_selector_ui.get_parent().show()
 
 class Card:
 	var title: String
