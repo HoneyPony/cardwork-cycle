@@ -28,6 +28,10 @@ func _ready():
 #				return card
 #
 #	return card
+
+func popup():
+	get_parent().show()
+	$AnimationPlayer.play("Popup")
 	
 func release_current_card():
 	if current_card == null:
@@ -39,6 +43,8 @@ func release_current_card():
 func setup_card(node: SelectableCard, card):
 	var b = GS.get_card_base(card)
 	node.add_child(b)
+	b.position.x = 400 / 4.0
+	b.position.y = 560 / 4.0
 	node.card_child = b
 	node.associated_card = card
 	

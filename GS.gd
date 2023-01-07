@@ -24,7 +24,7 @@ var gold = 0
 func popup_card_selection(card_set: Array):
 	waiting_for_card_selection = true
 	card_selector_ui.setup_cards(card_set)
-	card_selector_ui.get_parent().show()
+	card_selector_ui.popup()
 
 class Card:
 	var title: String
