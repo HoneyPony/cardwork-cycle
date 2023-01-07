@@ -98,3 +98,10 @@ func add_card_to_hand(card: Card):
 func _ready():
 	pass
 
+# Used for plant markers!
+var global_sine_timer = 0
+
+func _process(delta):
+	global_sine_timer += 0.4 * delta
+	if global_sine_timer >= 1:
+		global_sine_timer -= 1

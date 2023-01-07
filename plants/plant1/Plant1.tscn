@@ -15,7 +15,7 @@ font_data = ExtResource( 3 )
 [node name="Plant1" type="Node2D" groups=["Object", "Plant"]]
 script = ExtResource( 2 )
 
-[node name="Seeds" type="Sprite" parent="."]
+[node name="Plant" type="Sprite" parent="."]
 position = Vector2( 64, 64 )
 texture = ExtResource( 1 )
 
