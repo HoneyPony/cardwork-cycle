@@ -113,6 +113,11 @@ func card_is_picked_up():
 		return current_card.is_picked_up()
 	return false
 	
+func clear_hand():
+	for card in get_children():
+		GS.discard_pile.push_back(card.associated_card)
+		card.queue_free()
+	
 func _physics_process(delta):
 	if GS.turn_state == GS.TurnState.UPDATING:
 		organize_cards(true) # Hide cards at bottom

@@ -128,6 +128,8 @@ func turn_processor():
 	return null
 	
 func end_turn():
+	hand.clear_hand()
+	
 	turn_state = TurnState.UPDATING
 	current_turns = turn_processor()
 	if current_turns == null:
