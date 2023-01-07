@@ -50,6 +50,8 @@ func update_transform():
 func play_self():
 	if associated_card.action == GS.Action.PLANT:
 		GS.cursor.new_plant(associated_card)
+	if associated_card.action == GS.Action.WATER:
+		GS.cursor.water(associated_card)
 	
 	queue_free()
 	

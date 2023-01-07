@@ -18,6 +18,21 @@ func new_plant(associated_card):
 		var p = GS.Plant1.instance()
 		p.position = position
 		get_parent().add_child(p)
+		
+func water(card):
+	var sx = position.x
+	var sy = position.y
+	
+	var width = 1
+	var height = 1
+	
+	for i in range(0, width):
+		for j in range(0, height):
+			var x = sx + i * 128
+			var y = sy + j * 128
+			var plant = GS.get_plant_at_map_lcoord(Vector2(x, y))
+			if plant != null:
+				plant.water += 1
 
 func get_tile():
 	var p: TileMap = get_parent()

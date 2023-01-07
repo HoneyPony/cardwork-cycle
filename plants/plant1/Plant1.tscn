@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://plants/plant1/seeds.svg" type="Texture" id=1]
 [ext_resource path="res://plants/Plant.gd" type="Script" id=2]
 [ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://plants/markers.svg" type="Texture" id=4]
+[ext_resource path="res://plants/water_marker.svg" type="Texture" id=5]
+[ext_resource path="res://plants/defense_marker.svg" type="Texture" id=6]
+[ext_resource path="res://plants/heart_marker.svg" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -17,37 +19,45 @@ script = ExtResource( 2 )
 position = Vector2( 64, 64 )
 texture = ExtResource( 1 )
 
-[node name="Markers" type="Sprite" parent="."]
+[node name="HeartMarker" type="Sprite" parent="."]
 position = Vector2( 64, 64 )
-texture = ExtResource( 4 )
+texture = ExtResource( 7 )
 
-[node name="WaterNum" type="Label" parent="."]
-margin_left = 41.0
-margin_top = 94.0
-margin_right = 93.0
-margin_bottom = 145.0
+[node name="HealthNum" type="Label" parent="HeartMarker"]
+margin_left = -57.0
+margin_top = 18.0
+margin_right = -21.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "3"
+align = 1
+autowrap = true
+
+[node name="WaterMarker" type="Sprite" parent="."]
+position = Vector2( 64, 64 )
+texture = ExtResource( 5 )
+
+[node name="WaterNum" type="Label" parent="WaterMarker"]
+margin_left = -23.0
+margin_top = 25.0
+margin_right = 29.0
+margin_bottom = 64.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "10"
 align = 1
 autowrap = true
 
-[node name="WaterNum2" type="Label" parent="."]
-margin_left = -3.0
-margin_top = 83.0
-margin_right = 49.0
-margin_bottom = 134.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "10"
-align = 1
-autowrap = true
+[node name="DefenseMarker" type="Sprite" parent="."]
+position = Vector2( 64, 64 )
+texture = ExtResource( 6 )
 
-[node name="WaterNum3" type="Label" parent="."]
-margin_left = 82.0
-margin_top = 85.0
-margin_right = 134.0
-margin_bottom = 136.0
+[node name="DefenseNum" type="Label" parent="DefenseMarker"]
+margin_left = 17.0
+margin_top = 21.0
+margin_right = 69.0
+margin_bottom = 72.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "10"
