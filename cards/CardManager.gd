@@ -115,6 +115,7 @@ func card_is_picked_up():
 	
 func _physics_process(delta):
 	if GS.turn_state == GS.TurnState.UPDATING:
+		organize_cards(true) # Hide cards at bottom
 		return
 	
 	# This node is offset off the bottom of the camera viewport.size.y / 2

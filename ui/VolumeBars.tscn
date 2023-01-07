@@ -26,42 +26,41 @@ custom_constants/hseparation = 14
 columns = 2
 
 [node name="MasterLabel" type="Label" parent="GridContainer"]
-margin_top = 1.0
-margin_right = 44.0
-margin_bottom = 15.0
+margin_right = 62.0
+margin_bottom = 23.0
 text = "Master"
 
 [node name="MasterSlider" type="HSlider" parent="GridContainer"]
-margin_left = 58.0
+margin_left = 76.0
 margin_right = 271.0
 margin_bottom = 16.0
 script = ExtResource( 1 )
 
 [node name="MusicLabel" type="Label" parent="GridContainer"]
-margin_top = 21.0
-margin_right = 44.0
-margin_bottom = 35.0
+margin_top = 27.0
+margin_right = 62.0
+margin_bottom = 50.0
 text = "Music"
 
 [node name="MusicSlider" type="HSlider" parent="GridContainer"]
-margin_left = 58.0
-margin_top = 20.0
+margin_left = 76.0
+margin_top = 27.0
 margin_right = 271.0
-margin_bottom = 36.0
+margin_bottom = 43.0
 script = ExtResource( 1 )
 bus_name = "Music"
 
 [node name="SFXLabel" type="Label" parent="GridContainer"]
-margin_top = 41.0
-margin_right = 44.0
-margin_bottom = 55.0
+margin_top = 54.0
+margin_right = 62.0
+margin_bottom = 77.0
 text = "SFX"
 
 [node name="SFXSlider" type="HSlider" parent="GridContainer"]
-margin_left = 58.0
-margin_top = 40.0
+margin_left = 76.0
+margin_top = 54.0
 margin_right = 271.0
-margin_bottom = 56.0
+margin_bottom = 70.0
 size_flags_horizontal = 3
 script = ExtResource( 1 )
 bus_name = "SFX"

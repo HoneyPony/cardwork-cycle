@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://plants/plant1/growth_1.svg" type="Texture" id=1]
 [ext_resource path="res://plants/Plant.gd" type="Script" id=2]
@@ -8,10 +8,12 @@
 [ext_resource path="res://plants/defense_marker.svg" type="Texture" id=6]
 [ext_resource path="res://plants/heart_marker.svg" type="Texture" id=7]
 [ext_resource path="res://plants/plant1/seeds.svg" type="Texture" id=8]
+[ext_resource path="res://plants/plant1/growth_2.svg" type="Texture" id=9]
+[ext_resource path="res://plants/plant1/growth_3_more_simple.svg" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=9]
 animations = [ {
-"frames": [ ExtResource( 8 ), ExtResource( 1 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 1 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0

@@ -121,6 +121,8 @@ func turn_processor():
 func end_turn():
 	turn_state = TurnState.UPDATING
 	current_turns = turn_processor()
+	if current_turns == null:
+		deal_new_hand()
 
 # Used for plant markers!
 var global_sine_timer = 0
