@@ -115,8 +115,8 @@ func turn_processor():
 		plant.take_turn()
 		yield()
 		
-	current_turns = null
 	current_obj = null
+	return null
 	
 func end_turn():
 	turn_state = TurnState.UPDATING
@@ -133,4 +133,4 @@ func _process(delta):
 func _physics_process(delta):
 	if current_turns != null:
 		if current_obj.turn_over():
-			current_turns.resume()
+			current_turns = current_turns.resume()
