@@ -6,25 +6,31 @@
 
 [node name="Game" type="Node2D"]
 
-[node name="Camera" type="Camera2D" parent="."]
-current = true
-
-[node name="Cards" type="Node2D" parent="Camera"]
+[node name="Cards" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="Card1" parent="Camera/Cards" instance=ExtResource( 2 )]
+[node name="Card1" parent="Cards" instance=ExtResource( 2 )]
 
-[node name="Card2" parent="Camera/Cards" instance=ExtResource( 2 )]
+[node name="Card2" parent="Cards" instance=ExtResource( 2 )]
 position = Vector2( -422, -40 )
 
-[node name="Card3" parent="Camera/Cards" instance=ExtResource( 2 )]
+[node name="Card3" parent="Cards" instance=ExtResource( 2 )]
 position = Vector2( -174, -15 )
 
-[node name="Card4" parent="Camera/Cards" instance=ExtResource( 2 )]
+[node name="Card4" parent="Cards" instance=ExtResource( 2 )]
 position = Vector2( 264, -25 )
 
-[node name="Card5" parent="Camera/Cards" instance=ExtResource( 2 )]
+[node name="Card5" parent="Cards" instance=ExtResource( 2 )]
 position = Vector2( 264, -25 )
+
+[node name="Card6" parent="Cards" instance=ExtResource( 2 )]
+position = Vector2( 264, -25 )
+
+[node name="Card7" parent="Cards" instance=ExtResource( 2 )]
+position = Vector2( 264, -25 )
+
+[node name="Camera" type="Camera2D" parent="."]
+current = true
 
 [node name="PauseMenu" parent="." instance=ExtResource( 1 )]
 visible = false
