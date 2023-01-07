@@ -114,6 +114,9 @@ func turn_processor():
 		current_obj = plant
 		plant.take_turn()
 		yield()
+		
+	current_turns = null
+	current_obj = null
 	
 func end_turn():
 	turn_state = TurnState.UPDATING

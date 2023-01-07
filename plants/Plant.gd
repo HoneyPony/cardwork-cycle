@@ -63,5 +63,8 @@ func dec_health():
 func water_plant():
 	water -= 1
 	
+func upgrade_plant():
+	$Plant.frame += 1
+	
 func turn_over():
 	return not $AnimationPlayer.is_playing()

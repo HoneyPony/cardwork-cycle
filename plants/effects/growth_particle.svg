@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933334"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="growth_particle.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="10.248373"
+     inkscape:cx="47.422163"
+     inkscape:cy="25.12594"
+     inkscape:window-width="1620"
+     inkscape:window-height="1018"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     units="px"
+     width="64px"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#505050"
+     inkscape:lockguides="false" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="star"
+       style="fill:#f2f2f2;stroke-width:0.514879;stroke-linejoin:round"
+       id="path7824"
+       inkscape:flatsided="false"
+       sodipodi:sides="7"
+       sodipodi:cx="6.4284596"
+       sodipodi:cy="7.7193151"
+       sodipodi:r1="5.2773728"
+       sodipodi:r2="2.6386864"
+       sodipodi:arg1="0.063639438"
+       sodipodi:arg2="0.51243839"
+       inkscape:rounded="0.09"
+       inkscape:randomized="0"
+       d="M 11.695149,8.0549374 C 11.677304,8.3349725 8.8657916,8.7685132 8.7282109,9.0130733 8.5906301,9.2576333 9.6798535,11.885589 9.4497869,12.046236 9.2197203,12.206883 7.1278151,10.279062 6.8508302,10.323978 6.5738453,10.368894 5.1983463,12.858987 4.9293033,12.779275 4.6602603,12.699563 4.8632097,9.8620695 4.6553959,9.6735184 4.4475821,9.4849674 1.6431395,9.9621064 1.537715,9.7020608 1.4322905,9.4420152 3.7772694,7.8315389 3.7951147,7.5515039 3.8129601,7.2714688 1.6913764,5.3763587 1.8289572,5.1317987 1.9665379,4.8872386 4.6877294,5.7165014 4.917796,5.5558545 5.1478626,5.3952076 5.3067336,2.5549048 5.5837185,2.5099891 c 0.276985,-0.044916 1.3252764,2.5996344 1.5943193,2.679346 0.269043,0.079712 2.5887356,-1.5669779 2.7965494,-1.3784268 0.2078138,0.188551 -1.2061797,2.6569882 -1.1007552,2.9170339 0.1054245,0.2600456 2.839163,1.0469602 2.821317,1.3269952 z"
+       transform="matrix(1.6384074,0,0,1.6384074,-2.3994264,-4.0030255)" />
+    <path
+       sodipodi:type="star"
+       style="fill:#ffffff;stroke-width:0.514879;stroke-linejoin:round"
+       id="path7826"
+       inkscape:flatsided="false"
+       sodipodi:sides="7"
+       sodipodi:cx="6.4284596"
+       sodipodi:cy="7.7193151"
+       sodipodi:r1="5.2773728"
+       sodipodi:r2="2.6386864"
+       sodipodi:arg1="0.063639438"
+       sodipodi:arg2="0.51243839"
+       inkscape:rounded="0.09"
+       inkscape:randomized="0"
+       d="M 11.695149,8.0549374 C 11.677304,8.3349725 8.8657916,8.7685132 8.7282109,9.0130733 8.5906301,9.2576333 9.6798535,11.885589 9.4497869,12.046236 9.2197203,12.206883 7.1278151,10.279062 6.8508302,10.323978 6.5738453,10.368894 5.1983463,12.858987 4.9293033,12.779275 4.6602603,12.699563 4.8632097,9.8620695 4.6553959,9.6735184 4.4475821,9.4849674 1.6431395,9.9621064 1.537715,9.7020608 1.4322905,9.4420152 3.7772694,7.8315389 3.7951147,7.5515039 3.8129601,7.2714688 1.6913764,5.3763587 1.8289572,5.1317987 1.9665379,4.8872386 4.6877294,5.7165014 4.917796,5.5558545 5.1478626,5.3952076 5.3067336,2.5549048 5.5837185,2.5099891 c 0.276985,-0.044916 1.3252764,2.5996344 1.5943193,2.679346 0.269043,0.079712 2.5887356,-1.5669779 2.7965494,-1.3784268 0.2078138,0.188551 -1.2061797,2.6569882 -1.1007552,2.9170339 0.1054245,0.2600456 2.839163,1.0469602 2.821317,1.3269952 z"
+       transform="matrix(0.45123968,0,0,0.45123968,5.4533915,5.0732112)" />
+  </g>
+</svg>

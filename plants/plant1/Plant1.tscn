@@ -1,11 +1,21 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://plants/plant1/seeds.svg" type="Texture" id=1]
+[ext_resource path="res://plants/plant1/growth_1.svg" type="Texture" id=1]
 [ext_resource path="res://plants/Plant.gd" type="Script" id=2]
 [ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://plants/effects/growth_particle.svg" type="Texture" id=4]
 [ext_resource path="res://plants/water_marker.svg" type="Texture" id=5]
 [ext_resource path="res://plants/defense_marker.svg" type="Texture" id=6]
 [ext_resource path="res://plants/heart_marker.svg" type="Texture" id=7]
+[ext_resource path="res://plants/plant1/seeds.svg" type="Texture" id=8]
+
+[sub_resource type="SpriteFrames" id=9]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -152,20 +162,44 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.15 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.15, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "water_plant"
+}, {
+"args": [  ],
+"method": "upgrade_plant"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("PlantUpgradeParticles")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "restart"
+} ]
+}
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0 ), 0.0, 3.37167, 0, 0, Vector2( 0.428571, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), -2.54387, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=8]
+offsets = PoolRealArray( 0, 0.348624, 0.986239 )
+colors = PoolColorArray( 1, 1, 1, 1, 0.546414, 1, 0.564132, 1, 0.375297, 0.703125, 0.388102, 1 )
 
 [node name="Plant1" type="Node2D" groups=["Object", "Plant"]]
 script = ExtResource( 2 )
 
-[node name="Plant" type="Sprite" parent="."]
+[node name="Plant" type="AnimatedSprite" parent="."]
 position = Vector2( 64, 64 )
-texture = ExtResource( 1 )
+frames = SubResource( 9 )
 
 [node name="H" type="Node2D" parent="."]
 
@@ -244,3 +278,27 @@ autowrap = true
 anims/NoWater = SubResource( 4 )
 anims/RESET = SubResource( 5 )
 anims/WaterPlant = SubResource( 6 )
+
+[node name="PlantUpgradeParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 61, 62 )
+emitting = false
+amount = 64
+lifetime = 0.6
+one_shot = true
+explosiveness = 0.7
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 16.57
+spread = 180.0
+gravity = Vector2( 0, -30 )
+initial_velocity = 150.0
+angular_velocity = -107.03
+angular_velocity_random = 1.0
+damping = 100.0
+damping_random = 1.0
+angle = 360.0
+angle_random = 1.0
+scale_amount = 0.8
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 7 )
+color_ramp = SubResource( 8 )
