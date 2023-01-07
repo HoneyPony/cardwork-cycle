@@ -162,11 +162,14 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.15, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.15, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "water_plant"
+}, {
+"args": [  ],
+"method": "update_markers_visibility"
 }, {
 "args": [  ],
 "method": "upgrade_plant"

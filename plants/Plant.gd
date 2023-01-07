@@ -19,6 +19,12 @@ func sine_y_offset(node, offset):
 	var y = sin(theta * (PI / 32.0))
 	
 	node.position.y = y
+	
+# Can be called from animations to explicitly update the visibility at some point.
+func update_markers_visibility():
+	$H/HeartMarker.visible = (health > -1) # I guess
+	$W/WaterMarker.visible = (water > 0)
+	$D/DefenseMarker.visible = (defense > 0)
 
 func update_display():
 	$H/HeartMarker/HealthNum.text = String(health)
@@ -27,9 +33,7 @@ func update_display():
 	
 	# Don't update visibility while the animation is going...?
 	if not $AnimationPlayer.is_playing():
-		$H/HeartMarker.visible = (health > -1) # I guess
-		$W/WaterMarker.visible = (water > 0)
-		$D/DefenseMarker.visible = (defense > 0)
+		update_markers_visibility()
 	
 	# Randomly move markers and plant sprite for a little bit more life.
 	# One option for this: JitterFX.gd, inspired by the main menu of my game
