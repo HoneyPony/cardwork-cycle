@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grass.svg-65c2ee4dc8c5332475f10e2ab5217c70.stex"
+path="res://.import/plant_spot_unclipped.svg-47fcc83e6f7b32c2afac548bdf8f8249.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://farm/grass.svg"
-dest_files=[ "res://.import/grass.svg-65c2ee4dc8c5332475f10e2ab5217c70.stex" ]
+source_file="res://farm/plant_spot_unclipped.svg"
+dest_files=[ "res://.import/plant_spot_unclipped.svg-47fcc83e6f7b32c2afac548bdf8f8249.stex" ]
 
 [params]
 
@@ -32,4 +32,4 @@ process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true
-svg/scale=2.0
+svg/scale=1.0

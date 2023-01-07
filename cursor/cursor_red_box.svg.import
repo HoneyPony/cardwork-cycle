@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/grass.svg-65c2ee4dc8c5332475f10e2ab5217c70.stex"
+path="res://.import/cursor_red_box.svg-24daf89fd7400daa5ec5aff4098d3e06.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://farm/grass.svg"
-dest_files=[ "res://.import/grass.svg-65c2ee4dc8c5332475f10e2ab5217c70.stex" ]
+source_file="res://cursor/cursor_red_box.svg"
+dest_files=[ "res://.import/cursor_red_box.svg-24daf89fd7400daa5ec5aff4098d3e06.stex" ]
 
 [params]
 

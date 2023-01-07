@@ -48,6 +48,7 @@ func update_transform():
 func _physics_process(delta):
 	if state == STATE_PICKUP:
 		global_position = get_global_mouse_position()
+		position.y += 98
 		
 		if Input.is_action_just_released("mouse"):
 			state = STATE_HOVER # TODO: Be able to play card!
