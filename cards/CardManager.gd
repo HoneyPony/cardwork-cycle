@@ -14,6 +14,7 @@ func starting_hand():
 	GS.add_card_to_hand(GS.card_basic_plant)
 	GS.add_card_to_hand(GS.card_basic_plant)
 	GS.add_card_to_hand(GS.card_free_1x1_water)
+	GS.turn_state = GS.TurnState.PLAYING_CARDS
 
 func find_card_under_mouse():
 	var space = get_world_2d().direct_space_state
@@ -112,6 +113,9 @@ func card_is_picked_up():
 	return false
 	
 func _physics_process(delta):
+	if GS.turn_state == GS.TurnState.UPDATING:
+		return
+	
 	# This node is offset off the bottom of the camera viewport.size.y / 2
 	position.y = camera.position.y + get_viewport().size.y / 2
 	#position.y = get_viewport().size.y / 2
@@ -129,5 +133,8 @@ func _physics_process(delta):
 			
 	organize_cards(card_picked_up)
 	update_camera()
+	
+	if get_child_count() == 0 and GS.turn_state == GS.TurnState.PLAYING_CARDS:
+		GS.end_turn()
 			
 	

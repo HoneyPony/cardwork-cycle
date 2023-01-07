@@ -9,6 +9,14 @@ enum Water {
 	W1x1
 }
 
+enum TurnState {
+	UNDEFINED,
+	PLAYING_CARDS,
+	UPDATING
+}
+
+var turn_state = TurnState.UNDEFINED
+
 class Card:
 	var title: String
 	var desc: String
@@ -97,6 +105,19 @@ func add_card_to_hand(card: Card):
 
 func _ready():
 	pass
+	
+var current_turns = null
+var current_obj = null
+	
+func turn_processor():
+	for plant in get_tree().get_nodes_in_group("Plant"):
+		current_obj = plant
+		plant.take_turn()
+		yield()
+	
+func end_turn():
+	turn_state = TurnState.UPDATING
+	current_turns = turn_processor()
 
 # Used for plant markers!
 var global_sine_timer = 0
@@ -105,3 +126,8 @@ func _process(delta):
 	global_sine_timer += 0.4 * delta
 	if global_sine_timer >= 1:
 		global_sine_timer -= 1
+		
+func _physics_process(delta):
+	if current_turns != null:
+		if current_obj.turn_over():
+			current_turns.resume()

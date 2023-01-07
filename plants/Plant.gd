@@ -18,16 +18,18 @@ func sine_y_offset(node, offset):
 	var theta = GS.global_sine_timer * 64 + offset
 	var y = sin(theta * (PI / 32.0))
 	
-	node.position.y = 64 + y
+	node.position.y = y
 
 func update_display():
-	$HeartMarker/HealthNum.text = String(health)
-	$WaterMarker/WaterNum.text = String(water)
-	$DefenseMarker/DefenseNum.text = String(defense)
+	$H/HeartMarker/HealthNum.text = String(health)
+	$W/WaterMarker/WaterNum.text = String(water)
+	$D/DefenseMarker/DefenseNum.text = String(defense)
 	
-	$HeartMarker.visible = (health > 0)
-	$WaterMarker.visible = (water > 0)
-	$DefenseMarker.visible = (defense > 0)
+	# Don't update visibility while the animation is going...?
+	if not $AnimationPlayer.is_playing():
+		$H/HeartMarker.visible = (health > -1) # I guess
+		$W/WaterMarker.visible = (water > 0)
+		$D/DefenseMarker.visible = (defense > 0)
 	
 	# Randomly move markers and plant sprite for a little bit more life.
 	# One option for this: JitterFX.gd, inspired by the main menu of my game
@@ -39,10 +41,27 @@ func update_display():
 	#$Plant.position = centered_lpf_noise($Plant.position)
 	
 	# Another option: sine wave, may look nicer than noise for this purpose.
-	sine_y_offset($HeartMarker, 28)
-	sine_y_offset($WaterMarker, 64)
-	sine_y_offset($DefenseMarker, 100)
+	sine_y_offset($H, 28)
+	sine_y_offset($W, 64)
+	sine_y_offset($D, 100)
 	
 
 func _process(delta):
 	update_display()
+	
+func take_turn():
+	var anim = $AnimationPlayer
+	
+	if water >= 1:
+		anim.queue("WaterPlant")
+	else:
+		anim.queue("NoWater")
+	
+func dec_health():
+	health -= 1
+	
+func water_plant():
+	water -= 1
+	
+func turn_over():
+	return not $AnimationPlayer.is_playing()
