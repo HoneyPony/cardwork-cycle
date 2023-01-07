@@ -70,16 +70,13 @@ __meta__ = {
 }
 
 [node name="Cards" type="Node2D" parent="."]
-visible = false
 z_index = 100
 script = ExtResource( 3 )
 
 [node name="Camera" type="Camera2D" parent="."]
-visible = false
 current = true
 
 [node name="TileMap" type="TileMap" parent="."]
-visible = false
 tile_set = SubResource( 1 )
 cell_size = Vector2( 128, 128 )
 format = 1

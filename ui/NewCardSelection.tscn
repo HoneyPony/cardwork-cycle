@@ -6,7 +6,8 @@
 [ext_resource path="res://cards/SelectableCard.tscn" type="PackedScene" id=4]
 
 [sub_resource type="DynamicFont" id=2]
-size = 18
+size = 20
+use_filter = true
 font_data = ExtResource( 1 )
 
 [sub_resource type="Theme" id=3]
