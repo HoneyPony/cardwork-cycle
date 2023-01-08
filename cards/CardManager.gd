@@ -123,6 +123,9 @@ func clear_hand():
 	for card in get_children():
 		card.discard()
 	
+var drag_camera = false
+var drag_center = Vector2.ZERO
+
 func _physics_process(delta):
 	if GS.turn_state == GS.TurnState.UPDATING:
 		organize_cards(true) # Hide cards at bottom
@@ -146,6 +149,24 @@ func _physics_process(delta):
 			
 	organize_cards(card_picked_up)
 	update_camera()
+	
+	if current_card == null:
+		if Input.is_action_just_pressed("mouse"):
+			drag_camera = true
+			drag_center = get_local_mouse_position()
+			
+	if drag_camera:
+		if Input.is_action_pressed("mouse"):
+			var m = get_local_mouse_position()
+			get_parent().position -= (m - drag_center)
+			
+			# The offset affects the position, so we have to NOT recompute
+			# ...? This is the original code I had, but it originally was oscillating,
+			# but now it's not, so I guess it's fine...?
+			drag_center = m
+		else:
+			drag_camera = false
+		
 	
 	if get_child_count() == 0 and GS.turn_state == GS.TurnState.PLAYING_CARDS:
 		GS.end_turn()
