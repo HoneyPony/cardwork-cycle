@@ -72,6 +72,10 @@ func play_self():
 		GS.cursor.drain_water_dmg_rng(associated_card)
 	if associated_card.action == GS.Action.DRAIN_WATER_DMG_ALL:
 		GS.cursor.drain_water_dmg_all(associated_card)
+	if associated_card.action == GS.Action.HEAL_DMG_NEAR:
+		GS.cursor.heal_dmg_near(associated_card)
+	if associated_card.action == GS.Action.DEF_DMG_NEAR:
+		GS.cursor.def_dmg_near(associated_card)
 		
 	GS.energy -= associated_card.cost
 	discard()

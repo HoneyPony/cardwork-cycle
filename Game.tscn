@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://ui/PauseMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cursor/Cursor.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://tutorial/scroll.svg" type="Texture" id=14]
 [ext_resource path="res://tutorial/Tutorial.gd" type="Script" id=15]
 [ext_resource path="res://TheTileMap.gd" type="Script" id=16]
+[ext_resource path="res://shop/Shop.tscn" type="PackedScene" id=17]
 
 [sub_resource type="TileSet" id=1]
 1/name = "plain_dirt.svg 1"
@@ -181,8 +182,25 @@ margin_bottom = 28.0
 theme = ExtResource( 8 )
 text = "Next"
 
+[node name="Shop" parent="CanvasLayer" instance=ExtResource( 17 )]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -217.0
+margin_bottom = 217.0
+
+[node name="ShopButton" type="Button" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -90.0
+margin_top = 18.0
+margin_right = -24.0
+margin_bottom = 60.0
+theme = ExtResource( 8 )
+text = "Shop"
+
 [node name="PauseMenu" parent="." instance=ExtResource( 1 )]
 layer = 2
 visible = false
 
 [connection signal="pressed" from="CanvasLayer/Tutorial/NextButton" to="CanvasLayer/Tutorial" method="_on_NextButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/ShopButton" to="CanvasLayer/Shop" method="_on_ShopButton_pressed"]

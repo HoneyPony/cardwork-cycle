@@ -45,8 +45,8 @@ func tutorial_debug():
 	end_tutorial()
 	GS.turn_state = GS.TurnState.PLAYING_CARDS
 	
-	GS.add_card_to_hand(GS.card_water1_2x2)
-	GS.add_card_to_hand(GS.card_water1_3x3)
+	GS.add_card_to_hand(GS.card_heal1_dmg1)
+	GS.add_card_to_hand(GS.card_def2_dmg1)
 
 
 func tutorial_cards():

@@ -77,6 +77,8 @@ func drain_water_dmg_rng(card):
 	plant.water -= card.drain # TODO: ANIM
 	
 	var enemy = GS.get_random_enemy()
+	if enemy == null:
+		return
 	enemy.take_damage(card.quantity)
 	
 func drain_water_dmg_all(card):
@@ -88,6 +90,32 @@ func drain_water_dmg_all(card):
 	
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.take_damage(card.quantity)
+		
+func heal_dmg_near(card):
+	var plant = GS.get_plant_at_map_lcoord(position)
+	if plant == null:
+		return
+	
+	plant.health += card.drain
+	
+	var enemy = GS.get_nearest_enemy(position)
+	if enemy == null:
+		return
+		
+	enemy.take_damage(card.quantity)
+	
+func def_dmg_near(card):
+	var plant = GS.get_plant_at_map_lcoord(position)
+	if plant == null:
+		return
+	
+	plant.defense += card.drain
+	
+	var enemy = GS.get_nearest_enemy(position)
+	if enemy == null:
+		return
+		
+	enemy.take_damage(card.quantity)
 
 func get_tile():
 	var p: TileMap = get_parent()
@@ -181,7 +209,9 @@ func update_playable_and_display():
 			$CursorAttack.show()
 			may_play = true
 			
-	if card.action == GS.Action.DEFEND:
+	if card.action == GS.Action.DEFEND \
+		or card.action == GS.Action.HEAL_DMG_NEAR \
+		or card.action == GS.Action.DEF_DMG_NEAR:
 		if is_tile_plant():
 			$CursorPlant.show() # TODO: Defend
 			may_play = true

@@ -6,7 +6,9 @@ enum Action {
 	ATTACK,
 	DEFEND,
 	DRAIN_WATER_DMG_RNG,
-	DRAIN_WATER_DMG_ALL
+	DRAIN_WATER_DMG_ALL,
+	HEAL_DMG_NEAR,
+	DEF_DMG_NEAR
 }
 
 enum Water {
@@ -56,6 +58,7 @@ class Card:
 		action = action_
 		
 		quantity = 1
+		drain = 1
 		
 	func shape(water_shape_):
 		water_shape = water_shape_
@@ -152,6 +155,22 @@ var card_drain3_dmgall1 : Card = Card.new(
 	Action.DRAIN_WATER_DMG_ALL
 ).with_quantity(1).with_drain(3)
 
+# Low tank cards
+
+var card_heal1_dmg1 : Card = Card.new(
+	"Vampire Fang",
+	"Heal a plant for 1 health, and do 1 damage to the nearest enemy",
+	0,
+	Action.HEAL_DMG_NEAR
+).with_quantity(1).with_drain(1) # Drain is healing for this
+
+var card_def2_dmg1 : Card = Card.new(
+	"Spiked Shield",
+	"Apply 2 immunity to a plant, and do 1 damage to the nearest enemy",
+	0,
+	Action.DEF_DMG_NEAR
+).with_quantity(1).with_drain(2) # Drain is healing for this
+
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
 var HandCard = preload("res://cards/HandCard.tscn")
@@ -222,6 +241,21 @@ func get_random_enemy():
 	var nodes = get_tree().get_nodes_in_group("Enemy")
 	
 	return nodes[randi() % nodes.size()]
+	
+func get_nearest_enemy(position):
+	var node = null
+	var dist = 0
+	
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		var to_enem = (enemy.position - position).length()
+		if node == null:
+			node = enemy
+			dist = to_enem
+		elif to_enem < dist:
+			node = enemy
+			dist = to_enem
+			
+	return node
 
 func add_card_to_hand(card: Card):
 	var h = HandCard.instance()
