@@ -7,6 +7,8 @@ onready var dummy = get_node("../CardDummy")
 # Nullable! Be careful
 var current_card = null
 
+var card_scroll_offset = 0
+
 func _ready():
 	GS.hand = self
 	
@@ -58,6 +60,9 @@ func organize_cards(card_is_picked_up):
 	
 	var num_cards = get_child_count()
 	var start = -(num_cards - 1.0) / 2
+
+	card_scroll_offset = clamp(card_scroll_offset, start, -start)
+	start += card_scroll_offset
 	
 	var y_base = -260
 	if card_is_picked_up:
@@ -108,6 +113,14 @@ func update_camera():
 	# TODO: Implement scroll-wheel-based scrolling, maybe?
 	pass
 	
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.is_pressed():
+			if event.button_index == BUTTON_WHEEL_UP:
+				card_scroll_offset -= 0.25
+			if event.button_index == BUTTON_WHEEL_DOWN:
+				card_scroll_offset += 0.25
+	
 func card_is_picked_up():
 	if is_instance_valid(current_card):
 		return current_card.is_picked_up()
@@ -116,6 +129,8 @@ func card_is_picked_up():
 func clear_hand():
 	for card in get_children():
 		card.discard()
+		
+	card_scroll_offset = 0
 	
 var drag_camera = false
 var drag_center = Vector2.ZERO
