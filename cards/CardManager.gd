@@ -179,9 +179,9 @@ func _physics_process(delta):
 		else:
 			drag_camera = false
 		
-	
-	if get_child_count() == 0 and GS.turn_state == GS.TurnState.PLAYING_CARDS:
-		GS.end_turn()
+	if not GS.tutorial:
+		if get_child_count() == 0 and GS.turn_state == GS.TurnState.PLAYING_CARDS:
+			GS.end_turn()
 		
 			
 	

@@ -1,15 +1,17 @@
 extends Node2D
 
-var health = 3
+export var health = 3
 var water = 0
 var defense = 0
+
+export var anim_frames: SpriteFrames
 
 # If the plant is "consumed", that means the card / gold popup has been
 # shown, and the plant should be queue_freed()
 var consumed = false
 
 func _ready():
-	pass
+	$Plant.frames = anim_frames
 
 func centered_lpf_noise(in_pos):
 	var r = rand_range(0, 32)

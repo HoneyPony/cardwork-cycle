@@ -91,7 +91,7 @@ var card_buy_1x1_water : Card = Card.new(
 	"Apply 1 water to a 1x1 patch of tiles",
 	1,
 	Action.WATER
-)
+).shape(Water.W1x1)
 
 var card_small_attack : Card = Card.new(
 	"Whack!",

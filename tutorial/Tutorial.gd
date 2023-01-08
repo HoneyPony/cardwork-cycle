@@ -35,39 +35,39 @@ func _ready():
 	
 	update_tutorial()
 	GS.turn_state = GS.TurnState.WAITING_FOR_TUTORIAL
-	GS.card_draw_count = 3 # Only draw the Whack! card plus some filler
+	GS.card_draw_count = 2 # Only draw the Whack! card plus some filler
 
 	# DEBUGGING
-	call_deferred("tutorial_debug")
+	# call_deferred("tutorial_debug")
 
 func tutorial_debug():
 	tutorial_cards()
 	end_tutorial()
 	GS.turn_state = GS.TurnState.PLAYING_CARDS
-	for i in range(0, 7):
-		GS.add_card_to_hand(GS.card_basic_plant)
 
 
 func tutorial_cards():
 	GS.add_card_to_hand(GS.card_basic_plant)
-	GS.add_card_to_hand(GS.card_basic_plant)
+	#GS.add_card_to_hand(GS.card_basic_plant)
 	GS.add_card_to_hand(GS.card_free_1x1_water)
 	GS.add_card_to_hand(GS.card_small_defend)
 	
 	GS.draw_pile.push_back(GS.card_small_attack)
-	GS.draw_pile.push_back(GS.card_medium_plant)
+	#GS.draw_pile.push_back(GS.card_medium_plant)
+	
 	GS.draw_pile.push_back(GS.card_medium_plant)
 	
 	GS.discard_pile.push_back(GS.card_buy_1x1_water)
-	GS.discard_pile.push_back(GS.card_buy_1x1_water)
-	GS.discard_pile.push_back(GS.card_buy_1x1_water)
+	#GS.discard_pile.push_back(GS.card_buy_1x1_water)
+	#GS.discard_pile.push_back(GS.card_buy_1x1_water)
 	
 	GS.discard_pile.push_back(GS.card_high_plant)
-	GS.discard_pile.push_back(GS.card_high_plant)
+	#GS.discard_pile.push_back(GS.card_high_plant)
+	
 	
 	GS.discard_pile.push_back(GS.card_small_attack)
-	GS.discard_pile.push_back(GS.card_small_attack)
-	GS.discard_pile.push_back(GS.card_small_defend)
+	#GS.discard_pile.push_back(GS.card_small_attack)
+	#GS.discard_pile.push_back(GS.card_small_defend)
 
 func update_tutorial():
 	if current_line >= lines.size():
