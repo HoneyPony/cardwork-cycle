@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var cursors = [$Red, $CursorPlant, $CursorWater1x1]
+onready var cursors = [$Red, $CursorPlant, $CursorAttack, $CursorWater1x1]
 
 const TILE_PLANTABLE = 3
 
@@ -54,6 +54,10 @@ func is_tile_plant():
 	var p = GS.get_plant_at_map_lcoord(position)
 	return p != null
 	
+func is_tile_enemy():
+	var e = GS.get_enemy_at_map_lcoord(position)
+	return e != null
+	
 func show_water_cursor(card):
 	if card.water_shape == GS.Water.W1x1:
 		$CursorWater1x1.show()
@@ -77,6 +81,11 @@ func update_playable_and_display():
 	if card.action == GS.Action.WATER:
 		if is_tile_plant():
 			show_water_cursor(card)
+			may_play = true
+			
+	if card.action == GS.Action.ATTACK:
+		if is_tile_enemy():
+			$CursorAttack.show()
 			may_play = true
 
 func _physics_process(delta):

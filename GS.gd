@@ -2,7 +2,8 @@ extends Node
 
 enum Action {
 	PLANT,
-	WATER
+	WATER,
+	ATTACK
 }
 
 enum Water {
@@ -34,6 +35,8 @@ class Card:
 	
 	var water_shape
 	
+	var damage
+	
 	func _init(title_: String, desc_: String, cost_: int, action_):
 		title = title_
 		desc = desc_
@@ -42,6 +45,10 @@ class Card:
 		
 	func shape(water_shape_):
 		water_shape = water_shape_
+		return self
+		
+	func with_damage(amount_):
+		damage = amount_
 		return self
 
 # The "global state" node. This is where global variables are usually stored,
@@ -59,6 +66,13 @@ var card_free_1x1_water : Card = Card.new(
 	0,
 	Action.WATER
 ).shape(Water.W1x1)
+
+var card_small_attack : Card = Card.new(
+	"Attack",
+	"Attack an enemy for 1 damage",
+	1,
+	Action.ATTACK
+).with_damage(1)
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
@@ -97,6 +111,13 @@ func get_object_at_map_lcoord(coord: Vector2):
 	
 func get_plant_at_map_lcoord(coord: Vector2):
 	for obj in get_tree().get_nodes_in_group("Plant"):
+		var p = obj.position
+		if (p - coord).length_squared() < 16:
+			return obj
+	return null
+	
+func get_enemy_at_map_lcoord(coord: Vector2):
+	for obj in get_tree().get_nodes_in_group("Enemy"):
 		var p = obj.position
 		if (p - coord).length_squared() < 16:
 			return obj
