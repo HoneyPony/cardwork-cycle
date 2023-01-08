@@ -14,6 +14,8 @@ export var anim_frames: SpriteFrames
 # shown, and the plant should be queue_freed()
 var consumed = false
 
+var damage_queue = []
+
 func _ready():
 	$Plant.frames = anim_frames
 	$Plant.scale = Vector2(plant_scale, plant_scale)
@@ -30,6 +32,16 @@ func sine_y_offset(node, offset):
 	var y = sin(theta * (PI / 32.0))
 	
 	node.position.y = y
+	
+func slash_health(amount):
+	damage_queue.push_back(amount)
+	$AnimationPlayer.play("Slash")
+	
+func steal_health(amount):
+	health -= amount
+	if health <= 0:
+		$AnimationPlayer.queue("OutOfHealth")
+
 	
 # Can be called from animations to explicitly update the visibility at some point.
 func update_markers_visibility():
@@ -81,20 +93,35 @@ func take_turn():
 		anim.queue("NoWater")
 	
 func dec_health():
+	var next = damage_queue.pop_front()
+	if next == null:
+		next = 1
+	
 	# TODO: Animate shield rather than heart...
 	if defense > 0:
-		defense -= 1
-		return
+		defense -= next
+		if defense < 0:
+			next = -defense
+			defense = 0
+		else:
+			return
 	
-	health -= 1
+	health -= next
 	if health <= 0:
 		$AnimationPlayer.queue("OutOfHealth")
 	
 func start_health_anim():
+	var next = damage_queue.front()
+	if next == null:
+		next = 1
+	
 	if defense > 0:
 		$ShieldFX.play("Pop")
+		if defense < next:
+			$HeartFX.play("PopNoCall")
 	else:
 		$HeartFX.play("Pop")
+
 	
 func water_plant():
 	water -= 1

@@ -89,7 +89,7 @@ func attack(plant):
 	current_plant_target = plant
 	
 func play_target_anim():
-	current_plant_target.get_node("AnimationPlayer").play("Slash")
+	current_plant_target.slash_health(1)
 	
 func find_closest():
 	var closest = null

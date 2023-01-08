@@ -149,14 +149,14 @@ var card_drain1_dmg3 : Card = Card.new(
 ).with_quantity(3).with_drain(1)
 
 var card_water2_1x1 : Card = Card.new(
-	"Water 2x2",
+	"Pour One",
 	"Apply 2 water to a 1x1 square of tiles",
 	2,
 	Action.WATER
 ).shape(Water.W1x1).with_quantity(2)
 
 var card_water1_2x2 : Card = Card.new(
-	"Water 2x2",
+	"Water Can",
 	"Apply 1 water to a 2x2 square of tiles",
 	3,
 	Action.WATER
@@ -165,14 +165,14 @@ var card_water1_2x2 : Card = Card.new(
 # Medium water cards
 
 var card_water1_3x3 : Card = Card.new(
-	"Water 3x3",
+	"Water Barrel",
 	"Apply 1 water to a 3x3 square of tiles",
 	3,
 	Action.WATER
 ).shape(Water.W3x3)
 
 var card_water2_2x2 : Card = Card.new(
-	"Water 2x2",
+	"Hose",
 	"Apply 2 water to a 2x2 square of tiles",
 	4,
 	Action.WATER
@@ -288,12 +288,42 @@ var card_sacrif1_1enem : Card = Card.new(
 
 # Medium attack cards
 
+var card_add2 : Card = Card.new(
+	"Technique",
+	"Add 2 damage to your next attack",
+	2,
+	Action.ADD_DAMAGE
+).with_quantity(2)
+
 var card_sacrif2_2enem : Card = Card.new(
 	"Blood Blade",
 	"Take 2 plant health, and do $DQ damage to the 2 lowest-health enemies.",
 	3,
 	Action.SACRIF
 ).with_quantity(5).with_drain(2).with_mult(2)
+
+var card_free_atk : Card = Card.new(
+	"Zing!",
+	"Attack an enemy for $DQ damage",
+	0,
+	Action.ATTACK
+).with_quantity(1)
+
+# Rare attack cards
+
+var card_add1_cheap : Card = Card.new(
+	"Power Crystal",
+	"Add 1 damage to your next attack",
+	0,
+	Action.ADD_DAMAGE
+).with_quantity(1)
+
+var card_sacrifice : Card = Card.new(
+	"Sacrifice",
+	"Kill a plant, and do 5 damage to all enemies",
+	5,
+	Action.SACRIF
+).with_quantity(5).with_drain(0).with_mult(-1)
 
 # GENERAL RARE CARDS
 

@@ -62,6 +62,7 @@ func pick_plant1_cards(health):
 	
 	add_atks(set, 4, GS.card_dmg2)
 	add_atks(set, 4, GS.card_add1_expensive)
+	add_atks(set, 4, GS.card_sacrif1_1enem)
 	
 	add_copies(set, 4, GS.card_basic_plant)
 	add_copies(set, 4, GS.card_medium_plant)
@@ -89,6 +90,9 @@ func pick_plant2_cards(health):
 	add_defs(set, 4, GS.card_heal2_dmg2)
 	add_defs(set, 4, GS.card_def3_dmg3)
 	
+	add_atks(set, 4, GS.card_add2)
+	add_atks(set, 4, GS.card_sacrif2_2enem)
+	add_atks(set, 4, GS.card_free_atk)
 	
 	return pick_cards(set)
 
@@ -101,5 +105,10 @@ func pick_plant3_cards(health):
 	
 	add_defs(set, 4, GS.card_def2_all)
 	add_defs(set, 4, GS.card_heal_attack_all)
+	
+	add_atks(set, 4, GS.card_add1_cheap)
+	add_atks(set, 4, GS.card_sacrifice)
+	
+	add_copies(set, 4, GS.card_win_plant)
 	
 	return pick_cards(set)

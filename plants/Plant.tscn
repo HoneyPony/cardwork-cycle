@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://plants/effects/slash.png" type="Texture" id=2]
@@ -511,6 +511,23 @@ tracks/1/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=17]
+resource_name = "PopNoCall"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("H/HeartMarker:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 64, 64 ), Vector2( 64, 48 ), Vector2( 64, 64 ) ]
+}
+
 [sub_resource type="Animation" id=16]
 resource_name = "Pop"
 length = 0.3
@@ -690,6 +707,7 @@ hframes = 7
 
 [node name="HeartFX" type="AnimationPlayer" parent="."]
 anims/Pop = SubResource( 15 )
+anims/PopNoCall = SubResource( 17 )
 
 [node name="ShieldFX" type="AnimationPlayer" parent="."]
 anims/Pop = SubResource( 16 )

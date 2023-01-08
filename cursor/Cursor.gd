@@ -175,10 +175,18 @@ func sacrif(card):
 	if plant == null:
 		return
 		
-	plant.health -= card.drain
+	var amount = card.drain
+	if amount == 0:
+		amount = plant.health
+	plant.steal_health(amount)
 	
 	var dmg = damage(card)
 	reset_damage()
+	
+	if card.mult == -1:
+		for enemy in get_tree().get_nodes_in_group("Enemy"):
+			enemy.take_damage(dmg)
+		return
 	
 	var enemy = GS.get_lowest_health_enemy()
 	if enemy == null:

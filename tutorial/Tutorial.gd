@@ -55,7 +55,8 @@ func tutorial_debug():
 	GS.add_card_to_hand(GS.card_def2_all)
 	GS.add_card_to_hand(GS.card_heal_attack_all)
 	GS.add_card_to_hand(GS.card_sacrif1_1enem)
-	GS.add_card_to_hand(GS.card_sacrif2_2enem)
+	GS.add_card_to_hand(GS.card_free_atk)
+	GS.add_card_to_hand(GS.card_sacrifice)
 	GS.energy += 200
 
 
