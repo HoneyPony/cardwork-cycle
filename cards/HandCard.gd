@@ -52,6 +52,8 @@ func play_self():
 		GS.cursor.new_plant(associated_card)
 	if associated_card.action == GS.Action.WATER:
 		GS.cursor.water(associated_card)
+	if associated_card.action == GS.Action.ATTACK:
+		GS.cursor.attack(associated_card)
 	
 	GS.discard_pile.push_back(associated_card)
 	queue_free()
@@ -59,7 +61,9 @@ func play_self():
 func try_play_self():
 	GS.release_current_card(self)
 	
-	if associated_card.action == GS.Action.PLANT or associated_card.action == GS.Action.WATER:
+	if associated_card.action == GS.Action.PLANT \
+		or associated_card.action == GS.Action.WATER \
+		or associated_card.action == GS.Action.ATTACK:
 		if GS.cursor.may_play_card():
 			play_self()
 			return

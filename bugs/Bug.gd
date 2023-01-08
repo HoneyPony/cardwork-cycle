@@ -4,11 +4,22 @@ enum ActionType {
 	ATTACK_CLOSEST
 }
 
+export var health = 3
+
 export var actions: Array = [ActionType.ATTACK_CLOSEST]
 
 var next_action = 0
 
 var current_plant_target = null
+
+func _physics_process(delta):
+	$HeartMarker/HealthNum.text = String(health)
+	
+	# If our animation is done, also check the target's animation.
+	if not $AnimationPlayer.is_playing():
+		if is_instance_valid(current_plant_target):
+			if not current_plant_target.get_node("AnimationPlayer").is_playing():
+				current_plant_target = null
 
 func pull_action():
 	var result = actions[next_action]
@@ -34,6 +45,9 @@ func take_turn():
 		attack(find_closest())
 		
 func turn_over():
+	if is_instance_valid(current_plant_target):
+		if current_plant_target.get_node("AnimationPlayer").is_playing():
+			return false
 	return not $AnimationPlayer.is_playing()
 	
 func attack(plant):

@@ -33,6 +33,13 @@ func water(card):
 			var plant = GS.get_plant_at_map_lcoord(Vector2(x, y))
 			if plant != null:
 				plant.water += 1
+				
+func attack(card):
+	var enemy = GS.get_enemy_at_map_lcoord(position)
+	if enemy == null:
+		return
+		
+	enemy.health -= 1
 
 func get_tile():
 	var p: TileMap = get_parent()

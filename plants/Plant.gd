@@ -1,6 +1,6 @@
 extends Node2D
 
-var health = 3
+var health = 1
 var water = 0
 var defense = 0
 
@@ -73,6 +73,8 @@ func take_turn():
 	
 func dec_health():
 	health -= 1
+	if health <= 0:
+		$AnimationPlayer.queue("OutOfHealth")
 	
 func water_plant():
 	water -= 1

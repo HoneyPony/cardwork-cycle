@@ -198,7 +198,12 @@ func deal_new_hand():
 		
 func _physics_process(delta):
 	if current_turns != null:
-		if current_obj.turn_over():
+		if not is_instance_valid(current_obj):
+			current_turns = current_turns.resume()
+			
+			if current_turns == null:
+				deal_new_hand()
+		elif current_obj.turn_over():
 			current_obj.finalize_turn()
 			current_turns = current_turns.resume()
 			
