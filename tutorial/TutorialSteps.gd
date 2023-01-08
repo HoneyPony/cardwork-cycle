@@ -10,6 +10,9 @@ func should_display_end_turn():
 	return need_end_turn_button && (marked_step < 11)
 
 func check_tutorial_advance():
+	if not is_instance_valid(tutorial):
+		tutorial = null
+		return
 	# Only advance the tutorial once a condition is completed AT THE
 	# TIME that the condition is completed.
 	if tutorial.current_line == marked_step:

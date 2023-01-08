@@ -88,7 +88,8 @@ func update_playable_and_display():
 	for c in cursors:
 		c.hide()
 		
-	if GS.current_picked_up_card == null:
+	#if GS.current_picked_up_card == null:
+	if not is_instance_valid(GS.current_picked_up_card):
 		return
 		
 	may_play = false

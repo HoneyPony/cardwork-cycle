@@ -209,6 +209,7 @@ func end_turn():
 		return
 	
 	hand.clear_hand()
+	current_picked_up_card = null
 	
 	turn_state = TurnState.UPDATING
 	current_turns = turn_processor()

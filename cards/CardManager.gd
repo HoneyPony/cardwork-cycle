@@ -66,7 +66,7 @@ func organize_cards(card_is_picked_up):
 		card_scroll_offset = clamp(card_scroll_offset, start, -start)
 		start += card_scroll_offset
 	
-	var y_base = -260
+	var y_base = -200#-260
 	if card_is_picked_up:
 		y_base = 80
 	
@@ -119,9 +119,9 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			if event.button_index == BUTTON_WHEEL_UP:
-				card_scroll_offset -= 0.25
+				card_scroll_offset -= 0.5
 			if event.button_index == BUTTON_WHEEL_DOWN:
-				card_scroll_offset += 0.25
+				card_scroll_offset += 0.5
 	
 func card_is_picked_up():
 	if is_instance_valid(current_card):
@@ -148,7 +148,8 @@ func _physics_process(delta):
 	#position.y = get_viewport().size.y / 2
 	
 	var card_picked_up = card_is_picked_up()
-	if not card_picked_up:
+	# Don't check cards if one is already picked up or if the camera is dragging
+	if not card_picked_up and not drag_camera:
 		var under_mouse = find_card_under_mouse()
 		
 		if under_mouse != current_card:
@@ -158,7 +159,7 @@ func _physics_process(delta):
 			if is_instance_valid(current_card):
 				current_card.hover()
 			
-	organize_cards(card_picked_up)
+	organize_cards(card_picked_up or drag_camera)
 	update_camera()
 	
 	if current_card == null:
