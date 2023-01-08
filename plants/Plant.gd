@@ -1,6 +1,6 @@
 extends Node2D
 
-var health = 1
+var health = 3
 var water = 0
 var defense = 0
 
