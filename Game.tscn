@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://ui/PauseMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cursor/Cursor.tscn" type="PackedScene" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://ui/NewCardSelection.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/MainUITheme.tres" type="Theme" id=8]
 [ext_resource path="res://ui/EndTurnButton.gd" type="Script" id=9]
-[ext_resource path="res://bugs/Bug.tscn" type="PackedScene" id=10]
 [ext_resource path="res://energy/EnergyOrb.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Camera.gd" type="Script" id=12]
 [ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=13]
@@ -97,20 +96,6 @@ tile_data = PoolIntArray( -655373, 2, 8, -655372, 2, 10, -655371, 2, 10, -655370
 script = ExtResource( 16 )
 
 [node name="Cursor" parent="TileMap" instance=ExtResource( 2 )]
-
-[node name="Bug" parent="TileMap" instance=ExtResource( 10 )]
-
-[node name="Bug2" parent="TileMap" instance=ExtResource( 10 )]
-position = Vector2( 10, -140 )
-
-[node name="Bug3" parent="TileMap" instance=ExtResource( 10 )]
-position = Vector2( 147, -141 )
-
-[node name="Bug4" parent="TileMap" instance=ExtResource( 10 )]
-position = Vector2( 272, -256 )
-
-[node name="Bug5" parent="TileMap" instance=ExtResource( 10 )]
-position = Vector2( 123, -258 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

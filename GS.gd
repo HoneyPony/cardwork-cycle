@@ -177,6 +177,8 @@ var HandCard = preload("res://cards/HandCard.tscn")
 var CardBase = preload("res://cards/CardBase.tscn")
 
 var Plant1 = preload("res://plants/plant1/Plant1.tscn")
+var Plant2 = preload("res://plants/plant2/Plant2.tscn")
+var Plant3 = preload("res://plants/plant3/Plant3.tscn")
 
 var Bug = preload("res://bugs/Bug.tscn")
 

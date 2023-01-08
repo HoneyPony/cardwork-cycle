@@ -19,11 +19,22 @@ func _ready():
 func new_plant(associated_card):
 	TutorialSteps.mark_have_planted()
 	
+	var scene = null
+	
 	# My understanding is that these are reference types.
 	if associated_card == GS.card_basic_plant:
-		var p = GS.Plant1.instance()
-		p.position = position
-		get_parent().add_child(p)
+		scene = GS.Plant1
+	if associated_card == GS.card_medium_plant:
+		scene = GS.Plant2
+	if associated_card == GS.card_high_plant:
+		scene = GS.Plant3
+		
+	if scene == null:
+		return
+		
+	var p = scene.instance()
+	p.position = position
+	get_parent().add_child(p)
 		
 func water(card):
 	TutorialSteps.mark_have_watered()
