@@ -10,7 +10,9 @@ enum Action {
 }
 
 enum Water {
-	W1x1
+	W1x1,
+	W2x2,
+	W3x3
 }
 
 enum TurnState {
@@ -124,6 +126,22 @@ var card_drain1_dmg3 : Card = Card.new(
 	1,
 	Action.DRAIN_WATER_DMG_RNG
 ).with_quantity(3).with_drain(1)
+
+var card_water1_2x2 : Card = Card.new(
+	"Water 2x2",
+	"Apply 1 water to a 2x2 square of tiles",
+	0,
+	Action.WATER
+).shape(Water.W2x2)
+
+# Medium water cards
+
+var card_water1_3x3 : Card = Card.new(
+	"Water 3x3",
+	"Apply 1 water to a 3x3 square of tiles",
+	0,
+	Action.WATER
+).shape(Water.W3x3)
 
 # High water cards
 

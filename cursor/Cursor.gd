@@ -1,7 +1,10 @@
 extends Node2D
 class_name Cursor
 
-onready var cursors = [$Red, $CursorPlant, $CursorAttack, $CursorWater1x1, $CursorWaterDrain]
+onready var cursors = [$Red, $CursorPlant, 
+$CursorAttack, 
+$CursorWater1x1, $CursorWater2x2, $CursorWater3x3,
+ $CursorWaterDrain]
 
 const TILE_PLANTABLE = 3
 
@@ -30,6 +33,15 @@ func water(card):
 	
 	var width = 1
 	var height = 1
+	
+	if card.water_shape == GS.Water.W3x3:
+		sx -= 128
+		sy -= 128
+		width = 3
+		height = 3
+	if card.water_shape == GS.Water.W2x2:
+		width = 2
+		height = 2
 	
 	for i in range(0, width):
 		for j in range(0, height):
@@ -107,9 +119,39 @@ func is_tile_enemy():
 	var e = GS.get_enemy_at_map_lcoord(position)
 	return e != null
 	
+func is_any_tile_plant_in_square(card):
+	var sx = position.x
+	var sy = position.y
+	
+	var width = 1
+	var height = 1
+	
+	if card.water_shape == GS.Water.W3x3:
+		sx -= 128
+		sy -= 128
+		width = 3
+		height = 3
+	if card.water_shape == GS.Water.W2x2:
+		width = 2
+		height = 2
+		
+	for i in range(0, width):
+		for j in range(0, height):
+			var x = sx + i * 128
+			var y = sy + j * 128
+			var plant = GS.get_plant_at_map_lcoord(Vector2(x, y))
+			if plant != null:
+				return true
+	
+	return false
+	
 func show_water_cursor(card):
 	if card.water_shape == GS.Water.W1x1:
 		$CursorWater1x1.show()
+	if card.water_shape == GS.Water.W2x2:
+		$CursorWater2x2.show()
+	if card.water_shape == GS.Water.W3x3:
+		$CursorWater3x3.show()
 
 func update_playable_and_display():
 	for c in cursors:
@@ -129,9 +171,10 @@ func update_playable_and_display():
 			may_play = true
 	
 	if card.action == GS.Action.WATER:
-		if is_tile_plant():
+		if is_any_tile_plant_in_square(card):
 			show_water_cursor(card)
 			may_play = true
+		
 			
 	if card.action == GS.Action.ATTACK:
 		if is_tile_enemy():

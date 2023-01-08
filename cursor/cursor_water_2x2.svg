@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="128"
+   height="128"
+   viewBox="0 0 33.866666 33.866668"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="cursor_water_2x2.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="10.248373"
+     inkscape:cx="87.867608"
+     inkscape:cy="26.687163"
+     inkscape:window-width="1620"
+     inkscape:window-height="1018"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     units="px"
+     width="64px"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#505050" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#2b8ce7;stroke-width:0.648793;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       id="rect38756"
+       width="32.159538"
+       height="32.159542"
+       x="0.85356307"
+       y="0.85356307"
+       ry="1.1737039" />
+    <path
+       style="fill:#2b8ce7;fill-opacity:1;stroke:none;stroke-width:0.647965;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 30.94798,1.9115408 c 0,0 -1.006867,1.419941 -1.006867,1.9879173 0,0.5679765 0.232354,1.2392213 1.006867,1.2392213 0.774513,0 0.955233,-0.5937936 0.929416,-1.1359529 C 31.851576,3.4605672 30.94798,1.9115408 30.94798,1.9115408 Z"
+       id="path39306" />
+    <path
+       style="fill:#489cea;fill-opacity:1;stroke:none;stroke-width:0.540259;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:1"
+       d="m 30.86647,1.9663072 c 0,0 -0.779313,1.2753578 -0.779313,1.7855009 0,0.5101432 0.179842,1.1130396 0.779313,1.1130396 0.599472,0 0.739349,-0.5333316 0.719366,-1.0202864 C 31.565856,3.3576065 30.86647,1.9663072 30.86647,1.9663072 Z"
+       id="path39377" />
+  </g>
+</svg>

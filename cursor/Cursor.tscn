@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://cursor/cursor_red_box.svg" type="Texture" id=1]
 [ext_resource path="res://cursor/Cursor.gd" type="Script" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://cursor/cursor_attack.png" type="Texture" id=6]
 [ext_resource path="res://cursor/cursor_attack_icon.svg" type="Texture" id=7]
 [ext_resource path="res://cursor/cursor_water_drain.png" type="Texture" id=8]
+[ext_resource path="res://cursor/cursor_water_drain_icon.svg" type="Texture" id=9]
+[ext_resource path="res://cursor/cursor_water_3x3.svg" type="Texture" id=10]
+[ext_resource path="res://cursor/cursor_water_2x2.svg" type="Texture" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Loop"
@@ -118,6 +121,7 @@ texture = ExtResource( 6 )
 [node name="CursorWaterDrain" type="Sprite" parent="."]
 position = Vector2( 64, 64 )
 rotation = 0.00023353
+texture = ExtResource( 9 )
 
 [node name="Rot" type="Sprite" parent="CursorWaterDrain"]
 texture = ExtResource( 8 )
@@ -125,6 +129,14 @@ texture = ExtResource( 8 )
 [node name="CursorWater1x1" type="Sprite" parent="."]
 position = Vector2( 64, 64 )
 texture = ExtResource( 4 )
+
+[node name="CursorWater2x2" type="Sprite" parent="."]
+position = Vector2( 128, 128 )
+texture = ExtResource( 11 )
+
+[node name="CursorWater3x3" type="Sprite" parent="."]
+position = Vector2( 64, 64 )
+texture = ExtResource( 10 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Loop"
