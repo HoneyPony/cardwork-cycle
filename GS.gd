@@ -10,7 +10,12 @@ enum Action {
 	HEAL_DMG_NEAR,
 	DEF_DMG_NEAR,
 	
-	ADD_DAMAGE
+	ADD_DAMAGE,
+	
+	DEF_ALL,
+	HEAL_ALL_DMG,
+	
+	SACRIF
 }
 
 enum Water {
@@ -58,6 +63,8 @@ class Card:
 	# Amount of drain for health or water
 	var drain
 	
+	var mult
+	
 	func _init(title_: String, desc_: String, cost_: int, action_):
 		title = title_
 		desc = desc_
@@ -77,6 +84,10 @@ class Card:
 		
 	func with_drain(amount_):
 		drain = amount_
+		return self
+		
+	func with_mult(m):
+		mult = m
 		return self
 
 # The "global state" node. This is where global variables are usually stored,
@@ -238,6 +249,20 @@ var card_def3_dmg3 : Card = Card.new(
 
 # Rare tank cards: TODO
 
+var card_def2_all : Card = Card.new(
+	"Magic Shield",
+	"Apply 2 immunity to all plants",
+	4,
+	Action.DEF_ALL
+).with_quantity(2)
+
+var card_heal_attack_all : Card = Card.new(
+	"Vampire Blast",
+	"Heal all plants for 1 health and do $DQ damage to all enemies",
+	5,
+	Action.HEAL_ALL_DMG
+).with_drain(1).with_quantity(1)
+
 # Low attack-focs cards
 
 var card_dmg2 : Card = Card.new(
@@ -253,6 +278,22 @@ var card_add1_expensive: Card = Card.new(
 	1,
 	Action.ADD_DAMAGE
 ).with_quantity(1)
+
+var card_sacrif1_1enem : Card = Card.new(
+	"Blood Dagger",
+	"Take 1 plant health, and do $DQ damage to the lowest-health enemy.",
+	1,
+	Action.SACRIF
+).with_quantity(5).with_drain(2).with_mult(1)
+
+# Medium attack cards
+
+var card_sacrif2_2enem : Card = Card.new(
+	"Blood Blade",
+	"Take 2 plant health, and do $DQ damage to the 2 lowest-health enemies.",
+	3,
+	Action.SACRIF
+).with_quantity(5).with_drain(2).with_mult(2)
 
 # GENERAL RARE CARDS
 
@@ -352,6 +393,25 @@ func get_nearest_enemy(position):
 			dist = to_enem
 			
 	return node
+	
+	
+func get_lowest_health_enemy(exclude = null):
+	var node = null
+	var dist = 0
+	
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		if enemy == exclude:
+			continue
+		
+		if node == null:
+			node = enemy
+			dist = enemy.health
+		elif enemy.health < dist:
+			node = enemy
+			dist = enemy.health
+			
+	return node
+
 
 func add_card_to_hand(card: Card):
 	var h = HandCard.instance()

@@ -78,6 +78,12 @@ func play_self():
 		GS.cursor.def_dmg_near(associated_card)
 	if associated_card.action == GS.Action.ADD_DAMAGE:
 		GS.cursor.add_damage(associated_card)
+	if associated_card.action == GS.Action.DEF_ALL:
+		GS.cursor.def_all(associated_card)
+	if associated_card.action == GS.Action.HEAL_ALL_DMG:
+		GS.cursor.heal_all_dmg(associated_card)
+	if associated_card.action == GS.Action.SACRIF:
+		GS.cursor.sacrif(associated_card)
 		
 	GS.energy -= associated_card.cost
 	discard()

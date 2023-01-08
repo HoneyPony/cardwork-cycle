@@ -14,6 +14,10 @@ var current_plant_target = null
 
 var spawned = false
 
+func _ready():
+	spawned = true
+	$AnimationPlayer.play("Spawn")
+
 func _physics_process(delta):
 	$HeartMarker/HealthNum.text = String(health)
 	

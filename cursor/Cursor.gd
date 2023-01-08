@@ -75,13 +75,14 @@ func water(card):
 func attack(card):
 	TutorialSteps.mark_have_attacked()
 	
+	var dmg = damage(card)
+	reset_damage()
+	
 	var enemy = GS.get_enemy_at_map_lcoord(position)
 	if enemy == null:
 		return
 		
-	enemy.take_damage(damage(card))
-	
-	reset_damage()
+	enemy.take_damage(dmg)
 	
 func defend(card):
 	TutorialSteps.mark_have_defended()
@@ -99,12 +100,13 @@ func drain_water_dmg_rng(card):
 		
 	plant.water -= card.drain # TODO: ANIM
 	
+	var dmg = damage(card)
+	reset_damage()
+	
 	var enemy = GS.get_random_enemy()
 	if enemy == null:
 		return
-	enemy.take_damage(damage(card))
-	
-	reset_damage()
+	enemy.take_damage(dmg)
 	
 func drain_water_dmg_all(card):
 	var plant = GS.get_plant_at_map_lcoord(position)
@@ -113,15 +115,19 @@ func drain_water_dmg_all(card):
 		
 	plant.water -= card.drain # TODO: ANIM
 	
-	for enemy in get_tree().get_nodes_in_group("Enemy"):
-		enemy.take_damage(damage(card))
-		
+	var dmg = damage(card)
 	reset_damage()
+	
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		enemy.take_damage(dmg)
 		
 func heal_dmg_near(card):
 	var plant = GS.get_plant_at_map_lcoord(position)
 	if plant == null:
 		return
+		
+	var dmg = damage(card)
+	reset_damage()
 	
 	plant.health += card.drain
 	
@@ -129,13 +135,15 @@ func heal_dmg_near(card):
 	if enemy == null:
 		return
 		
-	enemy.take_damage(damage(card))
-	reset_damage()
+	enemy.take_damage(dmg)
 	
 func def_dmg_near(card):
 	var plant = GS.get_plant_at_map_lcoord(position)
 	if plant == null:
 		return
+		
+	var dmg = damage(card)
+	reset_damage()
 	
 	plant.defense += card.drain
 	
@@ -143,11 +151,46 @@ func def_dmg_near(card):
 	if enemy == null:
 		return
 		
-	enemy.take_damage(damage(card))
-	reset_damage()
+	enemy.take_damage(dmg)
 	
 func add_damage(associated_card):
 	current_damage_add += associated_card.quantity
+	
+func def_all(associated_card):
+	for plant in get_tree().get_nodes_in_group("Plant"):
+		plant.defense += associated_card.quantity
+
+func heal_all_dmg(card):
+	var dmg = damage(card)
+	reset_damage()
+	
+	for plant in get_tree().get_nodes_in_group("Plant"):
+		plant.health += card.drain
+		
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		enemy.take_damage(dmg)
+	
+func sacrif(card):
+	var plant = GS.get_plant_at_map_lcoord(position)
+	if plant == null:
+		return
+		
+	plant.health -= card.drain
+	
+	var dmg = damage(card)
+	reset_damage()
+	
+	var enemy = GS.get_lowest_health_enemy()
+	if enemy == null:
+		return
+		
+	enemy.take_damage(dmg)
+	
+	if card.mult == 2:
+		enemy = GS.get_lowest_health_enemy(enemy)
+		if enemy == null:
+			return
+		enemy.take_damage(dmg)
 
 func get_tile():
 	var p: TileMap = get_parent()
@@ -174,6 +217,12 @@ func is_tile_water(amount):
 	if p == null:
 		return false
 	return p.water >= amount
+	
+func is_tile_health(amount):
+	var p = GS.get_plant_at_map_lcoord(position)
+	if p == null:
+		return false
+	return p.health >= amount
 	
 func is_tile_enemy():
 	var e = GS.get_enemy_at_map_lcoord(position)
@@ -224,6 +273,11 @@ func update_playable_and_display():
 	may_play = false
 	
 	var snap = true
+	
+	# Must snap global position BEFORE looking at most kinds of cards.
+	# Afterwards, we can restore unsnapped if needed.
+	var unsnapped = global_position
+	global_position = (global_position / 128).floor() * 128
 		
 	var card = GS.current_picked_up_card.associated_card
 	
@@ -256,7 +310,14 @@ func update_playable_and_display():
 			$CursorWaterDrain.show()
 			may_play = true
 			
-	if card.action == GS.Action.ADD_DAMAGE:
+	if card.action == GS.Action.SACRIF:
+		if is_tile_health(card.drain):
+			$CursorAttack.show()
+			may_play = true
+			
+	if card.action == GS.Action.ADD_DAMAGE \
+		or card.action == GS.Action.DEF_ALL \
+		or card.action == GS.Action.HEAL_ALL_DMG:
 		var bottom = GS.camera.global_position.y + get_viewport().size.y * 0.5
 		var thresh = bottom - 360
 		
@@ -267,8 +328,8 @@ func update_playable_and_display():
 			may_play = true
 			
 			
-	if snap:
-		global_position = (global_position / 128).floor() * 128
+	if not snap:
+		global_position = unsnapped
 
 func _physics_process(delta):
 	var p = get_global_mouse_position()

@@ -23,6 +23,10 @@ func add_waters(set: Array, count: int, card):
 func add_defs(set: Array, count: int, card):
 	for i in range(0, int(count * defense_multiplier)):
 		set.push_back(card)
+		
+func add_atks(set: Array, count: int, card):
+	for i in range(0, int(count * attack_multiplier)):
+		set.push_back(card)
 
 func pick_cards(set: Array):
 	var result = []
@@ -56,6 +60,9 @@ func pick_plant1_cards(health):
 	add_defs(set, 4, GS.card_heal1_dmg1)
 	add_defs(set, 4, GS.card_3def_1)
 	
+	add_atks(set, 4, GS.card_dmg2)
+	add_atks(set, 4, GS.card_add1_expensive)
+	
 	add_copies(set, 4, GS.card_basic_plant)
 	add_copies(set, 4, GS.card_medium_plant)
 	
@@ -81,5 +88,18 @@ func pick_plant2_cards(health):
 	
 	add_defs(set, 4, GS.card_heal2_dmg2)
 	add_defs(set, 4, GS.card_def3_dmg3)
+	
+	
+	return pick_cards(set)
+
+func pick_plant3_cards(health):
+	var set = []
+	
+	add_waters(set, 4, GS.card_water5)
+	add_waters(set, 4, GS.card_drain7_dmgall5)
+	add_waters(set, 4, GS.card_drain3_dmgall1)
+	
+	add_defs(set, 4, GS.card_def2_all)
+	add_defs(set, 4, GS.card_heal_attack_all)
 	
 	return pick_cards(set)
