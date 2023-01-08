@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="64"
+   height="64"
+   viewBox="0 0 16.933333 16.933334"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.2 (732a01da63, 2022-12-09)"
+   sodipodi:docname="energy_orb_spiral.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="px"
+     showgrid="false"
+     inkscape:zoom="7.2466938"
+     inkscape:cx="64.857163"
+     inkscape:cy="22.010037"
+     inkscape:window-width="1620"
+     inkscape:window-height="1018"
+     inkscape:window-x="-6"
+     inkscape:window-y="-6"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     units="px"
+     width="64px"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#505050"
+     showguides="false" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Drop Shadows"
+     sodipodi:insensitive="true"
+     style="display:none">
+    <ellipse
+       style="fill:#252525;fill-opacity:1;stroke:none;stroke-width:1.07182;stroke-linejoin:round"
+       id="ellipse47282"
+       cx="13.894689"
+       cy="16.531616"
+       rx="1.6135691"
+       ry="0.30335101" />
+    <ellipse
+       style="fill:#7d0d3e;fill-opacity:1;stroke:none;stroke-width:0.765944;stroke-linejoin:round"
+       id="ellipse47211"
+       cx="2.9185984"
+       cy="16.632021"
+       rx="0.8240208"
+       ry="0.30335101" />
+    <ellipse
+       style="fill:#156cbe;fill-opacity:1;stroke:none;stroke-width:1.07182;stroke-linejoin:round"
+       id="path44885"
+       cx="8.7649069"
+       cy="16.568127"
+       rx="1.6135691"
+       ry="0.30335101" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:#c51461;fill-opacity:1;stroke-width:0.449792;stroke-linecap:round;stroke-linejoin:round"
+       d="M 2.2202713,6.2993742 C 2.3235397,9.8105009 3.3045899,11.204625 5.1892387,12.547114 7.0738876,13.889603 12.469663,13.192541 13.708884,10.817368 14.948106,8.4421941 14.844837,5.4474097 12.753651,3.5627609 10.662466,1.678112 4.6987137,2.6849792 5.0601533,7.3836928 5.4215927,12.082406 11.127173,11.359528 12.056589,9.1392562 12.986005,6.9189849 11.230442,4.3372741 8.9843536,5.26669 6.7382652,6.1961057 7.4611441,9.1134391 9.3457932,8.8036337 8.6671907,5.6716211 10.71506,6.2613393 11.078793,7.4501297 11.438225,9.8529637 7.9945083,10.051836 7.2029731,9.0359878 6.5833626,8.0549377 5.5764953,5.5764952 8.0291205,4.6212623 10.481746,3.6660294 13.760518,3.846749 13.528165,7.435327 13.295811,11.023905 10.146124,12.469662 7.6934981,12.030772 5.240873,11.591881 2.2719055,6.8931677 2.2202713,6.2993742 Z"
+       id="path28163"
+       sodipodi:nodetypes="csssssscccsssc" />
+  </g>
+</svg>

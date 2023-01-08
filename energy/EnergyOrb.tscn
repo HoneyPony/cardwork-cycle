@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://energy/energy_orb_inner_spiral.svg" type="Texture" id=1]
+[ext_resource path="res://energy/energy_orb_back.svg" type="Texture" id=2]
+[ext_resource path="res://energy/energy_orb_spiral.svg" type="Texture" id=3]
+[ext_resource path="res://energy/energy_orb_front_bar.svg" type="Texture" id=4]
+[ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://energy/EnergyOrb.gd" type="Script" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 60
+use_filter = true
+font_data = ExtResource( 5 )
+
+[node name="EnergyOrb" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="EnergyOrbBack" type="Sprite" parent="."]
+position = Vector2( 0, 9 )
+texture = ExtResource( 2 )
+
+[node name="EnergyOrbInnerSpiral" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, 9 )
+
+[node name="EnergyOrbSpiral" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+offset = Vector2( 0, 9 )
+
+[node name="EnergyOrbFrontBar" type="Sprite" parent="."]
+position = Vector2( 0, 9 )
+texture = ExtResource( 4 )
+
+[node name="Desc" type="Label" parent="."]
+margin_left = -20.0
+margin_top = -53.0
+margin_right = 23.0
+margin_bottom = 24.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "5"
+align = 1
+autowrap = true
