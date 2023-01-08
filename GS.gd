@@ -130,10 +130,17 @@ var card_drain1_dmg3 : Card = Card.new(
 	Action.DRAIN_WATER_DMG_RNG
 ).with_quantity(3).with_drain(1)
 
+var card_water2_1x1 : Card = Card.new(
+	"Water 2x2",
+	"Apply 2 water to a 1x1 square of tiles",
+	2,
+	Action.WATER
+).shape(Water.W1x1).with_quantity(2)
+
 var card_water1_2x2 : Card = Card.new(
 	"Water 2x2",
 	"Apply 1 water to a 2x2 square of tiles",
-	0,
+	2,
 	Action.WATER
 ).shape(Water.W2x2)
 
@@ -142,11 +149,39 @@ var card_water1_2x2 : Card = Card.new(
 var card_water1_3x3 : Card = Card.new(
 	"Water 3x3",
 	"Apply 1 water to a 3x3 square of tiles",
-	0,
+	3,
 	Action.WATER
 ).shape(Water.W3x3)
 
+var card_water2_2x2 : Card = Card.new(
+	"Water 2x2",
+	"Apply 2 water to a 2x2 square of tiles",
+	3,
+	Action.WATER
+).shape(Water.W2x2).with_quantity(2)
+
+var card_drain3_rng5 : Card = Card.new(
+	"Water Blast",
+	"Drain 3 water from a plant, and do 5 damage to a random enemy",
+	2,
+	Action.DRAIN_WATER_DMG_RNG
+).with_drain(3).with_quantity(5)
+
 # High water cards
+
+var card_water5 : Card = Card.new(
+	"Concentrated Rain",
+	"Apply 5 water to a single plant",
+	3,
+	Action.WATER
+).shape(Water.W1x1).with_quantity(5)
+
+var card_drain7_dmgall5 : Card = Card.new(
+	"Tsunami",
+	"Drain 7 water from a plant, and do 5 damage to all enemies",
+	5,
+	Action.DRAIN_WATER_DMG_ALL
+).with_quantity(5).with_drain(7)
 
 var card_drain3_dmgall1 : Card = Card.new(
 	"Overflow",
@@ -157,19 +192,42 @@ var card_drain3_dmgall1 : Card = Card.new(
 
 # Low tank cards
 
+var card_3def_1 : Card = Card.new(
+	"Tough Shield",
+	"Apply 3 immunity to a single plant",
+	2,
+	Action.DEFEND
+).with_quantity(3)
+
 var card_heal1_dmg1 : Card = Card.new(
 	"Vampire Fang",
 	"Heal a plant for 1 health, and do 1 damage to the nearest enemy",
-	0,
+	2,
 	Action.HEAL_DMG_NEAR
 ).with_quantity(1).with_drain(1) # Drain is healing for this
 
 var card_def2_dmg1 : Card = Card.new(
 	"Spiked Shield",
 	"Apply 2 immunity to a plant, and do 1 damage to the nearest enemy",
-	0,
+	2,
 	Action.DEF_DMG_NEAR
 ).with_quantity(1).with_drain(2) # Drain is healing for this
+
+# Medium tank cards
+
+var card_heal2_dmg2 : Card = Card.new(
+	"Vampire Slash",
+	"Heal a plant for 2 health, and do 2 damage to the nearest enemy",
+	3,
+	Action.HEAL_DMG_NEAR
+).with_quantity(2).with_drain(2) # Drain is healing for this
+
+var card_def3_dmg3 : Card = Card.new(
+	"Thorny Barricade",
+	"Apply 3 immunity to a plant, and do 3 damage to the nearest enemy",
+	4,
+	Action.DEF_DMG_NEAR
+).with_quantity(3).with_drain(3)
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
@@ -377,7 +435,7 @@ func reset_all_state():
 	card_selector_ui = null
 	gold = 0
 	
-	energy_max = 10#3
+	energy_max = 3
 	energy = energy_max
 	
 	hand = null

@@ -41,15 +41,15 @@ func _ready():
 	call_deferred("tutorial_debug")
 
 func tutorial_debug():
-	#tutorial_cards()
+	tutorial_cards()
 	end_tutorial()
 	GS.turn_state = GS.TurnState.PLAYING_CARDS
 	
-	GS.add_card_to_hand(GS.card_high_plant)
-	GS.add_card_to_hand(GS.card_free_1x1_water)
-	GS.add_card_to_hand(GS.card_free_1x1_water)
-	GS.add_card_to_hand(GS.card_free_1x1_water)
-	GS.add_card_to_hand(GS.card_free_1x1_water)
+	#GS.add_card_to_hand(GS.card_high_plant)
+	#GS.add_card_to_hand(GS.card_free_1x1_water)
+	#GS.add_card_to_hand(GS.card_free_1x1_water)
+	#GS.add_card_to_hand(GS.card_free_1x1_water)
+	#GS.add_card_to_hand(GS.card_free_1x1_water)
 
 
 func tutorial_cards():

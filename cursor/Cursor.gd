@@ -60,7 +60,7 @@ func water(card):
 			var y = sy + j * 128
 			var plant = GS.get_plant_at_map_lcoord(Vector2(x, y))
 			if plant != null:
-				plant.water += 10
+				plant.water += card.quantity
 				
 func attack(card):
 	TutorialSteps.mark_have_attacked()
