@@ -108,7 +108,7 @@ margin_right = 40.0
 [node name="EnergyOrb" parent="CanvasLayer/EnergyOrbHolder" instance=ExtResource( 11 )]
 position = Vector2( 72, -42 )
 
-[node name="Control" parent="CanvasLayer" instance=ExtResource( 7 )]
+[node name="NewCardSelecction" parent="CanvasLayer" instance=ExtResource( 7 )]
 visible = false
 mouse_filter = 1
 __meta__ = {

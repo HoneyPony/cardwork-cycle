@@ -28,6 +28,8 @@ func new_plant(associated_card):
 		scene = GS.Plant2
 	if associated_card == GS.card_high_plant:
 		scene = GS.Plant3
+	if associated_card == GS.card_win_plant:
+		scene = GS.PlantWin
 		
 	if scene == null:
 		return

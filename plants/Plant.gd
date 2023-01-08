@@ -4,6 +4,8 @@ export var health = 3
 var water = 0
 var defense = 0
 
+export var plant_scale = 1.0
+
 export var card_level = 1
 
 export var anim_frames: SpriteFrames
@@ -14,6 +16,7 @@ var consumed = false
 
 func _ready():
 	$Plant.frames = anim_frames
+	$Plant.scale = Vector2(plant_scale, plant_scale)
 
 func centered_lpf_noise(in_pos):
 	var r = rand_range(0, 32)
@@ -101,6 +104,8 @@ func popup_menu():
 		GS.popup_card_selection(CardCreation.pick_plant1_cards(health))
 	elif card_level == 2:
 		GS.popup_card_selection(CardCreation.pick_plant2_cards(health))
+	elif card_level == 4:
+		GS.popup_card_winner()
 	
 func upgrade_plant():
 	$Plant.frame += 1

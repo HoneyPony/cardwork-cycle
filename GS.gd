@@ -36,6 +36,11 @@ func popup_card_selection(card_set: Array):
 	waiting_for_card_selection = true
 	card_selector_ui.setup_cards(card_set)
 	card_selector_ui.popup()
+	
+func popup_card_winner():
+	waiting_for_card_selection = true
+	card_selector_ui.setup_win()
+	card_selector_ui.popup()
 
 class Card:
 	var title: String
@@ -229,6 +234,15 @@ var card_def3_dmg3 : Card = Card.new(
 	Action.DEF_DMG_NEAR
 ).with_quantity(3).with_drain(3)
 
+# GENERAL RARE CARDS
+
+var card_win_plant : Card = Card.new(
+	"Mystical Plant Seeds",
+	"Seeds for a plant that all farmers strive to one day grow",
+	3,
+	Action.PLANT
+)
+
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
 var HandCard = preload("res://cards/HandCard.tscn")
@@ -237,6 +251,7 @@ var CardBase = preload("res://cards/CardBase.tscn")
 var Plant1 = preload("res://plants/plant1/Plant1.tscn")
 var Plant2 = preload("res://plants/plant2/Plant2.tscn")
 var Plant3 = preload("res://plants/plant3/Plant3.tscn")
+var PlantWin = preload("res://plants/winplant/WinPlant.tscn")
 
 var Bug = preload("res://bugs/Bug.tscn")
 
@@ -348,6 +363,8 @@ func turn_processor():
 	return null
 	
 func spawn_enemies():
+	return # DEBUG
+	
 	# Enemies are spawned near plants
 	var plants = get_tree().get_nodes_in_group("Plant")
 	

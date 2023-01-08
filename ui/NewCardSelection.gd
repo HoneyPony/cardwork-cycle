@@ -2,9 +2,13 @@ extends Control
 
 var current_card = null
 
+onready var win_menu = $WinMenu
+
 func _ready():
 	$ConfirmButton.disabled = true
 	get_parent().hide()
+	
+	win_menu.hide()
 	
 	GS.card_selector_ui = self
 
@@ -49,9 +53,13 @@ func setup_card(node: SelectableCard, card):
 	node.associated_card = card
 	
 func setup_cards(cards: Array):
+	win_menu.visible = false
 	setup_card($Cards/Card, cards[0])
 	setup_card($Cards/Card2, cards[1])
 	setup_card($Cards/Card3, cards[2])
+	
+func setup_win():
+	win_menu.visible = true
 
 #func _physics_process(delta):
 #	var under_mouse = find_card_under_mouse()
@@ -93,6 +101,8 @@ func _on_ConfirmButton_pressed():
 			card.is_selected = false
 			# Add new cards to discard pile
 			GS.discard_pile.push_back(card.associated_card)
+			
+	remove_card_children()
 			
 	if $GoldButton.pressed:
 		$GoldButton.pressed = false
