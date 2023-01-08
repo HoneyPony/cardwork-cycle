@@ -22,6 +22,7 @@ var waiting_for_card_selection = false
 var card_selector_ui = null
 var gold = 0
 var energy = 5
+var energy_max = 5
 
 func popup_card_selection(card_set: Array):
 	waiting_for_card_selection = true
@@ -136,7 +137,7 @@ func add_card_to_hand(card: Card):
 	hand.add_child(h)
 
 func _ready():
-	pass
+	reset_all_state()
 	
 var current_turns = null
 var current_obj = null
@@ -173,6 +174,8 @@ func _process(delta):
 		
 var draw_pile = []
 var discard_pile = []
+
+var camera = null
 	
 func shuffle_cards():
 	discard_pile.shuffle()
@@ -197,6 +200,8 @@ func deal_new_hand():
 		add_card_to_hand(c)
 	
 	turn_state = TurnState.PLAYING_CARDS
+	
+	energy = energy_max
 		
 func _physics_process(delta):
 	if current_turns != null:
@@ -212,9 +217,34 @@ func _physics_process(delta):
 			if current_turns == null:
 				deal_new_hand()
 				
-				
-var camera = null
 
 func get_discard_pos():
 	var s = get_viewport().size
 	return camera.global_position + s * 0.5 + Vector2(0, 200)
+	
+func reset_all_state():
+	turn_state = TurnState.UNDEFINED
+	waiting_for_card_selection = false
+
+	card_selector_ui = null
+	gold = 0
+	
+	energy_max = 5
+	energy = energy_max
+	
+	hand = null
+
+	current_picked_up_card = null
+	cursor = null
+	
+	current_turns = null
+	current_obj = null
+	
+	global_sine_timer = 0
+	
+	draw_pile = []
+	discard_pile = []
+
+	camera = null
+	
+
