@@ -54,6 +54,8 @@ func play_self():
 		GS.cursor.water(associated_card)
 	if associated_card.action == GS.Action.ATTACK:
 		GS.cursor.attack(associated_card)
+		
+	GS.energy -= associated_card.cost
 	
 	GS.discard_pile.push_back(associated_card)
 	queue_free()
@@ -71,6 +73,13 @@ func try_play_self():
 	# If we can't play the card, simply return to hover state.
 	state = STATE_HOVER
 	
+func update_modulate():
+	var playable = (associated_card.cost <= GS.energy)
+	var mod = Color.white
+	if not playable:
+		mod = Color(0.5, 0.5, 0.5, 1.0)
+	modulate = mod
+	
 func _physics_process(delta):
 	if state == STATE_PICKUP:
 		global_position = get_global_mouse_position()
@@ -80,8 +89,10 @@ func _physics_process(delta):
 			try_play_self()
 	
 	if state == STATE_HOVER:
-		if Input.is_action_just_pressed("mouse"):
-			state = STATE_PICKUP
-			GS.set_current_card(self)
+		if GS.energy >= associated_card.cost:
+			if Input.is_action_just_pressed("mouse"):
+				state = STATE_PICKUP
+				GS.set_current_card(self)
 			
 	update_transform()
+	update_modulate()

@@ -21,6 +21,7 @@ var waiting_for_card_selection = false
 
 var card_selector_ui = null
 var gold = 0
+var energy = 5
 
 func popup_card_selection(card_set: Array):
 	waiting_for_card_selection = true
@@ -100,6 +101,7 @@ func get_card_base(card: Card):
 	var b = CardBase.instance()
 	b.get_node("Title").text = card.title
 	b.get_node("Desc").text = card.desc
+	b.get_node("Cost").text = String(card.cost)
 	return b
 	
 func get_object_at_map_lcoord(coord: Vector2):

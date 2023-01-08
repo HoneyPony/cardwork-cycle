@@ -31,7 +31,7 @@ offset = Vector2( 0, 9 )
 position = Vector2( 0, 9 )
 texture = ExtResource( 4 )
 
-[node name="Desc" type="Label" parent="."]
+[node name="Num" type="Label" parent="."]
 margin_left = -20.0
 margin_top = -53.0
 margin_right = 23.0
