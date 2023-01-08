@@ -138,26 +138,31 @@ script = ExtResource( 9 )
 [node name="Tutorial" type="Label" parent="CanvasLayer"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -352.5
-margin_top = 11.0
-margin_right = 352.5
-margin_bottom = 382.0
+margin_left = -352.0
+margin_top = 1.0
+margin_right = 353.0
+margin_bottom = 212.0
 custom_colors/font_color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 custom_fonts/font = SubResource( 2 )
+valign = 1
 autowrap = true
 script = ExtResource( 15 )
 
 [node name="Scroll" type="Sprite" parent="CanvasLayer/Tutorial"]
-position = Vector2( 347.5, 102.188 )
+position = Vector2( 347.5, 109.188 )
 scale = Vector2( 0.536538, 0.568269 )
 z_index = -5
 texture = ExtResource( 14 )
 
 [node name="NextButton" type="Button" parent="CanvasLayer/Tutorial"]
-margin_left = 250.5
-margin_top = 189.0
-margin_right = 417.5
-margin_bottom = 222.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -83.5
+margin_top = -14.0
+margin_right = 83.5
+margin_bottom = 28.0
 theme = ExtResource( 8 )
 text = "Next"
 

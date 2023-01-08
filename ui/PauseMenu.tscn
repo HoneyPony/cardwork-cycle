@@ -13,7 +13,7 @@ script = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 3 )
-color = Color( 0, 0, 0, 0.321569 )
+color = Color( 0, 0, 0, 0.858824 )
 
 [node name="ResumeButton" type="Button" parent="ColorRect"]
 anchor_left = 0.5
