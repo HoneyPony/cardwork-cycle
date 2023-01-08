@@ -61,8 +61,10 @@ func organize_cards(card_is_picked_up):
 	var num_cards = get_child_count()
 	var start = -(num_cards - 1.0) / 2
 
-	card_scroll_offset = clamp(card_scroll_offset, start, -start)
-	start += card_scroll_offset
+	if num_cards > 0:
+		# Only change scroll offset when we have a legitimate value
+		card_scroll_offset = clamp(card_scroll_offset, start, -start)
+		start += card_scroll_offset
 	
 	var y_base = -260
 	if card_is_picked_up:
