@@ -4,7 +4,9 @@ enum Action {
 	PLANT,
 	WATER,
 	ATTACK,
-	DEFEND
+	DEFEND,
+	DRAIN_WATER_DMG_RNG,
+	DRAIN_WATER_DMG_ALL
 }
 
 enum Water {
@@ -42,6 +44,9 @@ class Card:
 	# Amount of damage, water, or defense
 	var quantity
 	
+	# Amount of drain for health or water
+	var drain
+	
 	func _init(title_: String, desc_: String, cost_: int, action_):
 		title = title_
 		desc = desc_
@@ -56,6 +61,10 @@ class Card:
 		
 	func with_quantity(amount_):
 		quantity = amount_
+		return self
+		
+	func with_drain(amount_):
+		drain = amount_
 		return self
 
 # The "global state" node. This is where global variables are usually stored,
@@ -107,6 +116,24 @@ var card_small_defend : Card = Card.new(
 	Action.DEFEND
 ).with_quantity(1)
 
+# Low water cards
+
+var card_drain1_dmg3 : Card = Card.new(
+	"Water Dagger",
+	"Drain 1 water from a plant, and do 3 damage to a random enemy",
+	1,
+	Action.DRAIN_WATER_DMG_RNG
+).with_quantity(3).with_drain(1)
+
+# High water cards
+
+var card_drain3_dmgall1 : Card = Card.new(
+	"Overflow",
+	"Drain 3 water from a plant, and do 1 damage to all enemies",
+	3,
+	Action.DRAIN_WATER_DMG_ALL
+).with_quantity(1).with_drain(3)
+
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
 var HandCard = preload("res://cards/HandCard.tscn")
@@ -119,7 +146,7 @@ var Bug = preload("res://bugs/Bug.tscn")
 var hand = null
 
 var current_picked_up_card = null
-var cursor = null
+var cursor: Cursor = null
 
 var tilemap = null
 
@@ -172,6 +199,11 @@ func get_enemy_at_map_lcoord(coord: Vector2):
 		if (p - coord).length_squared() < 16:
 			return obj
 	return null
+	
+func get_random_enemy():
+	var nodes = get_tree().get_nodes_in_group("Enemy")
+	
+	return nodes[randi() % nodes.size()]
 
 func add_card_to_hand(card: Card):
 	var h = HandCard.instance()
@@ -291,7 +323,7 @@ func reset_all_state():
 	card_selector_ui = null
 	gold = 0
 	
-	energy_max = 3
+	energy_max = 10#3
 	energy = energy_max
 	
 	hand = null

@@ -1,6 +1,7 @@
 extends Node2D
+class_name Cursor
 
-onready var cursors = [$Red, $CursorPlant, $CursorAttack, $CursorWater1x1]
+onready var cursors = [$Red, $CursorPlant, $CursorAttack, $CursorWater1x1, $CursorWaterDrain]
 
 const TILE_PLANTABLE = 3
 
@@ -36,7 +37,7 @@ func water(card):
 			var y = sy + j * 128
 			var plant = GS.get_plant_at_map_lcoord(Vector2(x, y))
 			if plant != null:
-				plant.water += 1
+				plant.water += 10
 				
 func attack(card):
 	TutorialSteps.mark_have_attacked()
@@ -45,7 +46,7 @@ func attack(card):
 	if enemy == null:
 		return
 		
-	enemy.take_damage()
+	enemy.take_damage(1)
 	
 func defend(card):
 	TutorialSteps.mark_have_defended()
@@ -55,6 +56,26 @@ func defend(card):
 		return
 		
 	plant.apply_defense(card.quantity)
+	
+func drain_water_dmg_rng(card):
+	var plant = GS.get_plant_at_map_lcoord(position)
+	if plant == null:
+		return
+		
+	plant.water -= card.drain # TODO: ANIM
+	
+	var enemy = GS.get_random_enemy()
+	enemy.take_damage(card.quantity)
+	
+func drain_water_dmg_all(card):
+	var plant = GS.get_plant_at_map_lcoord(position)
+	if plant == null:
+		return
+		
+	plant.water -= card.drain # TODO: ANIM
+	
+	for enemy in get_tree().get_nodes_in_group("Enemy"):
+		enemy.take_damage(card.quantity)
 
 func get_tile():
 	var p: TileMap = get_parent()
@@ -75,6 +96,12 @@ func is_tile_clear_and_type(tile_type):
 func is_tile_plant():
 	var p = GS.get_plant_at_map_lcoord(position)
 	return p != null
+	
+func is_tile_water(amount):
+	var p = GS.get_plant_at_map_lcoord(position)
+	if p == null:
+		return false
+	return p.water >= amount
 	
 func is_tile_enemy():
 	var e = GS.get_enemy_at_map_lcoord(position)
@@ -114,6 +141,12 @@ func update_playable_and_display():
 	if card.action == GS.Action.DEFEND:
 		if is_tile_plant():
 			$CursorPlant.show() # TODO: Defend
+			may_play = true
+			
+	if card.action == GS.Action.DRAIN_WATER_DMG_RNG \
+		or card.action == GS.Action.DRAIN_WATER_DMG_ALL:
+		if is_tile_water(card.drain):
+			$CursorWaterDrain.show()
 			may_play = true
 
 func _physics_process(delta):

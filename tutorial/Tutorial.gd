@@ -38,12 +38,14 @@ func _ready():
 	GS.card_draw_count = 2 # Only draw the Whack! card plus some filler
 
 	# DEBUGGING
-	# call_deferred("tutorial_debug")
+	call_deferred("tutorial_debug")
 
 func tutorial_debug():
 	tutorial_cards()
 	end_tutorial()
 	GS.turn_state = GS.TurnState.PLAYING_CARDS
+	
+	GS.add_card_to_hand(GS.card_drain3_dmgall1)
 
 
 func tutorial_cards():

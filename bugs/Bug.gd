@@ -22,15 +22,21 @@ func _physics_process(delta):
 				current_plant_target = null
 				
 func dec_health():
-	health -= 1
+	var amount = attack_queue.pop_front()
+	if amount == null:
+		amount = 1
+	health -= amount
 	if health <= 0:
 		remove_from_group("Enemy")
 		remove_from_group("Object")
 		$AnimationPlayer.queue("OutOfHealth")
 		
-func take_damage():
+var attack_queue = []
+		
+func take_damage(amount):
 	if health <= 0:
 		return
+	attack_queue.push_back(amount)
 	$AnimationPlayer.play("Slash")
 
 func pull_action():

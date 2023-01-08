@@ -68,6 +68,10 @@ func play_self():
 		GS.cursor.attack(associated_card)
 	if associated_card.action == GS.Action.DEFEND:
 		GS.cursor.defend(associated_card)
+	if associated_card.action == GS.Action.DRAIN_WATER_DMG_RNG:
+		GS.cursor.drain_water_dmg_rng(associated_card)
+	if associated_card.action == GS.Action.DRAIN_WATER_DMG_ALL:
+		GS.cursor.drain_water_dmg_all(associated_card)
 		
 	GS.energy -= associated_card.cost
 	discard()
@@ -83,13 +87,13 @@ func discard():
 func try_play_self():
 	GS.release_current_card(self)
 	
-	if associated_card.action == GS.Action.PLANT \
-		or associated_card.action == GS.Action.WATER \
-		or associated_card.action == GS.Action.ATTACK \
-		or associated_card.action == GS.Action.DEFEND:
-		if GS.cursor.may_play_card():
-			play_self()
-			return
+#	if associated_card.action == GS.Action.PLANT \
+#		or associated_card.action == GS.Action.WATER \
+#		or associated_card.action == GS.Action.ATTACK \
+#		or associated_card.action == GS.Action.DEFEND:
+	if GS.cursor.may_play_card():
+		play_self()
+		return
 	
 	# If we can't play the card, simply return to hover state.
 	state = STATE_HOVER
