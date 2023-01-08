@@ -85,6 +85,12 @@ func dec_health():
 	if health <= 0:
 		$AnimationPlayer.queue("OutOfHealth")
 	
+func start_health_anim():
+	if defense > 0:
+		$ShieldFX.play("Pop")
+	else:
+		$HeartFX.play("Pop")
+	
 func water_plant():
 	water -= 1
 	

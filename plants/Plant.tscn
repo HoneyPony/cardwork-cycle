@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://plants/effects/slash.png" type="Texture" id=2]
@@ -64,10 +64,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6, 0.65, 0.8, 0.95 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 64, 64 ), Vector2( 64, 64 ), Vector2( 64, 64 ), Vector2( 64, 48 ), Vector2( 64, 64 ) ]
+"values": [ Vector2( 64, 64 ), Vector2( 64, 64 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath(".")
@@ -76,11 +76,11 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.8 ),
+"times": PoolRealArray( 0.65 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "dec_health"
+"method": "start_health_anim"
 } ]
 }
 tracks/3/type = "value"
@@ -392,39 +392,27 @@ tracks/10/keys = {
 resource_name = "Slash"
 length = 0.55
 step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("H/HeartMarker:position")
-tracks/0/interp = 2
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.25, 0.4, 0.55 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 64, 64 ), Vector2( 64, 48 ), Vector2( 64, 64 ) ]
+"times": PoolRealArray( 0.25 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_health_anim"
+} ]
 }
-tracks/1/type = "method"
-tracks/1/path = NodePath(".")
+tracks/1/type = "value"
+tracks/1/path = NodePath("Slash:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.4 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "dec_health"
-} ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Slash:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -491,6 +479,68 @@ colors = PoolColorArray( 1, 1, 1, 1, 0.546414, 1, 0.564132, 1, 0.375297, 0.70312
 [sub_resource type="Gradient" id=11]
 offsets = PoolRealArray( 0, 0.411661, 0.986239 )
 colors = PoolColorArray( 0, 0.480469, 0.142639, 1, 0.546414, 1, 0.564132, 1, 1, 1, 1, 0.290196 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "Pop"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("H/HeartMarker:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 64, 64 ), Vector2( 64, 48 ), Vector2( 64, 64 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "dec_health"
+} ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Pop"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("D/DefenseMarker:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 64, 64 ), Vector2( 64, 48 ), Vector2( 64, 64 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.15 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "dec_health"
+} ]
+}
 
 [node name="Plant" type="Node2D" groups=["Object", "Plant"]]
 script = ExtResource( 4 )
@@ -637,3 +687,9 @@ position = Vector2( 64, 64 )
 z_index = 10
 texture = ExtResource( 2 )
 hframes = 7
+
+[node name="HeartFX" type="AnimationPlayer" parent="."]
+anims/Pop = SubResource( 15 )
+
+[node name="ShieldFX" type="AnimationPlayer" parent="."]
+anims/Pop = SubResource( 16 )
