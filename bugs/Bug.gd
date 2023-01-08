@@ -24,7 +24,14 @@ func _physics_process(delta):
 func dec_health():
 	health -= 1
 	if health <= 0:
+		remove_from_group("Enemy")
+		remove_from_group("Object")
 		$AnimationPlayer.queue("OutOfHealth")
+		
+func take_damage():
+	if health <= 0:
+		return
+	$AnimationPlayer.play("Slash")
 
 func pull_action():
 	var result = actions[next_action]

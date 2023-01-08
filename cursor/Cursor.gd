@@ -39,7 +39,7 @@ func attack(card):
 	if enemy == null:
 		return
 		
-	enemy.dec_health()
+	enemy.take_damage()
 
 func get_tile():
 	var p: TileMap = get_parent()
