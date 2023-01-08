@@ -8,6 +8,8 @@ export var actions: Array = [ActionType.ATTACK_CLOSEST]
 
 var next_action = 0
 
+var current_plant_target = null
+
 func pull_action():
 	var result = actions[next_action]
 	
@@ -32,13 +34,17 @@ func take_turn():
 		attack(find_closest())
 		
 func turn_over():
-	return false
+	return not $AnimationPlayer.is_playing()
 	
 func attack(plant):
 	if not is_instance_valid(plant):
 		return
 	
-	plant.health -= 1
+	$AnimationPlayer.play("Attack")
+	current_plant_target = plant
+	
+func play_target_anim():
+	current_plant_target.get_node("AnimationPlayer").play("Slash")
 	
 func find_closest():
 	var closest = null
