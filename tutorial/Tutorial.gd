@@ -13,13 +13,17 @@ var lines = [
 ,"The final statistic each plant has is its Immunity, which you can apply with the SOMETHING card, as well as others."
 ,"Each point of Immunity a plant has protects it from exactly one point of damage. However, unlike health, Immunity automatically wears off over time.\n\nEach of these plant statistics caps out at 10."
 ,"Now that you have played as many cards as you possibly can, push the End Turn button to end your turn. Then, you will see the effects of your water... and any enemies, if they exist, will attack at this time."
+,"It is now a new turn, and you have drawn new cards."
 ,"The final primary purpose of your cards is to fight off pests that would attack your farm. Use your Whack! card to deal some damage to that bug."
 ,"You are now equipped with all the basic knowledge that a farmer should have. One last detail, however: what is it your plants are for, anyways?"
-,"Well, each time you water your plants, they grow one more stage. And, once you water them enough times, you will automatically harvest them... and here you will get to choose a new card to add to your deck. The more difficult plants to grow will give you more valuable cards."
+,"Well, each time you water your plants, they grow one more stage. And, once you water them enough times, you will automatically harvest them... and here you will get to choose a new card to add to your deck. Of course, the more valuable cards require more effort to grow."
+,"Healthier plants also tend to produce better cards."
 ,"You may also choose to harvest your plants for money, which can be spent in the local shop on different kinds of upgrades."
 ,"Finally, there is one rare plant that we have been striving to grow for centuries, and have as of yet failed entirely. You will find its seeds by growing valuable cards, and then you can tackle the challenge of growing that elusive plant."
 ,"Now go, and farm!"]
+
 var current_line = 0
+var turns_with_reqs = [5, 7, 11]
 
 func end_tutorial():
 	GS.tutorial = false
@@ -32,15 +36,23 @@ func _ready():
 func update_tutorial():
 	text = lines[current_line]
 	
+	TutorialSteps.need_end_turn_button = (current_line == 11)
+	
+	$NextButton.visible = not (current_line in turns_with_reqs)
+	
 	if current_line == 4:
 		GS.add_card_to_hand(GS.card_basic_plant)
 		GS.add_card_to_hand(GS.card_basic_plant)
-		GS.add_card_to_hand(GS.card_basic_plant)
+		GS.add_card_to_hand(GS.card_free_1x1_water)
 		GS.turn_state = GS.TurnState.PLAYING_CARDS
 	
 func step_tutorial():
 	current_line += 1
 	update_tutorial()
+	
+func _process(delta):
+	if TutorialSteps.marked_step >= current_line:
+		$NextButton.visible = true
 
 func _on_NextButton_pressed():
 	step_tutorial()

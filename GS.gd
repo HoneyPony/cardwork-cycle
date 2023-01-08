@@ -158,6 +158,10 @@ func turn_processor():
 	return null
 	
 func end_turn():
+	# Must be in PLAYING_CARDS or WAITING_FOR_TUTORIAL state
+	if turn_state != TurnState.PLAYING_CARDS:
+		return
+	
 	hand.clear_hand()
 	
 	turn_state = TurnState.UPDATING
@@ -194,6 +198,8 @@ func draw_card():
 	return draw_pile.pop_front()
 		
 func deal_new_hand():
+	TutorialSteps.mark_have_ended_turn()
+	
 	for i in range(0, 5):
 		var c = draw_card()
 		if c == null:

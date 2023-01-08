@@ -13,6 +13,8 @@ func _ready():
 	GS.cursor = self
 	
 func new_plant(associated_card):
+	TutorialSteps.mark_have_planted()
+	
 	# My understanding is that these are reference types.
 	if associated_card == GS.card_basic_plant:
 		var p = GS.Plant1.instance()
@@ -20,6 +22,8 @@ func new_plant(associated_card):
 		get_parent().add_child(p)
 		
 func water(card):
+	TutorialSteps.mark_have_watered()
+	
 	var sx = position.x
 	var sy = position.y
 	
