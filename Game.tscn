@@ -90,6 +90,9 @@ tile_data = PoolIntArray( -655373, 2, 8, -655372, 2, 10, -655371, 2, 10, -655370
 [node name="Bug" parent="TileMap" instance=ExtResource( 10 )]
 position = Vector2( 0, -256 )
 
+[node name="Bug2" parent="TileMap" instance=ExtResource( 10 )]
+position = Vector2( 385, -260 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="EnergyOrbHolder" type="Control" parent="CanvasLayer"]

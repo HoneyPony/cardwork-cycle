@@ -51,6 +51,8 @@ func compute_action():
 	return op
 
 func take_turn():
+	$AnimationPlayer.queue("Delay")
+	
 	var act = compute_action()
 	
 	if act == ActionType.ATTACK_CLOSEST:
