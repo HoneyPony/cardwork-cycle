@@ -4,11 +4,19 @@ class_name Cursor
 onready var cursors = [$Red, $CursorPlant, 
 $CursorAttack, 
 $CursorWater1x1, $CursorWater2x2, $CursorWater3x3,
- $CursorWaterDrain]
+ $CursorWaterDrain, $CursorGeneral]
 
 const TILE_PLANTABLE = 3
 
 var may_play = false
+
+var current_damage_add = 0
+
+func damage(card):
+	return card.quantity + current_damage_add
+
+func reset_damage():
+	current_damage_add = 0
 
 func may_play_card():
 	return may_play
@@ -71,7 +79,9 @@ func attack(card):
 	if enemy == null:
 		return
 		
-	enemy.take_damage(1)
+	enemy.take_damage(damage(card))
+	
+	reset_damage()
 	
 func defend(card):
 	TutorialSteps.mark_have_defended()
@@ -92,7 +102,9 @@ func drain_water_dmg_rng(card):
 	var enemy = GS.get_random_enemy()
 	if enemy == null:
 		return
-	enemy.take_damage(card.quantity)
+	enemy.take_damage(damage(card))
+	
+	reset_damage()
 	
 func drain_water_dmg_all(card):
 	var plant = GS.get_plant_at_map_lcoord(position)
@@ -102,7 +114,9 @@ func drain_water_dmg_all(card):
 	plant.water -= card.drain # TODO: ANIM
 	
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
-		enemy.take_damage(card.quantity)
+		enemy.take_damage(damage(card))
+		
+	reset_damage()
 		
 func heal_dmg_near(card):
 	var plant = GS.get_plant_at_map_lcoord(position)
@@ -115,7 +129,8 @@ func heal_dmg_near(card):
 	if enemy == null:
 		return
 		
-	enemy.take_damage(card.quantity)
+	enemy.take_damage(damage(card))
+	reset_damage()
 	
 func def_dmg_near(card):
 	var plant = GS.get_plant_at_map_lcoord(position)
@@ -128,7 +143,11 @@ func def_dmg_near(card):
 	if enemy == null:
 		return
 		
-	enemy.take_damage(card.quantity)
+	enemy.take_damage(damage(card))
+	reset_damage()
+	
+func add_damage(associated_card):
+	current_damage_add += associated_card.quantity
 
 func get_tile():
 	var p: TileMap = get_parent()
@@ -203,6 +222,8 @@ func update_playable_and_display():
 		return
 		
 	may_play = false
+	
+	var snap = true
 		
 	var card = GS.current_picked_up_card.associated_card
 	
@@ -234,10 +255,23 @@ func update_playable_and_display():
 		if is_tile_water(card.drain):
 			$CursorWaterDrain.show()
 			may_play = true
+			
+	if card.action == GS.Action.ADD_DAMAGE:
+		var bottom = GS.camera.global_position.y + get_viewport().size.y * 0.5
+		var thresh = bottom - 360
+		
+		snap = false
+		
+		if get_global_mouse_position().y < thresh:
+			$CursorGeneral.show()
+			may_play = true
+			
+			
+	if snap:
+		global_position = (global_position / 128).floor() * 128
 
 func _physics_process(delta):
 	var p = get_global_mouse_position()
-	p = (p / 128).floor() * 128
 	
 	global_position = p #+ Vector2(32, 32)
 	

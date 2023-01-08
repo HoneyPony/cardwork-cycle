@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://cursor/cursor_red_box.svg" type="Texture" id=1]
 [ext_resource path="res://cursor/Cursor.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://cursor/cursor_water_drain_icon.svg" type="Texture" id=9]
 [ext_resource path="res://cursor/cursor_water_3x3.svg" type="Texture" id=10]
 [ext_resource path="res://cursor/cursor_water_2x2.svg" type="Texture" id=11]
+[ext_resource path="res://cursor/cursor_general.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Loop"
@@ -47,6 +48,18 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CursorGeneral/Rot:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -91,6 +104,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("CursorGeneral/Rot:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [node name="Cursor" type="Node2D"]
 z_index = 100
@@ -125,6 +150,12 @@ texture = ExtResource( 9 )
 
 [node name="Rot" type="Sprite" parent="CursorWaterDrain"]
 texture = ExtResource( 8 )
+
+[node name="CursorGeneral" type="Sprite" parent="."]
+rotation = 0.00023353
+
+[node name="Rot" type="Sprite" parent="CursorGeneral"]
+texture = ExtResource( 12 )
 
 [node name="CursorWater1x1" type="Sprite" parent="."]
 position = Vector2( 64, 64 )

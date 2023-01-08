@@ -8,7 +8,9 @@ enum Action {
 	DRAIN_WATER_DMG_RNG,
 	DRAIN_WATER_DMG_ALL,
 	HEAL_DMG_NEAR,
-	DEF_DMG_NEAR
+	DEF_DMG_NEAR,
+	
+	ADD_DAMAGE
 }
 
 enum Water {
@@ -114,7 +116,7 @@ var card_buy_1x1_water : Card = Card.new(
 
 var card_small_attack : Card = Card.new(
 	"Whack!",
-	"Attack a single enemy for 1 damage",
+	"Attack a single enemy for $DQ damage",
 	1,
 	Action.ATTACK
 ).with_quantity(1)
@@ -130,7 +132,7 @@ var card_small_defend : Card = Card.new(
 
 var card_drain1_dmg3 : Card = Card.new(
 	"Water Dagger",
-	"Drain 1 water from a plant, and do 3 damage to a random enemy",
+	"Drain 1 water from a plant, and do $DQ damage to a random enemy",
 	1,
 	Action.DRAIN_WATER_DMG_RNG
 ).with_quantity(3).with_drain(1)
@@ -167,7 +169,7 @@ var card_water2_2x2 : Card = Card.new(
 
 var card_drain3_rng5 : Card = Card.new(
 	"Water Blast",
-	"Drain 3 water from a plant, and do 5 damage to a random enemy",
+	"Drain 3 water from a plant, and do $DQ damage to a random enemy",
 	2,
 	Action.DRAIN_WATER_DMG_RNG
 ).with_drain(3).with_quantity(5)
@@ -183,14 +185,14 @@ var card_water5 : Card = Card.new(
 
 var card_drain7_dmgall5 : Card = Card.new(
 	"Tsunami",
-	"Drain 7 water from a plant, and do 5 damage to all enemies",
+	"Drain 7 water from a plant, and do $DQ damage to all enemies",
 	5,
 	Action.DRAIN_WATER_DMG_ALL
 ).with_quantity(5).with_drain(7)
 
 var card_drain3_dmgall1 : Card = Card.new(
 	"Overflow",
-	"Drain 3 water from a plant, and do 1 damage to all enemies",
+	"Drain 3 water from a plant, and do $DQ damage to all enemies",
 	3,
 	Action.DRAIN_WATER_DMG_ALL
 ).with_quantity(1).with_drain(3)
@@ -206,14 +208,14 @@ var card_3def_1 : Card = Card.new(
 
 var card_heal1_dmg1 : Card = Card.new(
 	"Vampire Fang",
-	"Heal a plant for 1 health, and do 1 damage to the nearest enemy",
+	"Heal a plant for 1 health, and do $DQ damage to the nearest enemy",
 	2,
 	Action.HEAL_DMG_NEAR
 ).with_quantity(1).with_drain(1) # Drain is healing for this
 
 var card_def2_dmg1 : Card = Card.new(
 	"Spiked Shield",
-	"Apply 2 immunity to a plant, and do 1 damage to the nearest enemy",
+	"Apply 2 immunity to a plant, and do $DQ damage to the nearest enemy",
 	2,
 	Action.DEF_DMG_NEAR
 ).with_quantity(1).with_drain(2) # Drain is healing for this
@@ -222,22 +224,40 @@ var card_def2_dmg1 : Card = Card.new(
 
 var card_heal2_dmg2 : Card = Card.new(
 	"Vampire Slash",
-	"Heal a plant for 2 health, and do 2 damage to the nearest enemy",
+	"Heal a plant for 2 health, and do $DQ damage to the nearest enemy",
 	3,
 	Action.HEAL_DMG_NEAR
 ).with_quantity(2).with_drain(2) # Drain is healing for this
 
 var card_def3_dmg3 : Card = Card.new(
 	"Thorny Barricade",
-	"Apply 3 immunity to a plant, and do 3 damage to the nearest enemy",
+	"Apply 3 immunity to a plant, and do $DQ damage to the nearest enemy",
 	4,
 	Action.DEF_DMG_NEAR
 ).with_quantity(3).with_drain(3)
 
+# Rare tank cards: TODO
+
+# Low attack-focs cards
+
+var card_dmg2 : Card = Card.new(
+	"Kapow!",
+	"Do $DQ damage to a single enemy",
+	1,
+	Action.ATTACK
+).with_quantity(2)
+
+var card_add1_expensive: Card = Card.new(
+	"Power Fungi",
+	"Add 1 damage to your next attack",
+	1,
+	Action.ADD_DAMAGE
+).with_quantity(1)
+
 # GENERAL RARE CARDS
 
 var card_win_plant : Card = Card.new(
-	"Mystical Plant Seeds",
+	"Mystical Seeds",
 	"Seeds for a plant that all farmers strive to one day grow",
 	3,
 	Action.PLANT
@@ -277,6 +297,7 @@ func get_card_base(card: Card):
 	b.get_node("Title").text = card.title
 	b.get_node("Desc").text = card.desc
 	b.get_node("Cost").text = String(card.cost)
+	b.associated_card = card
 	return b
 	
 func spawn_bug_intcoord(x: int, y: int):
@@ -335,6 +356,8 @@ func get_nearest_enemy(position):
 func add_card_to_hand(card: Card):
 	var h = HandCard.instance()
 	var b = get_card_base(card)
+	
+	b.dynamic_display = true
 	
 	h.associated_card = card
 	
