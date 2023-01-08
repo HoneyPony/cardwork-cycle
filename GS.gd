@@ -140,7 +140,7 @@ var card_water2_1x1 : Card = Card.new(
 var card_water1_2x2 : Card = Card.new(
 	"Water 2x2",
 	"Apply 1 water to a 2x2 square of tiles",
-	2,
+	3,
 	Action.WATER
 ).shape(Water.W2x2)
 
@@ -156,7 +156,7 @@ var card_water1_3x3 : Card = Card.new(
 var card_water2_2x2 : Card = Card.new(
 	"Water 2x2",
 	"Apply 2 water to a 2x2 square of tiles",
-	3,
+	4,
 	Action.WATER
 ).shape(Water.W2x2).with_quantity(2)
 
@@ -347,6 +347,26 @@ func turn_processor():
 	current_obj = null
 	return null
 	
+func spawn_enemies():
+	# Enemies are spawned near plants
+	var plants = get_tree().get_nodes_in_group("Plant")
+	
+	# Three times
+	for i in range(0, 3):
+		# Try 100 times to spawn an enemy
+		for attempt in range(0, 100):
+			var p = plants[randi() % plants.size()]
+			var x = (randi() % 5) - 2
+			var y = (randi() % 5) - 2
+			var pos = p.position + Vector2(x, y) * 128
+			
+			var existing = get_object_at_map_lcoord(pos)
+			if existing == null:
+				var bug = Bug.instance()
+				bug.position = pos
+				tilemap.add_child(bug)
+				break
+	
 func end_turn():
 	# Must be in PLAYING_CARDS or WAITING_FOR_TUTORIAL state
 	if turn_state != TurnState.PLAYING_CARDS:
@@ -354,6 +374,11 @@ func end_turn():
 	
 	hand.clear_hand()
 	current_picked_up_card = null
+	
+	# You get 3 free turns between enemies...?
+	if no_enemy_turns >= 3:
+		spawn_enemies()
+		no_enemy_turns = 0
 	
 	turn_state = TurnState.UPDATING
 	current_turns = turn_processor()
@@ -391,6 +416,9 @@ func draw_card():
 var card_draw_count = 5
 		
 func deal_new_hand():
+	if get_tree().get_nodes_in_group("Enemy").empty():
+		no_enemy_turns += 1
+	
 	TutorialSteps.mark_have_ended_turn()
 	
 	for i in range(0, card_draw_count):
@@ -424,6 +452,10 @@ func get_discard_pos():
 	
 # Should this get reset?
 var tutorial = true
+
+# Number of turns without any enemies...
+# Enemies will be spawned regularly
+var no_enemy_turns = 0
 	
 func reset_all_state():
 	tutorial = true # SHould this get reset?
@@ -456,5 +488,7 @@ func reset_all_state():
 	tilemap = null
 	
 	card_draw_count = 5 # Will be set by tutorial
+	
+	no_enemy_turns = 0
 	
 

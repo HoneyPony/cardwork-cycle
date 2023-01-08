@@ -4,6 +4,8 @@ export var health = 3
 var water = 0
 var defense = 0
 
+export var card_level = 1
+
 export var anim_frames: SpriteFrames
 
 # If the plant is "consumed", that means the card / gold popup has been
@@ -95,7 +97,10 @@ func water_plant():
 	water -= 1
 	
 func popup_menu():
-	GS.popup_card_selection(CardCreation.pick_plant1_cards(health))
+	if card_level == 1:
+		GS.popup_card_selection(CardCreation.pick_plant1_cards(health))
+	elif card_level == 2:
+		GS.popup_card_selection(CardCreation.pick_plant2_cards(health))
 	
 func upgrade_plant():
 	$Plant.frame += 1

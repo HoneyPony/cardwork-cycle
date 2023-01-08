@@ -12,6 +12,8 @@ var next_action = 0
 
 var current_plant_target = null
 
+var spawned = false
+
 func _physics_process(delta):
 	$HeartMarker/HealthNum.text = String(health)
 	
@@ -58,6 +60,11 @@ func compute_action():
 
 func take_turn():
 	$AnimationPlayer.queue("Delay")
+	
+	if not spawned:
+		spawned = true
+		$AnimationPlayer.queue("Spawn")
+		return
 	
 	var act = compute_action()
 	

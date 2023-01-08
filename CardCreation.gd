@@ -59,6 +59,27 @@ func pick_plant1_cards(health):
 	add_copies(set, 4, GS.card_basic_plant)
 	add_copies(set, 4, GS.card_medium_plant)
 	
-	add_copies(set, 2, GS.card_free_1x1_water)
+	add_copies(set, 2 + health, GS.card_free_1x1_water)
+	
+	var copies_rare = (health - 5)
+	if copies_rare > 0:
+		add_waters(set, copies_rare, GS.card_water1_3x3)
+		add_waters(set, copies_rare, GS.card_water2_2x2)
+		add_waters(set, copies_rare, GS.card_drain3_rng5)
+		
+		add_defs(set, copies_rare, GS.card_heal2_dmg2)
+		add_defs(set, copies_rare, GS.card_def3_dmg3)
+	
+	return pick_cards(set)
+	
+func pick_plant2_cards(health):
+	var set = []
+	
+	add_waters(set, 4, GS.card_water1_3x3)
+	add_waters(set, 4, GS.card_water2_2x2)
+	add_waters(set, 4, GS.card_drain3_rng5)
+	
+	add_defs(set, 4, GS.card_heal2_dmg2)
+	add_defs(set, 4, GS.card_def3_dmg3)
 	
 	return pick_cards(set)
