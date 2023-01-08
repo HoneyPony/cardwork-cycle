@@ -1,6 +1,6 @@
 extends Node2D
 
-onready var camera = get_node("../Camera")
+#onready var camera = get_node("../Camera")
 
 onready var dummy = get_node("../CardDummy")
 
@@ -129,7 +129,7 @@ func _physics_process(delta):
 		return
 	
 	# This node is offset off the bottom of the camera viewport.size.y / 2
-	position.y = camera.position.y + get_viewport().size.y / 2
+	position.y = get_viewport().size.y / 2
 	dummy.position.y = position.y
 	#position.y = get_viewport().size.y / 2
 	
