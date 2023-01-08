@@ -2,6 +2,8 @@ extends Node2D
 
 onready var camera = get_node("../Camera")
 
+onready var dummy = get_node("../CardDummy")
+
 # Nullable! Be careful
 var current_card = null
 
@@ -119,8 +121,7 @@ func card_is_picked_up():
 	
 func clear_hand():
 	for card in get_children():
-		GS.discard_pile.push_back(card.associated_card)
-		card.queue_free()
+		card.discard()
 	
 func _physics_process(delta):
 	if GS.turn_state == GS.TurnState.UPDATING:
@@ -129,6 +130,7 @@ func _physics_process(delta):
 	
 	# This node is offset off the bottom of the camera viewport.size.y / 2
 	position.y = camera.position.y + get_viewport().size.y / 2
+	dummy.position.y = position.y
 	#position.y = get_viewport().size.y / 2
 	
 	var card_picked_up = card_is_picked_up()

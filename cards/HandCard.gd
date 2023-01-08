@@ -3,6 +3,7 @@ extends Area2D
 const STATE_IN_HAND = 0
 const STATE_HOVER = 1
 const STATE_PICKUP = 2
+const STATE_DISCARD = 3
 
 var state = STATE_IN_HAND
 
@@ -30,6 +31,9 @@ func update_transform():
 	var target_scale = 1.0
 	var target_rot = in_hand_rotation
 	var target_pos = in_hand_position
+	
+	var pos_t = 0.15
+	var scale_t = 0.2
 	z_index = 0
 	if state == STATE_HOVER or state == STATE_PICKUP:
 		target_scale = 1.3
@@ -41,11 +45,19 @@ func update_transform():
 		target_pos = position
 		target_scale = 0.7
 		
-	scale.x += (target_scale - scale.x) * 0.2
+	if state == STATE_DISCARD:
+		target_rot = TAU * 0.25
+		target_pos = GS.get_discard_pos()
+		target_scale = 0.0
+		
+		pos_t = 0.04
+		scale_t = 0.04
+		
+	scale.x += (target_scale - scale.x) * scale_t
 	scale.y = scale.x
 	
 	rotation += (target_rot - rotation) * 0.1
-	position += (target_pos - position) * 0.15
+	position += (target_pos - position) * pos_t
 	
 func play_self():
 	if associated_card.action == GS.Action.PLANT:
@@ -56,9 +68,17 @@ func play_self():
 		GS.cursor.attack(associated_card)
 		
 	GS.energy -= associated_card.cost
+	discard()
 	
+func discard():
+	print(global_position)
+	var new_parent = get_node("../../CardDummy")
+	get_parent().remove_child(self)
+	new_parent.add_child(self)
+	print(global_position)
+	
+	state = STATE_DISCARD
 	GS.discard_pile.push_back(associated_card)
-	queue_free()
 	
 func try_play_self():
 	GS.release_current_card(self)
@@ -77,10 +97,19 @@ func update_modulate():
 	var playable = (associated_card.cost <= GS.energy)
 	var mod = Color.white
 	if not playable:
-		mod = Color(0.5, 0.5, 0.5, 1.0)
+		mod = Color(0.6, 0.6, 0.6, 1.0)
 	modulate = mod
 	
 func _physics_process(delta):
+	if state == STATE_DISCARD:
+		# Disable input
+		collision_layer = 0
+		collision_mask = 0
+		input_pickable = false 
+		
+		if scale.x < 0.07:
+			queue_free()
+	
 	if state == STATE_PICKUP:
 		global_position = get_global_mouse_position()
 		position.y += 98 + 30

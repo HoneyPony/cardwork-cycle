@@ -211,3 +211,10 @@ func _physics_process(delta):
 			
 			if current_turns == null:
 				deal_new_hand()
+				
+				
+var camera = null
+
+func get_discard_pos():
+	var s = get_viewport().size
+	return camera.global_position + s * 0.5 + Vector2(0, 200)
