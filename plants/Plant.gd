@@ -60,6 +60,8 @@ func _process(delta):
 func take_turn():
 	var anim = $AnimationPlayer
 	
+	anim.queue("Delay")
+	
 	if water >= 1:
 		#print($Plant.frame)
 		#print($Plant.frames.frames.size() - 1)

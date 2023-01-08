@@ -71,11 +71,9 @@ func play_self():
 	discard()
 	
 func discard():
-	print(global_position)
 	var new_parent = get_node("../../CardDummy")
 	get_parent().remove_child(self)
 	new_parent.add_child(self)
-	print(global_position)
 	
 	state = STATE_DISCARD
 	GS.discard_pile.push_back(associated_card)

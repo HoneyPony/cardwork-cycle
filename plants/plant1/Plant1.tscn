@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://plants/plant1/growth_1.svg" type="Texture" id=1]
 [ext_resource path="res://plants/Plant.gd" type="Script" id=2]
@@ -36,6 +36,10 @@ corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
+
+[sub_resource type="Animation" id=14]
+resource_name = "Delay"
+length = 0.3
 
 [sub_resource type="Animation" id=4]
 resource_name = "NoWater"
@@ -570,6 +574,7 @@ autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "RESET"
+anims/Delay = SubResource( 14 )
 anims/NoWater = SubResource( 4 )
 anims/OutOfHealth = SubResource( 13 )
 anims/PlantIsDone = SubResource( 10 )
