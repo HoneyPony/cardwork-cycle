@@ -74,6 +74,11 @@ func take_turn():
 		anim.queue("NoWater")
 	
 func dec_health():
+	# TODO: Animate shield rather than heart...
+	if defense > 0:
+		defense -= 1
+		return
+	
 	health -= 1
 	if health <= 0:
 		$AnimationPlayer.queue("OutOfHealth")
