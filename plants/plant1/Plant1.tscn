@@ -492,7 +492,7 @@ colors = PoolColorArray( 0, 0.480469, 0.142639, 1, 0.546414, 1, 0.564132, 1, 1, 
 script = ExtResource( 2 )
 
 [node name="Plant" type="AnimatedSprite" parent="."]
-position = Vector2( 64, 80 )
+position = Vector2( 64, 64 )
 frames = SubResource( 9 )
 
 [node name="H" type="Node2D" parent="."]

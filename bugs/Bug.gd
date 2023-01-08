@@ -20,6 +20,11 @@ func _physics_process(delta):
 		if is_instance_valid(current_plant_target):
 			if not current_plant_target.get_node("AnimationPlayer").is_playing():
 				current_plant_target = null
+				
+func dec_health():
+	health -= 1
+	if health <= 0:
+		$AnimationPlayer.queue("OutOfHealth")
 
 func pull_action():
 	var result = actions[next_action]
