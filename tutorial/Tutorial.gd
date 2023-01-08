@@ -45,6 +45,16 @@ func update_tutorial():
 		GS.add_card_to_hand(GS.card_basic_plant)
 		GS.add_card_to_hand(GS.card_free_1x1_water)
 		GS.turn_state = GS.TurnState.PLAYING_CARDS
+		
+	if current_line == 13:
+		var plants = get_tree().get_nodes_in_group("Plant")
+		var lcoord = Vector2.ZERO
+		
+		if not plants.empty():
+			var plant = plants[0]
+			lcoord = plant.position + Vector2(128 * 2, 0)
+		
+		GS.spawn_bug_lcoord(lcoord)
 	
 func step_tutorial():
 	current_line += 1

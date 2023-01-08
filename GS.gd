@@ -84,10 +84,14 @@ var CardBase = preload("res://cards/CardBase.tscn")
 
 var Plant1 = preload("res://plants/plant1/Plant1.tscn")
 
+var Bug = preload("res://bugs/Bug.tscn")
+
 var hand = null
 
 var current_picked_up_card = null
 var cursor = null
+
+var tilemap = null
 
 func set_current_card(card: Node):
 	if current_picked_up_card != null:
@@ -105,6 +109,18 @@ func get_card_base(card: Card):
 	b.get_node("Desc").text = card.desc
 	b.get_node("Cost").text = String(card.cost)
 	return b
+	
+func spawn_bug_intcoord(x: int, y: int):
+	var b = Bug.instance()
+	
+	tilemap.add_child(b)
+	b.position = Vector2(x, y) * 128
+	
+func spawn_bug_lcoord(pos):
+	var b = Bug.instance()
+	tilemap.add_child(b)
+	
+	b.position = pos
 	
 func get_object_at_map_lcoord(coord: Vector2):
 	for obj in get_tree().get_nodes_in_group("Object"):
@@ -258,5 +274,7 @@ func reset_all_state():
 	discard_pile = []
 
 	camera = null
+	
+	tilemap = null
 	
 
