@@ -16,11 +16,11 @@ You should plant a Basic Seeds somewhere on the tilled soil. Left click the Basi
 
 This card will indicate where it can be played with a green spinning circle.
 
-With your seeds planted, you can see one important detail: each plant you plant has some amount of health.
+With your seeds planted, you can see one important detail: each plant you plant has some amount of health. You will want to keep your plants alive until they are fully grown!
 
 Now, you will want to water your seeds. Use the Water Drop card to water your plant.
 
-Notice that your plants each have a water indicator. The water indicator is decreased at the end of each of your turns. If it is 0, the plant will take damage at the end of your turn.
+Notice that your plants each have a water indicator. The water indicator is decreased at the end of each of your turns. If it is 0 after it is decreased, the plant will take damage at that time.
 
 The final statistic each plant has is its Immunity, which you can apply with the SOMETHING card, as well as others.
 
@@ -37,5 +37,7 @@ You are now equipped with all the basic knowledge that a farmer should have. One
 Well, each time you water your plants, they grow one more stage. And, once you water them enough times, you will automatically harvest them... and here you will get to choose a new card to add to your deck. The more difficult plants to grow will give you more valuable cards.
 
 You may also choose to harvest your plants for money, which can be spent in the local shop on different kinds of upgrades.
+
+Finally, there is one plant, quite difficult to grow, that we have wanted to finally grow for centuries. You will find its seeds by growing valuable cards, and then you can tackle the challenge of growing that tricky plant.
 
 Now go, and farm!
