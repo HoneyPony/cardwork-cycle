@@ -87,6 +87,9 @@ func popup_menu():
 func upgrade_plant():
 	$Plant.frame += 1
 	
+func apply_defense(amount):
+	defense += amount
+	
 func turn_over():
 	# If we are being polled about our turn, then the card selection
 	# dialog must be related to this plant.

@@ -3,7 +3,8 @@ extends Node
 enum Action {
 	PLANT,
 	WATER,
-	ATTACK
+	ATTACK,
+	DEFEND
 }
 
 enum Water {
@@ -38,7 +39,8 @@ class Card:
 	
 	var water_shape
 	
-	var damage
+	# Amount of damage, water, or defense
+	var quantity
 	
 	func _init(title_: String, desc_: String, cost_: int, action_):
 		title = title_
@@ -46,12 +48,14 @@ class Card:
 		cost = cost_
 		action = action_
 		
+		quantity = 1
+		
 	func shape(water_shape_):
 		water_shape = water_shape_
 		return self
 		
-	func with_damage(amount_):
-		damage = amount_
+	func with_quantity(amount_):
+		quantity = amount_
 		return self
 
 # The "global state" node. This is where global variables are usually stored,
@@ -63,19 +67,32 @@ var card_basic_plant : Card = Card.new(
 	3,
 	Action.PLANT)
 	
+var card_medium_plant : Card = Card.new(
+	"Middling Seeds",
+	"Plant a plant that can be harvested for somewhat valuable cards",
+	3,
+	Action.PLANT)
+	
 var card_free_1x1_water : Card = Card.new(
 	"Water Drop",
-	"Apply 1 water to a 1x1 patch of tiles.",
+	"Apply 1 water to a 1x1 patch of tiles",
 	0,
 	Action.WATER
 ).shape(Water.W1x1)
 
 var card_small_attack : Card = Card.new(
-	"Attack",
-	"Attack an enemy for 1 damage",
+	"Whack!",
+	"Attack a single enemy for 1 damage",
 	1,
 	Action.ATTACK
-).with_damage(1)
+).with_quantity(1)
+
+var card_small_defend : Card = Card.new(
+	"Netting Shield",
+	"Apply 1 immunity to a single plant",
+	1,
+	Action.DEFEND
+).with_quantity(1)
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
@@ -212,11 +229,13 @@ func draw_card():
 		
 	shuffle_cards()
 	return draw_pile.pop_front()
+	
+var card_draw_count = 5
 		
 func deal_new_hand():
 	TutorialSteps.mark_have_ended_turn()
 	
-	for i in range(0, 5):
+	for i in range(0, card_draw_count):
 		var c = draw_card()
 		if c == null:
 			break
@@ -250,6 +269,7 @@ var tutorial = true
 	
 func reset_all_state():
 	tutorial = true # SHould this get reset?
+	TutorialSteps.tutorial = null
 	
 	turn_state = TurnState.UNDEFINED
 	waiting_for_card_selection = false
@@ -276,5 +296,7 @@ func reset_all_state():
 	camera = null
 	
 	tilemap = null
+	
+	card_draw_count = 5 # Will be set by tutorial
 	
 

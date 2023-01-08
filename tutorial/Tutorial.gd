@@ -10,7 +10,7 @@ var lines = [
 ,"With your seeds planted, you can see one important detail: each plant you plant has some amount of health. You will want to keep your plants alive until they are fully grown!"
 ,"Now, you will want to water your seeds. Use the Water Drop card to water your plant."
 ,"Notice that your plants each have a water indicator. The water indicator is decreased at the end of each of your turns. If it is 0 after it is decreased, the plant will take damage at that time."
-,"The final statistic each plant has is its Immunity, which you can apply with the SOMETHING card, as well as others."
+,"The final statistic each plant has is its Immunity, which you can apply with the Netting Shield card, as well as others."
 ,"Each point of Immunity a plant has protects it from exactly one point of damage. However, unlike health, Immunity automatically wears off over time.\n\nEach of these plant statistics caps out at 10."
 ,"Now that you have played as many cards as you possibly can, push the End Turn button to end your turn. Then, you will see the effects of your water... and any enemies, if they exist, will attack at this time."
 ,"It is now a new turn, and you have drawn new cards."
@@ -23,17 +23,25 @@ var lines = [
 ,"Now go, and farm!"]
 
 var current_line = 0
-var turns_with_reqs = [5, 7, 11]
+var turns_with_reqs = [5, 7, 9, 11, 13]
 
 func end_tutorial():
 	GS.tutorial = false
+	GS.card_draw_count = 5 # Back to normal card count
 	queue_free()
 
 func _ready():
+	TutorialSteps.tutorial = self
+	
 	update_tutorial()
 	GS.turn_state = GS.TurnState.WAITING_FOR_TUTORIAL
+	GS.card_draw_count = 3 # Only draw the Whack! card plus some filler
 
 func update_tutorial():
+	if current_line >= lines.size():
+		end_tutorial()
+		return
+	
 	text = lines[current_line]
 	
 	TutorialSteps.need_end_turn_button = (current_line == 11)
@@ -44,6 +52,11 @@ func update_tutorial():
 		GS.add_card_to_hand(GS.card_basic_plant)
 		GS.add_card_to_hand(GS.card_basic_plant)
 		GS.add_card_to_hand(GS.card_free_1x1_water)
+		GS.add_card_to_hand(GS.card_small_defend)
+		
+		GS.draw_pile.push_back(GS.card_small_attack)
+		GS.draw_pile.push_back(GS.card_medium_plant)
+		GS.draw_pile.push_back(GS.card_medium_plant)
 		GS.turn_state = GS.TurnState.PLAYING_CARDS
 		
 	if current_line == 13:

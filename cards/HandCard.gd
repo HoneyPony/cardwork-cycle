@@ -66,6 +66,8 @@ func play_self():
 		GS.cursor.water(associated_card)
 	if associated_card.action == GS.Action.ATTACK:
 		GS.cursor.attack(associated_card)
+	if associated_card.action == GS.Action.DEFEND:
+		GS.cursor.defend(associated_card)
 		
 	GS.energy -= associated_card.cost
 	discard()
@@ -83,7 +85,8 @@ func try_play_self():
 	
 	if associated_card.action == GS.Action.PLANT \
 		or associated_card.action == GS.Action.WATER \
-		or associated_card.action == GS.Action.ATTACK:
+		or associated_card.action == GS.Action.ATTACK \
+		or associated_card.action == GS.Action.DEFEND:
 		if GS.cursor.may_play_card():
 			play_self()
 			return

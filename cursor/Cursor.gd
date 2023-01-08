@@ -39,11 +39,22 @@ func water(card):
 				plant.water += 1
 				
 func attack(card):
+	TutorialSteps.mark_have_attacked()
+	
 	var enemy = GS.get_enemy_at_map_lcoord(position)
 	if enemy == null:
 		return
 		
 	enemy.take_damage()
+	
+func defend(card):
+	TutorialSteps.mark_have_defended()
+	
+	var plant = GS.get_plant_at_map_lcoord(position)
+	if plant == null:
+		return
+		
+	plant.apply_defense(card.quantity)
 
 func get_tile():
 	var p: TileMap = get_parent()
@@ -97,6 +108,11 @@ func update_playable_and_display():
 	if card.action == GS.Action.ATTACK:
 		if is_tile_enemy():
 			$CursorAttack.show()
+			may_play = true
+			
+	if card.action == GS.Action.DEFEND:
+		if is_tile_plant():
+			$CursorPlant.show() # TODO: Defend
 			may_play = true
 
 func _physics_process(delta):

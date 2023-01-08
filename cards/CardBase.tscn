@@ -4,7 +4,7 @@
 [ext_resource path="res://cards/card1.svg" type="Texture" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
+size = 38
 use_filter = true
 font_data = ExtResource( 1 )
 
