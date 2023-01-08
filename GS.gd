@@ -12,6 +12,7 @@ enum Water {
 
 enum TurnState {
 	UNDEFINED,
+	WAITING_FOR_TUTORIAL,
 	PLAYING_CARDS,
 	UPDATING
 }
@@ -222,7 +223,12 @@ func get_discard_pos():
 	var s = get_viewport().size
 	return camera.global_position + s * 0.5 + Vector2(0, 200)
 	
+# Should this get reset?
+var tutorial = true
+	
 func reset_all_state():
+	tutorial = true # SHould this get reset?
+	
 	turn_state = TurnState.UNDEFINED
 	waiting_for_card_selection = false
 

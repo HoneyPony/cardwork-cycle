@@ -10,17 +10,11 @@ var current_card = null
 func _ready():
 	GS.hand = self
 	
-	call_deferred("starting_hand")
+#	call_deferred("starting_hand")
 
-func starting_hand():
-	GS.add_card_to_hand(GS.card_basic_plant)
-	GS.add_card_to_hand(GS.card_basic_plant)
-	GS.add_card_to_hand(GS.card_free_1x1_water)
-	GS.add_card_to_hand(GS.card_small_attack)
-	GS.add_card_to_hand(GS.card_small_attack)
-	GS.add_card_to_hand(GS.card_small_attack)
-	GS.add_card_to_hand(GS.card_small_attack)
-	GS.turn_state = GS.TurnState.PLAYING_CARDS
+#func starting_hand():
+	#GS.add_card_to_hand(GS.card_basic_plant)
+	#GS.turn_state = GS.TurnState.PLAYING_CARDS
 
 func find_card_under_mouse():
 	var space = get_world_2d().direct_space_state
