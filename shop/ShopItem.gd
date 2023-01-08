@@ -7,6 +7,8 @@ var bought = false
 
 export var is_energy = true
 
+export var up_num = 1
+
 func _ready():
 	$Button.text = "Buy (" + String(cost) + " gold)"
 	
@@ -24,8 +26,10 @@ func _on_buy():
 			GS.energy_max += 1
 			GS.energy += 1
 		else:
-			# TODO: Farmland
-			pass
+			if up_num == 1:
+				GS.tilemap.up1()
+			else:
+				GS.tilemap.up2()
 			
 
 

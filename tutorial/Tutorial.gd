@@ -25,6 +25,10 @@ var lines = [
 var current_line = 0
 var turns_with_reqs = [5, 7, 9, 11, 13]
 
+func contains_mouse(control: Control):
+	var r = Rect2(Vector2.ZERO, control.rect_size)
+	return r.has_point(control.get_local_mouse_position())
+
 func end_tutorial():
 	GS.tutorial = false
 	GS.card_draw_count = 5 # Back to normal card count
@@ -38,26 +42,27 @@ func _ready():
 	GS.card_draw_count = 2 # Only draw the Whack! card plus some filler
 
 	# DEBUGGING
-	call_deferred("tutorial_debug")
+	# call_deferred("tutorial_debug")
 
 func tutorial_debug():
-	#tutorial_cards()
+	tutorial_cards()
 	end_tutorial()
 	GS.turn_state = GS.TurnState.PLAYING_CARDS
-	
-	GS.add_card_to_hand(GS.card_small_attack)
-	GS.add_card_to_hand(GS.card_free_1x1_water)
-	GS.add_card_to_hand(GS.card_win_plant)
-	GS.add_card_to_hand(GS.card_basic_plant)
-	GS.add_card_to_hand(GS.card_basic_plant)
-	GS.add_card_to_hand(GS.card_basic_plant)
-	GS.add_card_to_hand(GS.card_add1_expensive)
-	GS.add_card_to_hand(GS.card_def2_all)
-	GS.add_card_to_hand(GS.card_heal_attack_all)
-	GS.add_card_to_hand(GS.card_sacrif1_1enem)
-	GS.add_card_to_hand(GS.card_free_atk)
-	GS.add_card_to_hand(GS.card_sacrifice)
-	GS.energy += 200
+#
+#	GS.add_card_to_hand(GS.card_small_attack)
+#	GS.add_card_to_hand(GS.card_free_1x1_water)
+#	GS.add_card_to_hand(GS.card_win_plant)
+#	GS.add_card_to_hand(GS.card_basic_plant)
+#	GS.add_card_to_hand(GS.card_basic_plant)
+#	GS.add_card_to_hand(GS.card_basic_plant)
+#	GS.add_card_to_hand(GS.card_add1_expensive)
+#	GS.add_card_to_hand(GS.card_def2_all)
+#	GS.add_card_to_hand(GS.card_heal_attack_all)
+#	GS.add_card_to_hand(GS.card_sacrif1_1enem)
+#	GS.add_card_to_hand(GS.card_free_atk)
+#	GS.add_card_to_hand(GS.card_sacrifice)
+#	GS.gold += 200
+#	GS.energy += 200
 
 
 func tutorial_cards():
@@ -113,6 +118,12 @@ func step_tutorial():
 	update_tutorial()
 	
 func _process(delta):
+	if not GS.tutorial:
+		GS.tutorial_mouse = false
+		return
+		
+	GS.tutorial_mouse = contains_mouse(self) or contains_mouse($NextButton)
+	
 	if TutorialSteps.marked_step >= current_line:
 		$NextButton.visible = true
 

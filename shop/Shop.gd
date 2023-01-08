@@ -15,10 +15,14 @@ func contains_mouse(control: Control):
 	return r.has_point(control.get_local_mouse_position())
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	GS.shop_open = visible
+	
 	var new_text = ""
 	for item in $Items.get_children():
 		if contains_mouse(item) or contains_mouse(item.get_node("Button")):
 			new_text = item.description
+			if item.bought:
+				new_text += " (bought)"
 			
 	$Desc.text = new_text
 

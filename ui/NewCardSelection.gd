@@ -61,6 +61,13 @@ func setup_cards(cards: Array):
 func setup_win():
 	win_menu.visible = true
 
+func contains_mouse(control: Control):
+	var r = Rect2(Vector2.ZERO, control.rect_size)
+	return r.has_point(control.get_local_mouse_position())
+	
+func _process(delta):
+	GS.new_cards_mouse = contains_mouse(self)
+
 #func _physics_process(delta):
 #	var under_mouse = find_card_under_mouse()
 #

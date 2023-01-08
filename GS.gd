@@ -39,6 +39,11 @@ var gold = 0
 var energy = 3
 var energy_max = 3
 
+var shop_open = false
+var upper_panel_mouse = false
+var tutorial_mouse = false
+var new_cards_mouse = false
+
 func popup_card_selection(card_set: Array):
 	waiting_for_card_selection = true
 	card_selector_ui.setup_cards(card_set)
@@ -620,5 +625,10 @@ func reset_all_state():
 	card_draw_count = 5 # Will be set by tutorial
 	
 	no_enemy_turns = 0
+	
+	shop_open = false
+	upper_panel_mouse = false
+	tutorial_mouse = false
+	new_cards_mouse = false
 	
 

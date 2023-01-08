@@ -147,23 +147,32 @@ func _physics_process(delta):
 	dummy.position.y = position.y
 	#position.y = get_viewport().size.y / 2
 	
+	var ignoring_interactions = GS.shop_open or GS.upper_panel_mouse or GS.tutorial_mouse or GS.new_cards_mouse
+	
 	var card_picked_up = card_is_picked_up()
-	# Don't check cards if one is already picked up or if the camera is dragging
-	if not card_picked_up and not drag_camera:
-		var under_mouse = find_card_under_mouse()
+	
+	if ignoring_interactions:
+		release_current_card()
+	else:	
 		
-		if under_mouse != current_card:
-			release_current_card()
-			current_card = under_mouse
+		# Don't check cards if one is already picked up or if the camera is dragging
+		if not card_picked_up and not drag_camera:
+			var under_mouse = find_card_under_mouse()
 			
-			if is_instance_valid(current_card):
-				current_card.hover()
+			if under_mouse != current_card:
+				release_current_card()
+				current_card = under_mouse
+				
+				if is_instance_valid(current_card):
+					current_card.hover()
+				
 			
 	organize_cards(card_picked_up or drag_camera)
 	update_camera()
 	
 	if current_card == null:
-		if Input.is_action_just_pressed("mouse"):
+		
+		if (not ignoring_interactions) and Input.is_action_just_pressed("mouse"):
 			drag_camera = true
 			drag_center = get_local_mouse_position()
 			
