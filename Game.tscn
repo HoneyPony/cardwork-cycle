@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://ui/PauseMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cursor/Cursor.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://bugs/Bug.tscn" type="PackedScene" id=10]
 [ext_resource path="res://energy/EnergyOrb.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Camera.gd" type="Script" id=12]
+[ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://tutorial/scroll.svg" type="Texture" id=14]
 
 [sub_resource type="TileSet" id=1]
 1/name = "plain_dirt.svg 1"
@@ -65,6 +67,11 @@
 3/shape_one_way_margin = 0.0
 3/shapes = [  ]
 3/z_index = 0
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+use_filter = true
+font_data = ExtResource( 13 )
 
 [node name="Game" type="Node2D"]
 
@@ -131,6 +138,35 @@ margin_bottom = -16.0
 theme = ExtResource( 8 )
 text = "End Turn"
 script = ExtResource( 9 )
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -352.5
+margin_top = 11.0
+margin_right = 352.5
+margin_bottom = 382.0
+custom_colors/font_color = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "Dear <name>,
+
+I hope this dusty scroll finds you well. I am the previous farmer who tended this land, and I have high hopes that you will make even better use of it than myself.
+"
+autowrap = true
+
+[node name="Scroll" type="Sprite" parent="CanvasLayer/Label"]
+position = Vector2( 347.5, 102.188 )
+scale = Vector2( 0.536538, 0.568269 )
+z_index = -5
+texture = ExtResource( 14 )
+
+[node name="Button" type="Button" parent="CanvasLayer/Label"]
+margin_left = 250.5
+margin_top = 189.0
+margin_right = 417.5
+margin_bottom = 222.0
+theme = ExtResource( 8 )
+text = "Next"
 
 [node name="PauseMenu" parent="." instance=ExtResource( 1 )]
 layer = 2
