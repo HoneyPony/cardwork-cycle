@@ -37,6 +37,27 @@ func _ready():
 	GS.turn_state = GS.TurnState.WAITING_FOR_TUTORIAL
 	GS.card_draw_count = 3 # Only draw the Whack! card plus some filler
 
+func tutorial_cards():
+	GS.add_card_to_hand(GS.card_basic_plant)
+	GS.add_card_to_hand(GS.card_basic_plant)
+	GS.add_card_to_hand(GS.card_free_1x1_water)
+	GS.add_card_to_hand(GS.card_small_defend)
+	
+	GS.draw_pile.push_back(GS.card_small_attack)
+	GS.draw_pile.push_back(GS.card_medium_plant)
+	GS.draw_pile.push_back(GS.card_medium_plant)
+	
+	GS.discard_pile.push_back(GS.card_buy_1x1_water)
+	GS.discard_pile.push_back(GS.card_buy_1x1_water)
+	GS.discard_pile.push_back(GS.card_buy_1x1_water)
+	
+	GS.discard_pile.push_back(GS.card_high_plant)
+	GS.discard_pile.push_back(GS.card_high_plant)
+	
+	GS.discard_pile.push_back(GS.card_small_attack)
+	GS.discard_pile.push_back(GS.card_small_attack)
+	GS.discard_pile.push_back(GS.card_small_defend)
+
 func update_tutorial():
 	if current_line >= lines.size():
 		end_tutorial()
@@ -49,14 +70,7 @@ func update_tutorial():
 	$NextButton.visible = not (current_line in turns_with_reqs)
 	
 	if current_line == 4:
-		GS.add_card_to_hand(GS.card_basic_plant)
-		GS.add_card_to_hand(GS.card_basic_plant)
-		GS.add_card_to_hand(GS.card_free_1x1_water)
-		GS.add_card_to_hand(GS.card_small_defend)
-		
-		GS.draw_pile.push_back(GS.card_small_attack)
-		GS.draw_pile.push_back(GS.card_medium_plant)
-		GS.draw_pile.push_back(GS.card_medium_plant)
+		tutorial_cards()
 		GS.turn_state = GS.TurnState.PLAYING_CARDS
 		
 	if current_line == 13:

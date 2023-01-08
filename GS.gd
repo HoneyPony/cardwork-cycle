@@ -23,8 +23,8 @@ var waiting_for_card_selection = false
 
 var card_selector_ui = null
 var gold = 0
-var energy = 5
-var energy_max = 5
+var energy = 3
+var energy_max = 3
 
 func popup_card_selection(card_set: Array):
 	waiting_for_card_selection = true
@@ -64,12 +64,18 @@ class Card:
 var card_basic_plant : Card = Card.new(
 	"Basic Seeds",
 	"Plant a basic plant that can be harvested for basic cards",
-	3,
+	2,
 	Action.PLANT)
 	
 var card_medium_plant : Card = Card.new(
 	"Middling Seeds",
 	"Plant a plant that can be harvested for somewhat valuable cards",
+	2,
+	Action.PLANT)
+	
+var card_high_plant : Card = Card.new(
+	"Quality Seeds",
+	"Plant a plant that can be harvested for valuable cards",
 	3,
 	Action.PLANT)
 	
@@ -79,6 +85,13 @@ var card_free_1x1_water : Card = Card.new(
 	0,
 	Action.WATER
 ).shape(Water.W1x1)
+
+var card_buy_1x1_water : Card = Card.new(
+	"Water Drip",
+	"Apply 1 water to a 1x1 patch of tiles",
+	1,
+	Action.WATER
+)
 
 var card_small_attack : Card = Card.new(
 	"Whack!",
@@ -277,7 +290,7 @@ func reset_all_state():
 	card_selector_ui = null
 	gold = 0
 	
-	energy_max = 5
+	energy_max = 3
 	energy = energy_max
 	
 	hand = null
