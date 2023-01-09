@@ -160,6 +160,7 @@ func _physics_process(delta):
 			var under_mouse = find_card_under_mouse()
 			
 			if under_mouse != current_card:
+				SFX.rand_card()
 				release_current_card()
 				current_card = under_mouse
 				

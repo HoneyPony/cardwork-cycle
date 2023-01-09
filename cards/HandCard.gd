@@ -94,6 +94,8 @@ func play_self():
 	GS.energy -= associated_card.cost
 	discard()
 	
+	SFX.card_play.play_sfx()
+	
 func discard():
 	var new_parent = get_node("../../CardDummy")
 	get_parent().remove_child(self)
