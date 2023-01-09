@@ -110,6 +110,8 @@ func _on_ConfirmButton_pressed():
 			GS.discard_pile.push_back(card.associated_card)
 			if card.associated_card == GS.card_win_plant:
 				CardCreation.has_win_card = true
+				
+			CardCreation.picked_cat(card.associated_card.cat)
 			
 	remove_card_children()
 			
