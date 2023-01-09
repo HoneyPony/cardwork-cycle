@@ -1,7 +1,7 @@
 extends Label
 
 var lines = [
-"Dear <name>,\n\nI hope this dusty scroll finds you well. I am the previous farmer who tended this land, and I have high hopes that you will make even better use of it than myself."
+"Greetings,\n\nI hope this dusty scroll finds you well. I am the previous farmer who tended this land, and I have high hopes that you will make even better use of it than myself."
 ,"But, I hypothesize that you are quite untrained in the art of farming. I intend to teach you the basic knowledge you will need to make use of this farm."
 ,"Let us begin.\n\nFirst, to navigate the farm, click your left mouse button somewhere on the ground and drag the mouse."
 ,"Next, to do anything at all on this farm you must play a card. Cards accomplish many different tasks... planting plants, watering those plants, and fighting off pests. Each card costs ENERGY to play, indicated by the orb in the bottom-left, and indicated on each card in its top-right corner."
