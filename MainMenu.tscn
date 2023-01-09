@@ -48,19 +48,29 @@ margin_right = 262.0
 margin_bottom = 272.0
 texture = ExtResource( 5 )
 
-[node name="CheckBox" type="CheckBox" parent="."]
-margin_left = 690.0
-margin_top = 300.0
-margin_right = 959.0
-margin_bottom = 342.0
+[node name="Flags" type="Control" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 104.0
+margin_top = 284.0
+margin_right = 404.0
+margin_bottom = 406.0
+
+[node name="CheckBox" type="CheckBox" parent="Flags"]
+margin_left = 15.0
+margin_top = 13.0
+margin_right = 284.0
+margin_bottom = 55.0
 text = "Skip Tutorial"
 script = ExtResource( 7 )
 
-[node name="CheckBox2" type="CheckBox" parent="."]
-margin_left = 690.0
-margin_top = 354.0
-margin_right = 959.0
-margin_bottom = 396.0
+[node name="CheckBox2" type="CheckBox" parent="Flags"]
+margin_left = 15.0
+margin_top = 67.0
+margin_right = 284.0
+margin_bottom = 109.0
 text = "Hard Mode"
+script = ExtResource( 7 )
+item = 2
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
