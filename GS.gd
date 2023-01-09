@@ -328,7 +328,7 @@ var card_add2 : Card = Card.new(
 	"Add 2 damage to your next attack",
 	2,
 	Action.ADD_DAMAGE
-).with_quantity(2).with_cat(CAT_ATK)
+).with_quantity(2).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/technique.svg"))
 
 var card_sacrif2_2enem : Card = Card.new(
 	"Blood Blade",
@@ -342,7 +342,7 @@ var card_free_atk : Card = Card.new(
 	"Attack an enemy for $DQ damage",
 	0,
 	Action.ATTACK
-).with_quantity(1).with_cat(CAT_ATK)
+).with_quantity(1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/zing.svg"))
 
 # Rare attack cards
 
@@ -351,14 +351,14 @@ var card_add1_cheap : Card = Card.new(
 	"Add 1 damage to your next attack",
 	0,
 	Action.ADD_DAMAGE
-).with_quantity(1).with_cat(CAT_ATK)
+).with_quantity(1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/power_crystal.svg"))
 
 var card_sacrifice : Card = Card.new(
 	"Sacrifice",
 	"Kill a plant, and do 5 damage to all enemies",
 	5,
 	Action.SACRIF
-).with_quantity(5).with_drain(0).with_mult(-1).with_cat(CAT_ATK)
+).with_quantity(5).with_drain(0).with_mult(-1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/sacrifice.svg"))
 
 # GENERAL RARE CARDS
 
@@ -367,7 +367,7 @@ var card_win_plant : Card = Card.new(
 	"Seeds for a plant that all farmers strive to one day grow",
 	3,
 	Action.PLANT
-).with_cat(CAT_SEED)
+).with_cat(CAT_SEED).with_icon(preload("res://cards/icons/mystical_seeds.svg"))
 
 var card_energy : Card = Card.new(
 	"Free Energy",
