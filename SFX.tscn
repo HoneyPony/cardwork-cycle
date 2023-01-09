@@ -17,7 +17,7 @@
 [ext_resource path="res://sfx/button_click.wav" type="AudioStream" id=15]
 [ext_resource path="res://sfx/end_turn.wav" type="AudioStream" id=16]
 [ext_resource path="res://sfx/plant_jingle.wav" type="AudioStream" id=17]
-[ext_resource path="res://sfx/nowater.wav" type="AudioStream" id=18]
+[ext_resource path="res://sfx/nowater2.wav" type="AudioStream" id=18]
 
 [node name="SFX" type="Node"]
 script = ExtResource( 1 )
@@ -110,6 +110,6 @@ script = ExtResource( 2 )
 
 [node name="NoWater" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -3.953
+volume_db = -14.0
 bus = "SFX"
 script = ExtResource( 2 )

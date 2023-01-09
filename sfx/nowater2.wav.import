@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/nowater2.wav-f015fa8ce8056e9c4624b9a146d33a55.sample"
+
+[deps]
+
+source_file="res://sfx/nowater2.wav"
+dest_files=[ "res://.import/nowater2.wav-f015fa8ce8056e9c4624b9a146d33a55.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
