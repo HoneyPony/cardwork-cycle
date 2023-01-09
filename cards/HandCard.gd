@@ -114,7 +114,7 @@ func update_modulate():
 	var playable = (associated_card.cost <= GS.energy)
 	var mod = Color.white
 	if not playable:
-		mod = Color(0.6, 0.6, 0.6, 1.0)
+		mod = Color(0.4, 0.4, 0.4, 1.0)
 	modulate = mod
 	
 func _physics_process(delta):

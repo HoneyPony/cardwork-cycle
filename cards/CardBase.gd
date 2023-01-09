@@ -11,7 +11,24 @@ func update_display():
 	
 	$Desc.text = associated_card.desc.replace("$DQ", String(q))
 
+func set_color(color: Color):
+	$Title.add_color_override("font_color", color)
+	$Desc.add_color_override("font_color", color)
+	$Cost.add_color_override("font_color", color)
+
 func _ready():
+	var cat = associated_card.cat
+	
+	if cat == GS.CAT_ATK:
+		texture = GS.CardTexAtk
+	elif cat == GS.CAT_DEF:
+		texture = GS.CardTexDef
+		set_color(Color.lightgray)
+	elif cat == GS.CAT_WATER:
+		texture = GS.CardTexWater
+	elif cat == GS.CAT_SEED:
+		texture = GS.CardTexSeed
+	
 	update_display()
 
 func _process(delta):

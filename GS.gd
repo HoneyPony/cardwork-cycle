@@ -34,6 +34,12 @@ enum TurnState {
 const CAT_WATER = 1
 const CAT_DEF = 2
 const CAT_ATK = 3
+const CAT_SEED = 4
+
+var CardTexWater = preload("res://cards/card_water.svg")
+var CardTexDef = preload("res://cards/card_tank.svg")
+var CardTexAtk = preload("res://cards/card_attak.svg")
+var CardTexSeed = preload("res://cards/card_seeds.svg")
 
 var turn_state = TurnState.UNDEFINED
 var waiting_for_card_selection = false
@@ -116,47 +122,47 @@ var card_basic_plant : Card = Card.new(
 	"Basic Seeds",
 	"Plant a basic plant that can be harvested for basic cards",
 	1,
-	Action.PLANT)
+	Action.PLANT).with_cat(CAT_SEED)
 	
 var card_medium_plant : Card = Card.new(
 	"Middling Seeds",
 	"Plant a plant that can be harvested for somewhat valuable cards",
 	2,
-	Action.PLANT)
+	Action.PLANT).with_cat(CAT_SEED)
 	
 var card_high_plant : Card = Card.new(
 	"Quality Seeds",
 	"Plant a plant that can be harvested for valuable cards",
 	3,
-	Action.PLANT)
+	Action.PLANT).with_cat(CAT_SEED)
 	
 var card_free_1x1_water : Card = Card.new(
 	"Water Drop",
 	"Apply 1 water to a 1x1 patch of tiles",
 	0,
 	Action.WATER
-).shape(Water.W1x1)
+).shape(Water.W1x1).with_cat(CAT_WATER)
 
 var card_buy_1x1_water : Card = Card.new(
 	"Water Drip",
 	"Apply 1 water to a 1x1 patch of tiles",
 	1,
 	Action.WATER
-).shape(Water.W1x1)
+).shape(Water.W1x1).with_cat(CAT_WATER)
 
 var card_small_attack : Card = Card.new(
 	"Whack!",
 	"Attack a single enemy for $DQ damage",
 	1,
 	Action.ATTACK
-).with_quantity(1)
+).with_quantity(1).with_cat(CAT_ATK)
 
 var card_small_defend : Card = Card.new(
 	"Netting Shield",
 	"Apply 1 immunity to a single plant",
 	1,
 	Action.DEFEND
-).with_quantity(1)
+).with_quantity(1).with_cat(CAT_DEF)
 
 # Low water cards
 
@@ -351,7 +357,9 @@ var card_win_plant : Card = Card.new(
 	"Seeds for a plant that all farmers strive to one day grow",
 	3,
 	Action.PLANT
-)
+).with_cat(CAT_SEED)
+
+
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
@@ -698,6 +706,9 @@ var some_enemy_turns = 0
 func reset_all_state():
 	tutorial = true # SHould this get reset?
 	TutorialSteps.tutorial = null
+	TutorialSteps.reset_all_state()
+	
+	CardCreation.reset_all_state()
 	
 	turn_state = TurnState.UNDEFINED
 	waiting_for_card_selection = false

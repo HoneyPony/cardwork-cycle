@@ -6,6 +6,11 @@ var tutorial = null
 
 var need_end_turn_button = false
 
+func reset_all_state():
+	marked_step = 0
+	tutorial = null
+	need_end_turn_button = false
+
 func should_display_end_turn():
 	return need_end_turn_button && (marked_step < 11)
 

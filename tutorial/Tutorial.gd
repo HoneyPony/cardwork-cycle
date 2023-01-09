@@ -49,21 +49,26 @@ func tutorial_debug():
 	tutorial_cards()
 	end_tutorial()
 	GS.turn_state = GS.TurnState.PLAYING_CARDS
+	
+	
 #
 #	GS.add_card_to_hand(GS.card_small_attack)
-#	GS.add_card_to_hand(GS.card_free_1x1_water)
+	GS.add_card_to_hand(GS.card_free_1x1_water)
 #	GS.add_card_to_hand(GS.card_win_plant)
-#	GS.add_card_to_hand(GS.card_basic_plant)
+	GS.add_card_to_hand(GS.card_basic_plant)
 #	GS.add_card_to_hand(GS.card_basic_plant)
 #	GS.add_card_to_hand(GS.card_basic_plant)
 #	GS.add_card_to_hand(GS.card_add1_expensive)
 #	GS.add_card_to_hand(GS.card_def2_all)
 #	GS.add_card_to_hand(GS.card_heal_attack_all)
-#	GS.add_card_to_hand(GS.card_sacrif1_1enem)
+	GS.add_card_to_hand(GS.card_sacrif2_2enem)
 #	GS.add_card_to_hand(GS.card_free_atk)
 #	GS.add_card_to_hand(GS.card_sacrifice)
 #	GS.gold += 200
-#	GS.energy += 200
+	GS.energy += 200
+	
+	for enem in get_tree().get_nodes_in_group("Enemy"):
+		enem.spawn_now()
 
 
 func tutorial_cards():
