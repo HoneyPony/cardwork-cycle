@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/VolumeBars.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://ui/MainUITheme.tres" type="Theme" id=3]
 [ext_resource path="res://ButtonSFX.gd" type="Script" id=4]
+[ext_resource path="res://ui/title.svg" type="Texture" id=5]
+[ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 6 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -13,24 +19,32 @@ script = ExtResource( 2 )
 
 [node name="PlayButton" type="Button" parent="."]
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 1.0
 margin_left = -87.5
-margin_top = -21.5
+margin_top = -155.0
 margin_right = 87.5
-margin_bottom = 21.5
+margin_bottom = -62.0
+custom_fonts/font = SubResource( 1 )
 text = "Play"
 script = ExtResource( 4 )
 
 [node name="VolumeBars" parent="." instance=ExtResource( 1 )]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -350.0
-margin_top = -40.0
-margin_right = -79.0
-margin_bottom = 40.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -408.0
+margin_top = 268.0
+margin_right = -92.0
+margin_bottom = 360.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -255.0
+margin_top = 33.0
+margin_right = 262.0
+margin_bottom = 272.0
+texture = ExtResource( 5 )
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]

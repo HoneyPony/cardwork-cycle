@@ -40,10 +40,10 @@ text = "Quit to Menu"
 [node name="VolumeBars" parent="ColorRect" instance=ExtResource( 1 )]
 anchor_top = 0.5
 anchor_bottom = 0.5
-margin_left = 43.0
-margin_top = -23.0
-margin_right = 314.0
-margin_bottom = 57.0
+margin_left = 38.0
+margin_top = -89.0
+margin_right = 367.0
+margin_bottom = 6.0
 
 [node name="Label" type="Label" parent="ColorRect"]
 anchor_left = 0.5

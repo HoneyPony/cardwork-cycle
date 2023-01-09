@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=2]
+[gd_resource type="Theme" load_steps=19 format=2]
 
 [ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://ui/button/button_default.svg" type="Texture" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://ui/button/button_press.svg" type="Texture" id=4]
 [ext_resource path="res://ui/misc/panel.svg" type="Texture" id=5]
 [ext_resource path="res://ui/button/button_disabled.svg" type="Texture" id=6]
+[ext_resource path="res://ui/grabber/grabber_h.svg" type="Texture" id=7]
+[ext_resource path="res://ui/grabber/grabber.svg" type="Texture" id=8]
 
 [sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 6 )
@@ -41,6 +43,21 @@ margin_right = 8.0
 margin_top = 8.0
 margin_bottom = 8.0
 
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 1 )
+expand_margin_top = 4.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 1, 1, 1, 1 )
+expand_margin_top = 4.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.4, 0.4, 0.4, 1 )
+expand_margin_top = 4.0
+expand_margin_bottom = 2.0
+
 [sub_resource type="StyleBoxTexture" id=7]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 64, 64 )
@@ -51,6 +68,7 @@ margin_bottom = 16.0
 
 [sub_resource type="DynamicFont" id=2]
 size = 20
+outline_color = Color( 0.937255, 0.937255, 0.937255, 1 )
 use_filter = true
 font_data = ExtResource( 1 )
 
@@ -61,4 +79,9 @@ Button/styles/focus = SubResource( 6 )
 Button/styles/hover = SubResource( 4 )
 Button/styles/normal = SubResource( 3 )
 Button/styles/pressed = SubResource( 5 )
+HSlider/icons/grabber = ExtResource( 8 )
+HSlider/icons/grabber_highlight = ExtResource( 7 )
+HSlider/styles/grabber_area = SubResource( 9 )
+HSlider/styles/grabber_area_highlight = SubResource( 11 )
+HSlider/styles/slider = SubResource( 10 )
 Panel/styles/panel = SubResource( 7 )

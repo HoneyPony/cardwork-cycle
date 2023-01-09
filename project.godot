@@ -32,7 +32,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="LD52"
+config/name="Cardwork Cycle"
 run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon.png"
 

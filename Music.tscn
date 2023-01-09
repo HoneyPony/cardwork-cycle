@@ -36,6 +36,7 @@ tracks/0/keys = {
 }
 
 [node name="Music" type="Node"]
+pause_mode = 2
 script = ExtResource( 3 )
 improv_nrg = 0
 
