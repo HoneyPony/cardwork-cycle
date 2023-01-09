@@ -510,6 +510,8 @@ func add_card_to_hand(card: Card):
 	hand.add_child(h)
 
 func _ready():
+	OS.set_window_maximized(true)
+	
 	reset_all_state()
 	
 var current_turns = null
@@ -658,6 +660,9 @@ func end_turn():
 var global_sine_timer = 0
 
 func _process(delta):
+	if Input.is_action_just_pressed("fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
+	
 	global_sine_timer += 0.4 * delta
 	if global_sine_timer >= 1:
 		global_sine_timer -= 1

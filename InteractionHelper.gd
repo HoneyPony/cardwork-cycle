@@ -5,4 +5,6 @@ func contains_mouse(control: Control):
 	return r.has_point(control.get_local_mouse_position())
 
 func _process(delta):
+	visible = not GS.tutorial
+	
 	GS.upper_panel_mouse = contains_mouse(self)
