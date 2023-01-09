@@ -29,16 +29,16 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "A Card"
 
-[node name="Desc" type="Label" parent="."]
+[node name="Desc" type="RichTextLabel" parent="."]
 margin_left = -188.0
 margin_top = 4.0
 margin_right = 186.0
 margin_bottom = 253.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 3 )
-text = "This card will do something, that will hopefully be related in one way or another to the Ludum Dare theme of \"Harvest.\""
-align = 1
-autowrap = true
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]This card will do something, that will hopefully be related in one way or another to the Ludum Dare theme of [color=#3d3]3[/color]\"Harvest.\"[/center]"
+text = "This card will do something, that will hopefully be related in one way or another to the Ludum Dare theme of 3\"Harvest.\""
 
 [node name="Cost" type="Label" parent="."]
 margin_left = 134.0

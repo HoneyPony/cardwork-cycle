@@ -9,11 +9,15 @@ var last_checked = 0
 func update_display():
 	var q = associated_card.quantity + last_checked
 	
-	$Desc.text = associated_card.desc.replace("$DQ", String(q))
+	var dq = String(q)
+	if last_checked != 0:
+		dq = "[color=#3d3]" + dq + "[/color]"
+	
+	$Desc.bbcode_text = "[center]" + associated_card.desc.replace("$DQ", dq) + "[/center]"
 
 func set_color(color: Color):
 	$Title.add_color_override("font_color", color)
-	$Desc.add_color_override("font_color", color)
+	$Desc.add_color_override("default_color", color)
 	$Cost.add_color_override("font_color", color)
 
 func _ready():

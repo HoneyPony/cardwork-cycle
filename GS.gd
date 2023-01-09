@@ -335,7 +335,7 @@ var card_sacrif2_2enem : Card = Card.new(
 	"Take 2 plant health, and do $DQ damage to the 2 lowest-health enemies.",
 	3,
 	Action.SACRIF
-).with_quantity(5).with_drain(2).with_mult(2).with_cat(CAT_ATK)
+).with_quantity(5).with_drain(2).with_mult(2).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/blood_blade.svg"))
 
 var card_free_atk : Card = Card.new(
 	"Zing!",
@@ -355,7 +355,7 @@ var card_add1_cheap : Card = Card.new(
 
 var card_sacrifice : Card = Card.new(
 	"Sacrifice",
-	"Kill a plant, and do 5 damage to all enemies",
+	"Kill a plant, and do $DQ damage to all enemies",
 	5,
 	Action.SACRIF
 ).with_quantity(5).with_drain(0).with_mult(-1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/sacrifice.svg"))

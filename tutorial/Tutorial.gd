@@ -46,7 +46,7 @@ func _ready():
 		call_deferred("tutorial_skip")
 
 	# DEBUGGING
-	# call_deferred("tutorial_debug")
+	call_deferred("tutorial_debug")
 
 func tutorial_skip():
 	tutorial_cards()
@@ -69,16 +69,16 @@ func tutorial_debug():
 	#GS.add_card_to_hand(GS.card_basic_plant)
 #	GS.add_card_to_hand(GS.card_basic_plant)
 #	GS.add_card_to_hand(GS.card_basic_plant)
-#	GS.add_card_to_hand(GS.card_add1_expensive)
+	GS.add_card_to_hand(GS.card_add1_expensive)
 #	GS.add_card_to_hand(GS.card_def2_all)
-#	GS.add_card_to_hand(GS.card_heal_attack_all)
-	#GS.add_card_to_hand(GS.card_sacrif2_2enem)
+	GS.add_card_to_hand(GS.card_heal_attack_all)
+	GS.add_card_to_hand(GS.card_sacrif2_2enem)
 	GS.add_card_to_hand(GS.card_energy)
 	GS.add_card_to_hand(GS.card_cards)
 #	GS.add_card_to_hand(GS.card_free_atk)
-#	GS.add_card_to_hand(GS.card_sacrifice)
-#	GS.gold += 200
-	#GS.energy += 200
+	GS.add_card_to_hand(GS.card_sacrifice)
+	GS.gold += 200
+	GS.energy += 200
 	
 	for enem in get_tree().get_nodes_in_group("Enemy"):
 		enem.spawn_now()
