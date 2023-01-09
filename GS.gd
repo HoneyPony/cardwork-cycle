@@ -231,17 +231,17 @@ var card_water5 : Card = Card.new(
 
 var card_drain7_dmgall5 : Card = Card.new(
 	"Tsunami",
-	"Drain 5 water from a plant, and do $DQ damage to all enemies",
+	"Drain 4 water from a plant, and do $DQ damage to all enemies",
 	4,
 	Action.DRAIN_WATER_DMG_ALL
-).with_quantity(5).with_drain(5).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/tsunami.svg"))
+).with_quantity(4).with_drain(4).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/tsunami.svg"))
 
 var card_drain3_dmgall1 : Card = Card.new(
 	"Overflow",
-	"Drain 3 water from a plant, and do $DQ damage to all enemies",
+	"Drain 2 water from a plant, and do $DQ damage to all enemies",
 	3,
 	Action.DRAIN_WATER_DMG_ALL
-).with_quantity(1).with_drain(3).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/overflow.svg"))
+).with_quantity(1).with_drain(2).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/overflow.svg"))
 
 # Low tank cards
 
@@ -319,7 +319,7 @@ var card_sacrif1_1enem : Card = Card.new(
 	"Take 1 plant health, and do $DQ damage to the lowest-health enemy.",
 	1,
 	Action.SACRIF
-).with_quantity(5).with_drain(2).with_mult(1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/blood_dagger.svg"))
+).with_quantity(4).with_drain(2).with_mult(1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/blood_dagger.svg"))
 
 # Medium attack cards
 
@@ -335,7 +335,7 @@ var card_sacrif2_2enem : Card = Card.new(
 	"Take 2 plant health, and do $DQ damage to the 2 lowest-health enemies.",
 	3,
 	Action.SACRIF
-).with_quantity(5).with_drain(2).with_mult(2).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/blood_blade.svg"))
+).with_quantity(4).with_drain(2).with_mult(2).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/blood_blade.svg"))
 
 var card_free_atk : Card = Card.new(
 	"Zing!",
@@ -358,7 +358,7 @@ var card_sacrifice : Card = Card.new(
 	"Kill a plant, and do $DQ damage to all enemies",
 	5,
 	Action.SACRIF
-).with_quantity(5).with_drain(0).with_mult(-1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/sacrifice.svg"))
+).with_quantity(4).with_drain(0).with_mult(-1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/sacrifice.svg"))
 
 # GENERAL RARE CARDS
 
