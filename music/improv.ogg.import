@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/improv.ogg-6d5d65b2d794c0162a8a9fa07e32e823.oggstr"
+
+[deps]
+
+source_file="res://music/improv.ogg"
+dest_files=[ "res://.import/improv.ogg-6d5d65b2d794c0162a8a9fa07e32e823.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

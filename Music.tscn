@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://music/drone.ogg" type="AudioStream" id=1]
+[ext_resource path="res://music/improv.ogg" type="AudioStream" id=2]
+[ext_resource path="res://Music.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "AddImprov"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:improv_nrg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5, 10 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:improv_nrg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[node name="Music" type="Node"]
+script = ExtResource( 3 )
+
+[node name="Improv" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "Music"
+
+[node name="Drone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/AddImprov = SubResource( 1 )
+anims/RESET = SubResource( 2 )
