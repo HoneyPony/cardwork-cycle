@@ -70,7 +70,7 @@ func water(card):
 			var y = sy + j * 128
 			var plant = GS.get_plant_at_map_lcoord(Vector2(x, y))
 			if plant != null:
-				plant.water += card.quantity
+				plant.set_water(plant.water + card.quantity)
 				
 func attack(card):
 	TutorialSteps.mark_have_attacked()
@@ -91,14 +91,14 @@ func defend(card):
 	if plant == null:
 		return
 		
-	plant.apply_defense(card.quantity)
+	plant.set_defense(plant.defense + card.quantity)
 	
 func drain_water_dmg_rng(card):
 	var plant = GS.get_plant_at_map_lcoord(position)
 	if plant == null:
 		return
 		
-	plant.water -= card.drain # TODO: ANIM
+	plant.set_water(plant.water - card.drain)
 	
 	var dmg = damage(card)
 	reset_damage()
@@ -113,7 +113,7 @@ func drain_water_dmg_all(card):
 	if plant == null:
 		return
 		
-	plant.water -= card.drain # TODO: ANIM
+	plant.set_water(plant.water - card.drain) # TODO: ANIM
 	
 	var dmg = damage(card)
 	reset_damage()
@@ -129,7 +129,7 @@ func heal_dmg_near(card):
 	var dmg = damage(card)
 	reset_damage()
 	
-	plant.health += card.drain
+	plant.set_health(plant.health + card.drain)
 	
 	var enemy = GS.get_nearest_enemy(position)
 	if enemy == null:
@@ -145,7 +145,7 @@ func def_dmg_near(card):
 	var dmg = damage(card)
 	reset_damage()
 	
-	plant.defense += card.drain
+	plant.set_defense(plant.defense + card.drain)
 	
 	var enemy = GS.get_nearest_enemy(position)
 	if enemy == null:
@@ -158,14 +158,14 @@ func add_damage(associated_card):
 	
 func def_all(associated_card):
 	for plant in get_tree().get_nodes_in_group("Plant"):
-		plant.defense += associated_card.quantity
+		plant.set_defense(plant.defense + associated_card.quantity)
 
 func heal_all_dmg(card):
 	var dmg = damage(card)
 	reset_damage()
 	
 	for plant in get_tree().get_nodes_in_group("Plant"):
-		plant.health += card.drain
+		plant.set_health(plant.health + card.drain)
 		
 	for enemy in get_tree().get_nodes_in_group("Enemy"):
 		enemy.take_damage(dmg)
@@ -178,7 +178,7 @@ func sacrif(card):
 	var amount = card.drain
 	if amount == 0:
 		amount = plant.health
-	plant.steal_health(amount)
+	plant.set_health(plant.health - amount)
 	
 	var dmg = damage(card)
 	reset_damage()

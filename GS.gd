@@ -115,7 +115,7 @@ class Card:
 var card_basic_plant : Card = Card.new(
 	"Basic Seeds",
 	"Plant a basic plant that can be harvested for basic cards",
-	2,
+	1,
 	Action.PLANT)
 	
 var card_medium_plant : Card = Card.new(
@@ -170,7 +170,7 @@ var card_drain1_dmg3 : Card = Card.new(
 var card_water2_1x1 : Card = Card.new(
 	"Pour One",
 	"Apply 2 water to a 1x1 square of tiles",
-	2,
+	1,
 	Action.WATER
 ).shape(Water.W1x1).with_quantity(2).with_cat(CAT_WATER)
 
@@ -232,21 +232,21 @@ var card_drain3_dmgall1 : Card = Card.new(
 var card_3def_1 : Card = Card.new(
 	"Tough Shield",
 	"Apply 3 immunity to a single plant",
-	2,
+	1,
 	Action.DEFEND
 ).with_quantity(3).with_cat(CAT_DEF)
 
 var card_heal1_dmg1 : Card = Card.new(
 	"Vampire Fang",
 	"Heal a plant for 1 health, and do $DQ damage to the nearest enemy",
-	2,
+	1,
 	Action.HEAL_DMG_NEAR
 ).with_quantity(1).with_drain(1).with_cat(CAT_DEF) # Drain is healing for this
 
 var card_def2_dmg1 : Card = Card.new(
 	"Spiked Shield",
 	"Apply 2 immunity to a plant, and do $DQ damage to the nearest enemy",
-	2,
+	1,
 	Action.DEF_DMG_NEAR
 ).with_quantity(1).with_drain(2).with_cat(CAT_DEF) # Drain is healing for this
 
@@ -566,8 +566,14 @@ func spawn_enemies():
 	# Enemies are spawned near plants
 	var plants = get_tree().get_nodes_in_group("Plant")
 	
+	var count_enemys = get_tree().get_nodes_in_group("Enemy").size()
+	
 	# Three times
 	for item in cfg:
+		# Don't spawn more than 5 enemies at once
+		if count_enemys + 1 >= 5:
+			return
+		
 		# Try 100 times to spawn an enemy
 		for attempt in range(0, 100):
 			var p = plants[randi() % plants.size()]
@@ -587,6 +593,7 @@ func spawn_enemies():
 					bug.health = 5
 				if item == SpawnOpt.Bug9:
 					bug.heatlh = 9
+				count_enemys += 1
 				break
 	
 func end_turn():
@@ -600,7 +607,8 @@ func end_turn():
 	# You get 3 free turns between enemies...?
 	if no_enemy_turns >= 3 or some_enemy_turns >= 12:
 		spawn_enemies()
-		no_enemy_turns = 0
+		# Give some bonus for fighting enemies
+		no_enemy_turns = -int(some_enemy_turns / 2)
 		some_enemy_turns = 0
 	
 	turn_state = TurnState.UPDATING
@@ -647,9 +655,7 @@ func deal_new_hand():
 	TutorialSteps.mark_have_ended_turn()
 	
 	for plant in get_tree().get_nodes_in_group("Plant"):
-		plant.defense -= 1
-		if plant.defense < 0:
-			plant.defense = 0
+		plant.set_defense(plant.defense - 1)
 	
 	for i in range(0, card_draw_count):
 		var c = draw_card()

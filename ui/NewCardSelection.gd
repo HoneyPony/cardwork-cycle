@@ -4,6 +4,15 @@ var current_card = null
 
 onready var win_menu = $WinMenu
 
+var tips = [
+"Tip: Don't discount basic plants! They have tons of health, so they can absorb damage, and they  only take a few turns to grow."
+,"Tip: Immunity protects your plants from taking damage in all situations! Including when they have no water."
+,"Tip: Enemies attack the plants that are closest to them. Plan accordingly!"
+,"Tip: Different seed tiers give you different cards. Although the rare cards are powerful, sometimes they need some help from lower-tier cards."
+]
+
+var tip_num = 0
+
 func _ready():
 	$ConfirmButton.disabled = true
 	get_parent().hide()
@@ -58,8 +67,13 @@ func setup_cards(cards: Array):
 	setup_card($Cards/Card2, cards[1])
 	setup_card($Cards/Card3, cards[2])
 	
+	$TipPanel/Tip.text = tips[tip_num]
+	tip_num = (tip_num + 1) % tips.size()
+	$TipPanel.show()
+	
 func setup_win():
 	win_menu.visible = true
+	$TipPanel.hide()
 
 func contains_mouse(control: Control):
 	var r = Rect2(Vector2.ZERO, control.rect_size)

@@ -352,18 +352,15 @@ scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 4 )
 
 [node name="HealthNum" type="Label" parent="HeartMarker"]
-margin_left = -57.0
+margin_left = -67.0
 margin_top = 18.0
-margin_right = -21.0
+margin_right = -11.0
 margin_bottom = 57.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "3"
 align = 1
 autowrap = true
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Slash" type="Sprite" parent="."]
 position = Vector2( 64, 64 )

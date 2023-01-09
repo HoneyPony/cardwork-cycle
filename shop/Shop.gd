@@ -32,4 +32,7 @@ func _on_DoneButton_pressed():
 
 
 func _on_ShopButton_pressed():
-	$AnimationPlayer.play("Popup")
+	if visible:
+		$AnimationPlayer.play("Popdown")
+	else:
+		$AnimationPlayer.play("Popup")

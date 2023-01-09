@@ -4,6 +4,10 @@ export var health = 3
 var water = 0
 var defense = 0
 
+var health_disp = 3
+var water_disp = 0
+var defense_disp = 0
+
 export var plant_scale = 1.0
 
 export var card_level = 1
@@ -14,19 +18,13 @@ export var anim_frames: SpriteFrames
 # shown, and the plant should be queue_freed()
 var consumed = false
 
-var damage_queue = []
-func peek_dmg():
-	if damage_queue.empty():
-		return 1
-	return damage_queue.front()
-func take_dmg():
-	if damage_queue.empty():
-		return 1
-	return damage_queue.pop_front()
-
 func _ready():
 	$Plant.frames = anim_frames
 	$Plant.scale = Vector2(plant_scale, plant_scale)
+	
+	heart_update()
+	defense_update()
+	water_update()
 
 func centered_lpf_noise(in_pos):
 	var r = rand_range(0, 32)
@@ -42,14 +40,7 @@ func sine_y_offset(node, offset):
 	node.position.y = y
 	
 func slash_health(amount):
-	damage_queue.push_back(amount)
 	$AnimationPlayer.play("Slash")
-	
-func steal_health(amount):
-	health -= amount
-	if health <= 0:
-		$AnimationPlayer.queue("OutOfHealth")
-
 	
 # Can be called from animations to explicitly update the visibility at some point.
 func update_markers_visibility():
@@ -58,9 +49,9 @@ func update_markers_visibility():
 	$D/DefenseMarker.visible = (defense > 0)
 
 func update_display():
-	$H/HeartMarker/HealthNum.text = String(health)
-	$W/WaterMarker/WaterNum.text = String(water)
-	$D/DefenseMarker/DefenseNum.text = String(defense)
+	#$H/HeartMarker/HealthNum.text = String(health)
+	#$W/WaterMarker/WaterNum.text = String(water)
+	#$D/DefenseMarker/DefenseNum.text = String(defense)
 	
 	# Don't update visibility while the animation is going...?
 	if not $AnimationPlayer.is_playing():
@@ -100,35 +91,72 @@ func take_turn():
 	else:
 		anim.queue("NoWater")
 	
-func dec_health():
-	var next = take_dmg()
+func dec_health():	
+	var amount = 1
 	
 	# TODO: Animate shield rather than heart...
 	if defense > 0:
-		defense -= next
+		defense -= amount
+		$ShieldFX.play("Pop")
 		if defense < 0:
-			next = -defense
+			amount = -defense
 			defense = 0
 		else:
 			return
 	
-	health -= next
+	health -= amount
+	$HeartFX.play("Pop")
 	if health <= 0:
 		$AnimationPlayer.queue("OutOfHealth")
+		
+func set_health(amount):
+	if health <= 0:
+		return
 	
-func start_health_anim():
-	var next = peek_dmg()
+	if amount > 10:
+		amount = 10
+	health = amount
 	
-	if defense > 0:
-		$ShieldFX.play("Pop")
-		if defense < next:
-			$HeartFX.play("PopNoCall")
-	else:
-		$HeartFX.play("Pop")
+	$HeartFX.play("Pop")
+	
+	if health <= 0:
+		$AnimationPlayer.queue("OutOfHealth")
+		
+func set_defense(amount):
+	if amount > 10:
+		amount = 10
+	if amount < 0:
+		amount = 0
+	defense = amount
+	
+	$ShieldFX.play("Pop")
+	
+func set_water(amount):
+	if amount > 10:
+		amount = 10
+	if amount < 0:
+		amount = 0
+	water = amount
+	
+	$WaterFX.play("Pop")
 
+func heart_update():
+	health_disp = health
+	$H/HeartMarker/HealthNum.text = String(health_disp)
 	
+func defense_update():
+	defense_disp = defense
+	$D/DefenseMarker/DefenseNum.text = String(defense)
+	
+func water_update():
+	water_disp = water
+	$W/WaterMarker/WaterNum.text = String(water)
+
+	#
+	#
+
 func water_plant():
-	water -= 1
+	set_water(water - 1)
 	
 func popup_menu():
 	if card_level == 1:
@@ -142,9 +170,6 @@ func popup_menu():
 	
 func upgrade_plant():
 	$Plant.frame += 1
-	
-func apply_defense(amount):
-	defense += amount
 	
 func turn_over():
 	# If we are being polled about our turn, then the card selection

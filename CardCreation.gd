@@ -138,7 +138,9 @@ func pick_plant3_cards(health):
 	add_atks(set, 4, GS.card_add1_cheap)
 	add_atks(set, 4, GS.card_sacrifice)
 	
-	add_copies(set, 8, GS.card_win_plant)
+	# Force the player to go through a couple plants first...
+	if plant3_times >= 3:
+		add_copies(set, 8, GS.card_win_plant)
 	
 	var result = pick_cards(set)
 	
