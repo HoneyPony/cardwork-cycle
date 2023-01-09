@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://cards/card_seeds.svg" type="Texture" id=2]
+[ext_resource path="res://cards/card1_mod.svg" type="Texture" id=2]
 [ext_resource path="res://cards/CardBase.gd" type="Script" id=3]
-[ext_resource path="res://cards/icons/mystical_seeds.svg" type="Texture" id=4]
+[ext_resource path="res://cards/icons/technique.svg" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38

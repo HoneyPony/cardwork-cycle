@@ -374,7 +374,7 @@ var card_energy : Card = Card.new(
 	"Gain 1 ENERGY",
 	0,
 	Action.PLUS_ENERGY
-)
+).with_icon(preload("res://cards/icons/free_energy.svg"))
 
 # GENERAL MED CARDS
 
@@ -383,7 +383,7 @@ var card_cards : Card = Card.new(
 	"Draw 3 cards",
 	1,
 	Action.DRAW_3
-)
+).with_icon(preload("res://cards/icons/cool_drawing.svg"))
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
