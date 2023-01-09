@@ -139,7 +139,7 @@ margin_bottom = 128.0
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 description = "This mystical crystal grants you 1 additional ENERGY."
-cost = 4
+cost = 2
 
 [node name="Button" type="Button" parent="Items/Shop1"]
 anchor_left = 0.5
@@ -159,7 +159,7 @@ margin_bottom = 128.0
 texture = ExtResource( 1 )
 script = ExtResource( 4 )
 description = "This magical staff grants you 1 additional ENERGY."
-cost = 8
+cost = 4
 
 [node name="Button" type="Button" parent="Items/Shop2"]
 anchor_left = 0.5
@@ -179,7 +179,7 @@ margin_bottom = 128.0
 texture = ExtResource( 5 )
 script = ExtResource( 4 )
 description = "This enchanted ring grants you 1 additional ENERGY."
-cost = 20
+cost = 6
 
 [node name="Button" type="Button" parent="Items/Shop3"]
 anchor_left = 0.5
@@ -199,7 +199,7 @@ margin_bottom = 128.0
 texture = ExtResource( 7 )
 script = ExtResource( 4 )
 description = "Buy more farmland to grow plants on."
-cost = 8
+cost = 2
 is_energy = false
 
 [node name="Button" type="Button" parent="Items/Shop4"]
@@ -220,7 +220,7 @@ margin_bottom = 128.0
 texture = ExtResource( 6 )
 script = ExtResource( 4 )
 description = "Buy more farmland to grow plants on."
-cost = 20
+cost = 4
 is_energy = false
 up_num = 2
 

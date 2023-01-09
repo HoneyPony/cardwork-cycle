@@ -108,6 +108,8 @@ func _on_ConfirmButton_pressed():
 			card.is_selected = false
 			# Add new cards to discard pile
 			GS.discard_pile.push_back(card.associated_card)
+			if card.associated_card == GS.card_win_plant:
+				CardCreation.has_win_card = true
 			
 	remove_card_children()
 			

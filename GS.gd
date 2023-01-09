@@ -31,6 +31,10 @@ enum TurnState {
 	UPDATING
 }
 
+const CAT_WATER = 1
+const CAT_DEF = 2
+const CAT_ATK = 3
+
 var turn_state = TurnState.UNDEFINED
 var waiting_for_card_selection = false
 
@@ -71,6 +75,9 @@ class Card:
 	
 	var mult
 	
+	# Category / build, these things influence card generation
+	var cat
+	
 	func _init(title_: String, desc_: String, cost_: int, action_):
 		title = title_
 		desc = desc_
@@ -79,6 +86,8 @@ class Card:
 		
 		quantity = 1
 		drain = 1
+		
+		cat = 0
 		
 	func shape(water_shape_):
 		water_shape = water_shape_
@@ -94,6 +103,10 @@ class Card:
 		
 	func with_mult(m):
 		mult = m
+		return self
+		
+	func with_cat(c):
+		cat = c
 		return self
 
 # The "global state" node. This is where global variables are usually stored,
@@ -152,21 +165,21 @@ var card_drain1_dmg3 : Card = Card.new(
 	"Drain 1 water from a plant, and do $DQ damage to a random enemy",
 	1,
 	Action.DRAIN_WATER_DMG_RNG
-).with_quantity(3).with_drain(1)
+).with_quantity(3).with_drain(1).with_cat(CAT_WATER)
 
 var card_water2_1x1 : Card = Card.new(
 	"Pour One",
 	"Apply 2 water to a 1x1 square of tiles",
 	2,
 	Action.WATER
-).shape(Water.W1x1).with_quantity(2)
+).shape(Water.W1x1).with_quantity(2).with_cat(CAT_WATER)
 
 var card_water1_2x2 : Card = Card.new(
 	"Water Can",
 	"Apply 1 water to a 2x2 square of tiles",
 	3,
 	Action.WATER
-).shape(Water.W2x2)
+).shape(Water.W2x2).with_cat(CAT_WATER)
 
 # Medium water cards
 
@@ -175,44 +188,44 @@ var card_water1_3x3 : Card = Card.new(
 	"Apply 1 water to a 3x3 square of tiles",
 	3,
 	Action.WATER
-).shape(Water.W3x3)
+).shape(Water.W3x3).with_cat(CAT_WATER)
 
 var card_water2_2x2 : Card = Card.new(
 	"Hose",
 	"Apply 2 water to a 2x2 square of tiles",
 	4,
 	Action.WATER
-).shape(Water.W2x2).with_quantity(2)
+).shape(Water.W2x2).with_quantity(2).with_cat(CAT_WATER)
 
 var card_drain3_rng5 : Card = Card.new(
 	"Water Blast",
 	"Drain 3 water from a plant, and do $DQ damage to a random enemy",
 	2,
 	Action.DRAIN_WATER_DMG_RNG
-).with_drain(3).with_quantity(5)
+).with_drain(3).with_quantity(5).with_cat(CAT_WATER)
 
 # High water cards
 
 var card_water5 : Card = Card.new(
-	"Concentrated Rain",
+	"Rainfall",
 	"Apply 5 water to a single plant",
 	3,
 	Action.WATER
-).shape(Water.W1x1).with_quantity(5)
+).shape(Water.W1x1).with_quantity(5).with_cat(CAT_WATER)
 
 var card_drain7_dmgall5 : Card = Card.new(
 	"Tsunami",
 	"Drain 7 water from a plant, and do $DQ damage to all enemies",
 	5,
 	Action.DRAIN_WATER_DMG_ALL
-).with_quantity(5).with_drain(7)
+).with_quantity(5).with_drain(7).with_cat(CAT_WATER)
 
 var card_drain3_dmgall1 : Card = Card.new(
 	"Overflow",
 	"Drain 3 water from a plant, and do $DQ damage to all enemies",
 	3,
 	Action.DRAIN_WATER_DMG_ALL
-).with_quantity(1).with_drain(3)
+).with_quantity(1).with_drain(3).with_cat(CAT_WATER)
 
 # Low tank cards
 
@@ -221,21 +234,21 @@ var card_3def_1 : Card = Card.new(
 	"Apply 3 immunity to a single plant",
 	2,
 	Action.DEFEND
-).with_quantity(3)
+).with_quantity(3).with_cat(CAT_DEF)
 
 var card_heal1_dmg1 : Card = Card.new(
 	"Vampire Fang",
 	"Heal a plant for 1 health, and do $DQ damage to the nearest enemy",
 	2,
 	Action.HEAL_DMG_NEAR
-).with_quantity(1).with_drain(1) # Drain is healing for this
+).with_quantity(1).with_drain(1).with_cat(CAT_DEF) # Drain is healing for this
 
 var card_def2_dmg1 : Card = Card.new(
 	"Spiked Shield",
 	"Apply 2 immunity to a plant, and do $DQ damage to the nearest enemy",
 	2,
 	Action.DEF_DMG_NEAR
-).with_quantity(1).with_drain(2) # Drain is healing for this
+).with_quantity(1).with_drain(2).with_cat(CAT_DEF) # Drain is healing for this
 
 # Medium tank cards
 
@@ -244,14 +257,14 @@ var card_heal2_dmg2 : Card = Card.new(
 	"Heal a plant for 2 health, and do $DQ damage to the nearest enemy",
 	3,
 	Action.HEAL_DMG_NEAR
-).with_quantity(2).with_drain(2) # Drain is healing for this
+).with_quantity(2).with_drain(2).with_cat(CAT_DEF) # Drain is healing for this
 
 var card_def3_dmg3 : Card = Card.new(
-	"Thorny Barricade",
+	"Thorns",
 	"Apply 3 immunity to a plant, and do $DQ damage to the nearest enemy",
 	4,
 	Action.DEF_DMG_NEAR
-).with_quantity(3).with_drain(3)
+).with_quantity(3).with_drain(3).with_cat(CAT_DEF)
 
 # Rare tank cards: TODO
 
@@ -260,14 +273,14 @@ var card_def2_all : Card = Card.new(
 	"Apply 2 immunity to all plants",
 	4,
 	Action.DEF_ALL
-).with_quantity(2)
+).with_quantity(2).with_cat(CAT_DEF)
 
 var card_heal_attack_all : Card = Card.new(
 	"Vampire Blast",
 	"Heal all plants for 1 health and do $DQ damage to all enemies",
 	5,
 	Action.HEAL_ALL_DMG
-).with_drain(1).with_quantity(1)
+).with_drain(1).with_quantity(1).with_cat(CAT_DEF)
 
 # Low attack-focs cards
 
@@ -276,21 +289,21 @@ var card_dmg2 : Card = Card.new(
 	"Do $DQ damage to a single enemy",
 	1,
 	Action.ATTACK
-).with_quantity(2)
+).with_quantity(2).with_cat(CAT_ATK)
 
 var card_add1_expensive: Card = Card.new(
 	"Power Fungi",
 	"Add 1 damage to your next attack",
 	1,
 	Action.ADD_DAMAGE
-).with_quantity(1)
+).with_quantity(1).with_cat(CAT_ATK)
 
 var card_sacrif1_1enem : Card = Card.new(
 	"Blood Dagger",
 	"Take 1 plant health, and do $DQ damage to the lowest-health enemy.",
 	1,
 	Action.SACRIF
-).with_quantity(5).with_drain(2).with_mult(1)
+).with_quantity(5).with_drain(2).with_mult(1).with_cat(CAT_ATK)
 
 # Medium attack cards
 
@@ -299,21 +312,21 @@ var card_add2 : Card = Card.new(
 	"Add 2 damage to your next attack",
 	2,
 	Action.ADD_DAMAGE
-).with_quantity(2)
+).with_quantity(2).with_cat(CAT_ATK)
 
 var card_sacrif2_2enem : Card = Card.new(
 	"Blood Blade",
 	"Take 2 plant health, and do $DQ damage to the 2 lowest-health enemies.",
 	3,
 	Action.SACRIF
-).with_quantity(5).with_drain(2).with_mult(2)
+).with_quantity(5).with_drain(2).with_mult(2).with_cat(CAT_ATK)
 
 var card_free_atk : Card = Card.new(
 	"Zing!",
 	"Attack an enemy for $DQ damage",
 	0,
 	Action.ATTACK
-).with_quantity(1)
+).with_quantity(1).with_cat(CAT_ATK)
 
 # Rare attack cards
 
@@ -322,14 +335,14 @@ var card_add1_cheap : Card = Card.new(
 	"Add 1 damage to your next attack",
 	0,
 	Action.ADD_DAMAGE
-).with_quantity(1)
+).with_quantity(1).with_cat(CAT_ATK)
 
 var card_sacrifice : Card = Card.new(
 	"Sacrifice",
 	"Kill a plant, and do 5 damage to all enemies",
 	5,
 	Action.SACRIF
-).with_quantity(5).with_drain(0).with_mult(-1)
+).with_quantity(5).with_drain(0).with_mult(-1).with_cat(CAT_ATK)
 
 # GENERAL RARE CARDS
 
@@ -486,13 +499,21 @@ func turn_processor():
 	
 enum SpawnOpt {
 	Bug2,
-	Bug3
+	Bug3,
+	Bug5,
+	Bug9
 }
 var spawn_1bug2 = [SpawnOpt.Bug2]
 var spawn_2bug2 = [SpawnOpt.Bug2, SpawnOpt.Bug2]
 var spawn_3bug2 = [SpawnOpt.Bug2, SpawnOpt.Bug2, SpawnOpt.Bug2]
 var spawn_2bug3 = [SpawnOpt.Bug3, SpawnOpt.Bug3]
 var spawn_3bug3 = [SpawnOpt.Bug3, SpawnOpt.Bug3, SpawnOpt.Bug3]
+var spawn_4bug3 = [SpawnOpt.Bug3, SpawnOpt.Bug3, SpawnOpt.Bug3, SpawnOpt.Bug3]
+var spawn_bug5 = [SpawnOpt.Bug5]
+var spawn_2bug5 = [SpawnOpt.Bug5, SpawnOpt.Bug5]
+var spawn_3bug_w5 = [SpawnOpt.Bug5, SpawnOpt.Bug3, SpawnOpt.Bug3]
+var spawn_bug9 = [SpawnOpt.Bug9, SpawnOpt.Bug2, SpawnOpt.Bug2]
+var spawn_5bug = [SpawnOpt.Bug5, SpawnOpt.Bug5, SpawnOpt.Bug3, SpawnOpt.Bug2, SpawnOpt.Bug2]
 var spawn_configs = [
 	spawn_1bug2,
 	spawn_1bug2,
@@ -510,6 +531,25 @@ var spawn_configs = [
 	spawn_3bug3,
 	spawn_2bug3,
 	spawn_2bug3,
+	spawn_4bug3,
+	spawn_2bug3,
+	spawn_bug5,
+	spawn_3bug3,
+	spawn_bug5,
+	spawn_2bug5,
+	spawn_3bug3,
+	spawn_2bug3,
+	spawn_3bug_w5,
+	spawn_3bug3,
+	spawn_2bug5,
+	spawn_3bug3,
+	spawn_bug9,
+	spawn_3bug3,
+	spawn_2bug3,
+	spawn_5bug,
+	spawn_3bug3,
+	spawn_3bug_w5,
+	spawn_2bug3
 ]
 
 var next_spawn = 0
@@ -521,7 +561,7 @@ func spawn_enemies():
 	# TODO: Keep using "difficult" configs
 	next_spawn += 1
 	if next_spawn > spawn_configs.size():
-		next_spawn = 11
+		next_spawn = 11 - 2 # Allow some easy
 	
 	# Enemies are spawned near plants
 	var plants = get_tree().get_nodes_in_group("Plant")
@@ -543,6 +583,10 @@ func spawn_enemies():
 				
 				if item == SpawnOpt.Bug2:
 					bug.health = 2
+				if item == SpawnOpt.Bug5:
+					bug.health = 5
+				if item == SpawnOpt.Bug9:
+					bug.heatlh = 9
 				break
 	
 func end_turn():
@@ -554,7 +598,7 @@ func end_turn():
 	current_picked_up_card = null
 	
 	# You get 3 free turns between enemies...?
-	if no_enemy_turns >= 3 or some_enemy_turns >= 9:
+	if no_enemy_turns >= 3 or some_enemy_turns >= 12:
 		spawn_enemies()
 		no_enemy_turns = 0
 		some_enemy_turns = 0

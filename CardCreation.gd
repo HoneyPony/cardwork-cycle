@@ -6,6 +6,8 @@ var water_multiplier = 1
 var defense_multiplier = 1
 var attack_multiplier = 1
 
+var avg_multiplier = 1
+
 func has_duplicate_card(result: Array, card):
 	for c in result:
 		if c == card:
@@ -67,10 +69,12 @@ func pick_plant1_cards(health):
 	add_copies(set, 4, GS.card_basic_plant)
 	add_copies(set, 4, GS.card_medium_plant)
 	
-	add_copies(set, 2 + health, GS.card_free_1x1_water)
+	add_copies(set, 2 + health + int(avg_multiplier), GS.card_free_1x1_water)
 	
 	var copies_rare = (health - 5)
 	if copies_rare > 0:
+		if copies_rare > 2:
+			copies_rare = 2
 		add_waters(set, copies_rare, GS.card_water1_3x3)
 		add_waters(set, copies_rare, GS.card_water2_2x2)
 		add_waters(set, copies_rare, GS.card_drain3_rng5)
@@ -95,8 +99,33 @@ func pick_plant2_cards(health):
 	add_atks(set, 4, GS.card_free_atk)
 	
 	return pick_cards(set)
+	
+var plant3_times = 0
+var has_win_card = false
+
+func reset_all_state():
+	plant3_times = 0
+	has_win_card = false
+	water_multiplier = 1
+	defense_multiplier = 1
+	attack_multiplier = 1
+	
+func picked_cat(cat):
+	if cat == GS.CAT_WATER:
+		water_multiplier += 0.25
+	if cat == GS.CAT_DEF:
+		defense_multiplier += 0.25
+	if cat == GS.CAT_ATK:
+		attack_multiplier += 0.25
+		
+	water_multiplier = clamp(water_multiplier, 1, 2.5)
+	defense_multiplier = clamp(defense_multiplier, 1, 2.5)
+	attack_multiplier = clamp(attack_multiplier, 1, 2.5)
+	
+	avg_multiplier = (water_multiplier + defense_multiplier + attack_multiplier) / 3.0
 
 func pick_plant3_cards(health):
+	plant3_times += 1
 	var set = []
 	
 	add_waters(set, 4, GS.card_water5)
@@ -109,6 +138,10 @@ func pick_plant3_cards(health):
 	add_atks(set, 4, GS.card_add1_cheap)
 	add_atks(set, 4, GS.card_sacrifice)
 	
-	add_copies(set, 4, GS.card_win_plant)
+	add_copies(set, 8, GS.card_win_plant)
 	
-	return pick_cards(set)
+	var result = pick_cards(set)
+	
+	if plant3_times >= 3 and not has_win_card:
+		set[randi() % set.size()] = GS.card_win_plant
+	return result
