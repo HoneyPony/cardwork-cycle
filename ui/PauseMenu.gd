@@ -22,7 +22,7 @@ func _on_ResumeButton_pressed():
 	
 func _on_QuitButton_pressed():
 	unpause()
-	get_tree().change_scene_to(GS.MainMenu)
+	SceneTransitions.change_scene_to(GS.MainMenu)
 	
 func _process(delta):
 	if Input.is_action_just_pressed("pause_button"):

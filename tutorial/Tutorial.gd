@@ -46,7 +46,7 @@ func _ready():
 		call_deferred("tutorial_skip")
 
 	# DEBUGGING
-	call_deferred("tutorial_debug")
+	# call_deferred("tutorial_debug")
 
 func tutorial_skip():
 	tutorial_cards()

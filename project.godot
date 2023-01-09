@@ -44,6 +44,7 @@ TutorialSteps="*res://tutorial/TutorialSteps.gd"
 Music="*res://Music.tscn"
 SFX="*res://SFX.tscn"
 Flags="*res://Flags.gd"
+SceneTransitions="*res://SceneTransitions.tscn"
 
 [gui]
 
