@@ -298,28 +298,28 @@ var card_heal_attack_all : Card = Card.new(
 	Action.HEAL_ALL_DMG
 ).with_drain(2).with_quantity(1).with_cat(CAT_DEF).with_icon(preload("res://cards/icons/vampire_blast.svg"))
 
-# Low attack-focs cards
+# Low attack-focus cards
 
 var card_dmg2 : Card = Card.new(
 	"Kapow!",
 	"Do $DQ damage to a single enemy",
 	1,
 	Action.ATTACK
-).with_quantity(2).with_cat(CAT_ATK)
+).with_quantity(2).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/kapow.svg"))
 
 var card_add1_expensive: Card = Card.new(
 	"Power Fungi",
 	"Add 1 damage to your next attack",
 	1,
 	Action.ADD_DAMAGE
-).with_quantity(1).with_cat(CAT_ATK)
+).with_quantity(1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/power_fungi.svg"))
 
 var card_sacrif1_1enem : Card = Card.new(
 	"Blood Dagger",
 	"Take 1 plant health, and do $DQ damage to the lowest-health enemy.",
 	1,
 	Action.SACRIF
-).with_quantity(5).with_drain(2).with_mult(1).with_cat(CAT_ATK)
+).with_quantity(5).with_drain(2).with_mult(1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/blood_dagger.svg"))
 
 # Medium attack cards
 
