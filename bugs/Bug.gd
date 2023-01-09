@@ -14,9 +14,13 @@ var current_plant_target = null
 
 var spawned = false
 
-func _ready():
+func spawn_now():
 	spawned = true
 	$AnimationPlayer.play("Spawn")
+
+#func _ready():
+#	spawned = true
+#	$AnimationPlayer.play("Spawn")
 
 func _physics_process(delta):
 	$HeartMarker/HealthNum.text = String(health)
@@ -95,6 +99,9 @@ func find_closest():
 	var closest = null
 	var dist = 0
 	for plant in get_tree().get_nodes_in_group("Plant"):
+		if plant.consumed: # Consumed plants will queue_free() immediately
+			continue
+		
 		if closest == null:
 			closest = plant
 			dist = (plant.position - position).length()

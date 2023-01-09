@@ -31,6 +31,7 @@ func contains_mouse(control: Control):
 
 func end_tutorial():
 	GS.tutorial = false
+	GS.tutorial_mouse = false
 	GS.card_draw_count = 5 # Back to normal card count
 	queue_free()
 
@@ -111,7 +112,7 @@ func update_tutorial():
 			var plant = plants[0]
 			lcoord = plant.position + Vector2(128 * 2, 0)
 		
-		GS.spawn_bug_lcoord(lcoord)
+		GS.spawn_bug_lcoord(lcoord).spawn_now()
 	
 func step_tutorial():
 	current_line += 1

@@ -15,6 +15,14 @@ export var anim_frames: SpriteFrames
 var consumed = false
 
 var damage_queue = []
+func peek_dmg():
+	if damage_queue.empty():
+		return 1
+	return damage_queue.front()
+func take_dmg():
+	if damage_queue.empty():
+		return 1
+	return damage_queue.pop_front()
 
 func _ready():
 	$Plant.frames = anim_frames
@@ -93,9 +101,7 @@ func take_turn():
 		anim.queue("NoWater")
 	
 func dec_health():
-	var next = damage_queue.pop_front()
-	if next == null:
-		next = 1
+	var next = take_dmg()
 	
 	# TODO: Animate shield rather than heart...
 	if defense > 0:
@@ -111,9 +117,7 @@ func dec_health():
 		$AnimationPlayer.queue("OutOfHealth")
 	
 func start_health_anim():
-	var next = damage_queue.front()
-	if next == null:
-		next = 1
+	var next = peek_dmg()
 	
 	if defense > 0:
 		$ShieldFX.play("Pop")

@@ -43,6 +43,7 @@ var shop_open = false
 var upper_panel_mouse = false
 var tutorial_mouse = false
 var new_cards_mouse = false
+var end_turn_mouse = false
 
 func popup_card_selection(card_set: Array):
 	waiting_for_card_selection = true
@@ -341,6 +342,7 @@ var card_win_plant : Card = Card.new(
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")
+var Intro = preload("res://Intro.tscn")
 var HandCard = preload("res://cards/HandCard.tscn")
 var CardBase = preload("res://cards/CardBase.tscn")
 
@@ -387,6 +389,8 @@ func spawn_bug_lcoord(pos):
 	tilemap.add_child(b)
 	
 	b.position = pos
+	
+	return b
 	
 func get_object_at_map_lcoord(coord: Vector2):
 	for obj in get_tree().get_nodes_in_group("Object"):
@@ -480,14 +484,46 @@ func turn_processor():
 	current_obj = null
 	return null
 	
+enum SpawnOpt {
+	Bug2,
+	Bug3
+}
+var spawn_2bug2 = [SpawnOpt.Bug2, SpawnOpt.Bug2]
+var spawn_3bug2 = [SpawnOpt.Bug2, SpawnOpt.Bug2, SpawnOpt.Bug2]
+var spawn_2bug3 = [SpawnOpt.Bug3, SpawnOpt.Bug3]
+var spawn_3bug3 = [SpawnOpt.Bug3, SpawnOpt.Bug3, SpawnOpt.Bug3]
+var spawn_configs = [
+	spawn_2bug2,
+	spawn_2bug2,
+	spawn_2bug2,
+	spawn_2bug2,
+	spawn_3bug2,
+	spawn_2bug2,
+	spawn_2bug3,
+	spawn_2bug3,
+	spawn_3bug2,
+	spawn_2bug3,
+	spawn_3bug3,
+	spawn_2bug3,
+	spawn_2bug3,
+]
+
+var next_spawn = 0
+	
 func spawn_enemies():
-	return # DEBUG
+	 # DEBUG
+	
+	var cfg = spawn_configs[next_spawn]
+	# TODO: Keep using "difficult" configs
+	next_spawn += 1
+	if next_spawn > spawn_configs.size():
+		next_spawn = 8
 	
 	# Enemies are spawned near plants
 	var plants = get_tree().get_nodes_in_group("Plant")
 	
 	# Three times
-	for i in range(0, 3):
+	for item in cfg:
 		# Try 100 times to spawn an enemy
 		for attempt in range(0, 100):
 			var p = plants[randi() % plants.size()]
@@ -500,6 +536,9 @@ func spawn_enemies():
 				var bug = Bug.instance()
 				bug.position = pos
 				tilemap.add_child(bug)
+				
+				if item == SpawnOpt.Bug2:
+					bug.health = 2
 				break
 	
 func end_turn():
@@ -555,6 +594,11 @@ func deal_new_hand():
 		no_enemy_turns += 1
 	
 	TutorialSteps.mark_have_ended_turn()
+	
+	for plant in get_tree().get_nodes_in_group("Plant"):
+		plant.defense -= 1
+		if plant.defense < 0:
+			plant.defense = 0
 	
 	for i in range(0, card_draw_count):
 		var c = draw_card()
@@ -630,5 +674,5 @@ func reset_all_state():
 	upper_panel_mouse = false
 	tutorial_mouse = false
 	new_cards_mouse = false
-	
+	end_turn_mouse = false
 
