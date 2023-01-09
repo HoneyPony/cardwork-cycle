@@ -4,7 +4,8 @@ class_name Cursor
 onready var cursors = [$Red, $CursorPlant, 
 $CursorAttack, 
 $CursorWater1x1, $CursorWater2x2, $CursorWater3x3,
- $CursorWaterDrain, $CursorGeneral]
+ $CursorWaterDrain, $CursorGeneral,
+$CursorDefense]
 
 const TILE_PLANTABLE = 3
 
@@ -309,7 +310,7 @@ func update_playable_and_display():
 		or card.action == GS.Action.HEAL_DMG_NEAR \
 		or card.action == GS.Action.DEF_DMG_NEAR:
 		if is_tile_plant():
-			$CursorPlant.show() # TODO: Defend
+			$CursorDefense.show() # TODO: Defend
 			may_play = true
 			
 	if card.action == GS.Action.DRAIN_WATER_DMG_RNG \
