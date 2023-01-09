@@ -1,4 +1,4 @@
-<REAPER_PROJECT 0.1 "6.67/win64" 1673280395
+<REAPER_PROJECT 0.1 "6.67/win64" 1673281043
   <NOTES 0 2
   >
   RIPPLE 0
@@ -16,8 +16,8 @@
   TIMEMODE 1 5 -1 30 0 0 -1
   VIDEO_CONFIG 0 0 256
   PANMODE 3
-  CURSOR 0
-  ZOOM 9.13579078940043 0 0
+  CURSOR 639.25
+  ZOOM 9.13579078940043 4392 0
   VZOOMEX 12 0
   USE_REC_CFG 0
   RECMODE 1
@@ -103,7 +103,7 @@
     ISBUS 0 0
     BUSCOMP 0 0 0 0 0
     SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
-    SEL 0
+    SEL 1
     REC 1 5088 1 0 0 0 0 0
     VU 2
     TRACKHEIGHT 0 0 0 0 0 0
@@ -223,7 +223,7 @@
       FADEIN 1 0 0 1 0 0 0
       FADEOUT 1 0 0 1 0 0 0
       MUTE 0 0
-      SEL 0
+      SEL 1
       IGUID {AA339EA0-7994-4F1B-82A7-E335E460D37E}
       IID 2
       NAME "01-Originals - Felt Piano-Recorded MIDI"
@@ -1655,14 +1655,14 @@
         E 60 80 58 47
         E 496 90 59 4f
         E 210 80 59 43
-        e 519 90 58 57
-        e 25 90 54 49
-        e 208 80 58 4c
-        e 8 80 54 3c
-        e 486 90 53 4f
-        e 1 90 56 55
-        e 219 80 56 55
-        e 4 80 53 53
+        E 519 90 58 57
+        E 25 90 54 49
+        E 208 80 58 4c
+        E 8 80 54 3c
+        E 486 90 53 4f
+        E 1 90 56 55
+        E 219 80 56 55
+        E 4 80 53 53
         E 15311 90 41 2f
         E 292 90 45 2c
         E 147 80 41 2b
@@ -2092,12 +2092,10 @@
         E 2501 90 47 51
         E 63 80 4c 40
         E 2260 90 48 57
-        E 6 90 28 50
-        E 96 80 47 52
-        E 35 80 2b 51
-        E 3299 90 24 58
-        E 30 80 28 50
-        E 4851 80 24 44
+        E 16 80 2b 51
+        E 1 90 24 58
+        E 85 80 47 52
+        E 8215 80 24 44
         E 134 80 48 4f
         E 5009 90 30 3a
         E 352 90 37 34
@@ -2396,7 +2394,7 @@
         IGNTEMPO 0 120 4 4
         SRCCOLOR 252
         VELLANE -1 100 0
-        CFGEDITVIEW 0 0.001011 0 12 0 -1 0 0 0 0.5
+        CFGEDITVIEW 1204190.53433 0.055801 0 12 0 -1 0 0 0 0.5
         KEYSNAP 0
         TRACKSEL 0
         EVTFILTER 0 -1 -1 -1 -1 0 0 0 0 -1 -1 -1 -1 0 -1 0 -1 -1

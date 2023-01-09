@@ -4,6 +4,8 @@ export var improv_nrg = 0.0
 
 var pan_fx: AudioEffectPanner = null
 
+var pan_direction = 1.0
+
 func _ready():
 	$Improv.play()
 	$Drone.play()
@@ -17,8 +19,13 @@ func _ready():
 	
 func _process(delta):
 	if not $AnimationPlayer.is_playing():
-		$AnimationPlayer.play("AddImprov", 0, rand_range(0.3, 1.0))
+		pan_direction = 1.0
+		if randi() % 100 <= 50:
+			pan_direction = -1.0 # Rnadom pan direction
+		
+		var length = rand_range(1.0, 3.5)
+		$AnimationPlayer.play("AddImprov", 0, 1.0 / length)
 		
 	$Improv.volume_db = linear2db(improv_nrg)
 	
-	pan_fx.pan = lerp(-0.7, 0.7, improv_nrg)
+	pan_fx.pan = lerp(-0.7 * pan_direction, 0.7 * pan_direction, improv_nrg)
