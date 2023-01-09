@@ -24,6 +24,9 @@ func nowater_sfx():
 	SFX.no_water.play_sfx()
 
 func _ready():
+	if GS.auto_water:
+		water = 1
+	
 	$Plant.frames = anim_frames
 	$Plant.scale = Vector2(plant_scale, plant_scale)
 	

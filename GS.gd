@@ -740,6 +740,8 @@ var tutorial = true
 var no_enemy_turns = 0
 
 var some_enemy_turns = 0
+
+var auto_water = false
 	
 func reset_all_state():
 	tutorial = true # SHould this get reset?
@@ -784,6 +786,8 @@ func reset_all_state():
 	tutorial_mouse = false
 	new_cards_mouse = false
 	end_turn_mouse = false
+	
+	auto_water = false
 	
 	next_spawn = 0
 	if Flags.hard_mode:

@@ -32,6 +32,8 @@ func _on_buy():
 				GS.tilemap.up2()
 			elif up_num == 3:
 				GS.card_draw_count += 1
+			elif up_num == 4:
+				GS.auto_water = true
 			
 
 

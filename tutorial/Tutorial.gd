@@ -46,7 +46,7 @@ func _ready():
 		call_deferred("tutorial_skip")
 
 	# DEBUGGING
-	# call_deferred("tutorial_debug")
+	call_deferred("tutorial_debug")
 
 func tutorial_skip():
 	tutorial_cards()
@@ -67,8 +67,8 @@ func tutorial_debug():
 	#GS.add_card_to_hand(GS.card_free_1x1_water)
 #	GS.add_card_to_hand(GS.card_win_plant)
 	#GS.add_card_to_hand(GS.card_basic_plant)
-#	GS.add_card_to_hand(GS.card_basic_plant)
-#	GS.add_card_to_hand(GS.card_basic_plant)
+	GS.add_card_to_hand(GS.card_basic_plant)
+	GS.add_card_to_hand(GS.card_basic_plant)
 	GS.add_card_to_hand(GS.card_add1_expensive)
 #	GS.add_card_to_hand(GS.card_def2_all)
 	GS.add_card_to_hand(GS.card_heal_attack_all)

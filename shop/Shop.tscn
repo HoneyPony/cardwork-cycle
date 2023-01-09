@@ -5,7 +5,7 @@
 [ext_resource path="res://shop/energy_up_1.svg" type="Texture" id=3]
 [ext_resource path="res://shop/ShopItem.gd" type="Script" id=4]
 [ext_resource path="res://shop/energy_up_3.svg" type="Texture" id=5]
-[ext_resource path="res://shop/farm_up_2.svg" type="Texture" id=6]
+[ext_resource path="res://shop/water_up.svg" type="Texture" id=6]
 [ext_resource path="res://shop/farm_up_1.svg" type="Texture" id=7]
 [ext_resource path="res://shop/Shop.gd" type="Script" id=8]
 [ext_resource path="res://ButtonSFX.gd" type="Script" id=9]
@@ -224,10 +224,10 @@ margin_right = 760.0
 margin_bottom = 128.0
 texture = ExtResource( 6 )
 script = ExtResource( 4 )
-description = "Buy more farmland to grow plants on."
-cost = 4
+description = "With this watering can, every time you plant a new plant it will start with 1 water."
+cost = 2
 is_energy = false
-up_num = 2
+up_num = 4
 
 [node name="Button" type="Button" parent="Items/Shop5"]
 anchor_left = 0.5
@@ -248,7 +248,7 @@ margin_bottom = 128.0
 texture = ExtResource( 10 )
 script = ExtResource( 4 )
 description = "This prismatic deck of cards allows you to draw an extra card each turn."
-cost = 2
+cost = 4
 is_energy = false
 up_num = 3
 
