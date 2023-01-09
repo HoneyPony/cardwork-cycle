@@ -270,7 +270,7 @@ var card_def2_dmg1 : Card = Card.new(
 
 var card_heal2_dmg2 : Card = Card.new(
 	"Vampire Slash",
-	"Heal a plant for 2 health, and do $DQ damage to the nearest enemy",
+	"Heal a plant for 3 health, and do $DQ damage to the nearest enemy",
 	3,
 	Action.HEAL_DMG_NEAR
 ).with_quantity(2).with_drain(2).with_cat(CAT_DEF).with_icon(preload("res://cards/icons/vampire_slash.svg")) # Drain is healing for this # Drain is healing for this
