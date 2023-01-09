@@ -10,6 +10,6 @@ func _ready():
 	
 func _process(delta):
 	if not $AnimationPlayer.is_playing():
-		$AnimationPlayer.play("AddImprov", 0, rand_range(0.2, 1.0))
+		$AnimationPlayer.play("AddImprov", 0, rand_range(0.15, 1.0))
 		
 	$Improv.volume_db = linear2db(improv_nrg)

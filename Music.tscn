@@ -44,6 +44,7 @@ bus = "Music"
 
 [node name="Drone" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = -4.0
 bus = "Music"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
