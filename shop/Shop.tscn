@@ -162,7 +162,7 @@ margin_bottom = 128.0
 texture = ExtResource( 1 )
 script = ExtResource( 4 )
 description = "This magical staff grants you 1 additional ENERGY."
-cost = 4
+cost = 3
 
 [node name="Button" type="Button" parent="Items/Shop2"]
 anchor_left = 0.5
@@ -183,7 +183,6 @@ margin_bottom = 128.0
 texture = ExtResource( 5 )
 script = ExtResource( 4 )
 description = "This enchanted ring grants you 1 additional ENERGY."
-cost = 6
 
 [node name="Button" type="Button" parent="Items/Shop3"]
 anchor_left = 0.5
