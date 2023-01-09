@@ -181,6 +181,7 @@ func _physics_process(delta):
 		if Input.is_action_pressed("mouse"):
 			var m = get_local_mouse_position()
 			get_parent().position -= (m - drag_center)
+			get_parent().bounds()
 			
 			# The offset affects the position, so we have to NOT recompute
 			# ...? This is the original code I had, but it originally was oscillating,
