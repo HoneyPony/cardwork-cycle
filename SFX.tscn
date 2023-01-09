@@ -110,6 +110,6 @@ script = ExtResource( 2 )
 
 [node name="NoWater" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 18 )
-volume_db = -14.0
+volume_db = -24.0
 bus = "SFX"
 script = ExtResource( 2 )
