@@ -28,6 +28,9 @@ func _ready():
 		texture = GS.CardTexWater
 	elif cat == GS.CAT_SEED:
 		texture = GS.CardTexSeed
+		
+	if associated_card.icon != null:
+		$Icon.texture = associated_card.icon
 	
 	update_display()
 

@@ -87,6 +87,8 @@ class Card:
 	# Category / build, these things influence card generation
 	var cat
 	
+	var icon
+	
 	func _init(title_: String, desc_: String, cost_: int, action_):
 		title = title_
 		desc = desc_
@@ -97,6 +99,7 @@ class Card:
 		drain = 1
 		
 		cat = 0
+		icon = null
 		
 	func shape(water_shape_):
 		water_shape = water_shape_
@@ -117,6 +120,10 @@ class Card:
 	func with_cat(c):
 		cat = c
 		return self
+		
+	func with_icon(ic):
+		icon = ic
+		return self
 
 # The "global state" node. This is where global variables are usually stored,
 # as well as things like scene preloads.
@@ -125,47 +132,47 @@ var card_basic_plant : Card = Card.new(
 	"Basic Seeds",
 	"Plant a basic plant that can be harvested for basic cards",
 	1,
-	Action.PLANT).with_cat(CAT_SEED)
+	Action.PLANT).with_cat(CAT_SEED).with_icon(preload("res://cards/icons/basic_seeds.svg"))
 	
 var card_medium_plant : Card = Card.new(
 	"Middling Seeds",
 	"Plant a plant that can be harvested for somewhat valuable cards",
 	2,
-	Action.PLANT).with_cat(CAT_SEED)
+	Action.PLANT).with_cat(CAT_SEED).with_icon(preload("res://cards/icons/middling_seeds.svg"))
 	
 var card_high_plant : Card = Card.new(
 	"Quality Seeds",
 	"Plant a plant that can be harvested for valuable cards",
 	3,
-	Action.PLANT).with_cat(CAT_SEED)
+	Action.PLANT).with_cat(CAT_SEED).with_icon(preload("res://cards/icons/quality_seeds.svg"))
 	
 var card_free_1x1_water : Card = Card.new(
 	"Water Drop",
 	"Apply 1 water to a 1x1 patch of tiles",
 	0,
 	Action.WATER
-).shape(Water.W1x1).with_cat(CAT_WATER)
+).shape(Water.W1x1).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/water_drop.svg"))
 
 var card_buy_1x1_water : Card = Card.new(
 	"Water Drip",
 	"Apply 1 water to a 1x1 patch of tiles",
 	1,
 	Action.WATER
-).shape(Water.W1x1).with_cat(CAT_WATER)
+).shape(Water.W1x1).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/water_drip.svg"))
 
 var card_small_attack : Card = Card.new(
 	"Whack!",
 	"Attack a single enemy for $DQ damage",
 	1,
 	Action.ATTACK
-).with_quantity(1).with_cat(CAT_ATK)
+).with_quantity(1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/whack.svg"))
 
 var card_small_defend : Card = Card.new(
 	"Netting Shield",
 	"Apply 1 immunity to a single plant",
 	1,
 	Action.DEFEND
-).with_quantity(1).with_cat(CAT_DEF)
+).with_quantity(1).with_cat(CAT_DEF).with_icon(preload("res://cards/icons/netting_shield.svg"))
 
 # Low water cards
 
@@ -174,21 +181,21 @@ var card_drain1_dmg3 : Card = Card.new(
 	"Drain 1 water from a plant, and do $DQ damage to a random enemy",
 	1,
 	Action.DRAIN_WATER_DMG_RNG
-).with_quantity(3).with_drain(1).with_cat(CAT_WATER)
+).with_quantity(3).with_drain(1).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/water_dagger.svg"))
 
 var card_water2_1x1 : Card = Card.new(
 	"Pour One",
 	"Apply 2 water to a 1x1 square of tiles",
 	1,
 	Action.WATER
-).shape(Water.W1x1).with_quantity(2).with_cat(CAT_WATER)
+).shape(Water.W1x1).with_quantity(2).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/pour_one.svg"))
 
 var card_water1_2x2 : Card = Card.new(
 	"Water Can",
 	"Apply 1 water to a 2x2 square of tiles",
 	3,
 	Action.WATER
-).shape(Water.W2x2).with_cat(CAT_WATER)
+).shape(Water.W2x2).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/water_can.svg"))
 
 # Medium water cards
 

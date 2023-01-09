@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://fonts/Merriweather-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://cards/card1_mod.svg" type="Texture" id=2]
+[ext_resource path="res://cards/icons/pour_one.svg" type="Texture" id=2]
 [ext_resource path="res://cards/CardBase.gd" type="Script" id=3]
+[ext_resource path="res://cards/card_water.svg" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 38
@@ -16,7 +17,7 @@ font_data = ExtResource( 1 )
 
 [node name="CardBase" type="Sprite"]
 scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 script = ExtResource( 3 )
 
 [node name="Title" type="Label" parent="."]
@@ -49,3 +50,7 @@ custom_fonts/font = SubResource( 1 )
 text = "9"
 align = 1
 autowrap = true
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 0, -100 )
+texture = ExtResource( 2 )
