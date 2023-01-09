@@ -2,18 +2,18 @@
 
 [ext_resource path="res://plants/Plant.tscn" type="PackedScene" id=1]
 [ext_resource path="res://plants/winplant/seeds.svg" type="Texture" id=2]
-[ext_resource path="res://plants/winplant/frame.0008.png" type="Texture" id=4]
-[ext_resource path="res://plants/winplant/frame.0014.png" type="Texture" id=6]
-[ext_resource path="res://plants/winplant/frame.0004.png" type="Texture" id=7]
-[ext_resource path="res://plants/winplant/frame.0015.png" type="Texture" id=8]
-[ext_resource path="res://plants/winplant/frame.0006.png" type="Texture" id=9]
-[ext_resource path="res://plants/winplant/frame.0010.png" type="Texture" id=10]
-[ext_resource path="res://plants/winplant/frame.0012.png" type="Texture" id=11]
-[ext_resource path="res://plants/winplant/frame.0002.png" type="Texture" id=16]
+[ext_resource path="res://plants/winplant/frames_manual/growth5.svg" type="Texture" id=3]
+[ext_resource path="res://plants/winplant/frames_manual/growth4.svg" type="Texture" id=4]
+[ext_resource path="res://plants/winplant/frames_manual/growth7.svg" type="Texture" id=5]
+[ext_resource path="res://plants/winplant/frames_manual/growth8.svg" type="Texture" id=6]
+[ext_resource path="res://plants/winplant/frames_manual/growth6.svg" type="Texture" id=7]
+[ext_resource path="res://plants/winplant/frames_manual/growth1.svg" type="Texture" id=8]
+[ext_resource path="res://plants/winplant/frames_manual/growth3.svg" type="Texture" id=9]
+[ext_resource path="res://plants/winplant/frames_manual/growth2.svg" type="Texture" id=10]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 16 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 8 ), ExtResource( 10 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -21,6 +21,6 @@ animations = [ {
 
 [node name="Plant" instance=ExtResource( 1 )]
 health = 4
-plant_scale = 0.8
+plant_scale = 0.85
 card_level = 4
 anim_frames = SubResource( 1 )

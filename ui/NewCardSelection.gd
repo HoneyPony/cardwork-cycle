@@ -45,7 +45,7 @@ func _ready():
 func popup():
 	get_parent().show()
 	$AnimationPlayer.play("Popup")
-	SFX.plant_jingle.play_usual()
+	
 	
 func release_current_card():
 	if current_card == null:
@@ -61,6 +61,7 @@ func setup_card(node: SelectableCard, card):
 	b.position.y = 560 / 4.0
 	node.card_child = b
 	node.associated_card = card
+
 	
 func setup_cards(cards: Array):
 	win_menu.visible = false
@@ -72,9 +73,14 @@ func setup_cards(cards: Array):
 	tip_num = (tip_num + 1) % tips.size()
 	$TipPanel.show()
 	
+	SFX.plant_jingle.play_usual()
+	
 func setup_win():
 	win_menu.visible = true
 	$TipPanel.hide()
+	
+		
+	SFX.win_jingle.play_usual()
 
 func contains_mouse(control: Control):
 	var r = Rect2(Vector2.ZERO, control.rect_size)

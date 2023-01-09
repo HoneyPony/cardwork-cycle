@@ -18,6 +18,8 @@ onready var end_turn = $EndTurn
 onready var plant_jingle = $PlantJingle
 onready var no_water = $NoWater
 
+onready var win_jingle = $WinJingle
+
 func rand_card():
 	var cards = [card_1, card_2, card_3, card_4]
 	cards[randi() % cards.size()].play_sfx()

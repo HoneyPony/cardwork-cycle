@@ -125,23 +125,23 @@ position = Vector2( -1664, -1408 )
 position = Vector2( 1600, 832 )
 
 [node name="Rock1" type="Sprite" parent="TileMap"]
-position = Vector2( -907, 81 )
+position = Vector2( -915, 79 )
 texture = ExtResource( 21 )
 
 [node name="Rock5" type="Sprite" parent="TileMap"]
-position = Vector2( 849, -307 )
+position = Vector2( 1029, -271 )
 texture = ExtResource( 21 )
 
 [node name="Rock2" type="Sprite" parent="TileMap"]
-position = Vector2( 1015, -541 )
+position = Vector2( 977, -745 )
 texture = ExtResource( 20 )
 
 [node name="Rock6" type="Sprite" parent="TileMap"]
-position = Vector2( -1237, -617 )
+position = Vector2( -1263, -621 )
 texture = ExtResource( 20 )
 
 [node name="Rock3" type="Sprite" parent="TileMap"]
-position = Vector2( -681, -869 )
+position = Vector2( -757, -931 )
 texture = ExtResource( 22 )
 
 [node name="Rock7" type="Sprite" parent="TileMap"]
@@ -149,7 +149,7 @@ position = Vector2( 997, 255 )
 texture = ExtResource( 22 )
 
 [node name="Rock4" type="Sprite" parent="TileMap"]
-position = Vector2( -273, 137 )
+position = Vector2( -445, 273 )
 texture = ExtResource( 23 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

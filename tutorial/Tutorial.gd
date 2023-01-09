@@ -97,11 +97,17 @@ func tutorial_debug():
 	end_tutorial()
 	GS.turn_state = GS.TurnState.PLAYING_CARDS
 	
-	debug_all_cards()
+	#debug_all_cards()
 #
 #	GS.add_card_to_hand(GS.card_small_attack)
-	#GS.add_card_to_hand(GS.card_free_1x1_water)
-#	GS.add_card_to_hand(GS.card_win_plant)
+	GS.add_card_to_hand(GS.card_water5)
+	GS.add_card_to_hand(GS.card_water5)
+	GS.add_card_to_hand(GS.card_3def_1)
+	GS.add_card_to_hand(GS.card_3def_1)
+	GS.add_card_to_hand(GS.card_3def_1)
+	GS.add_card_to_hand(GS.card_3def_1)
+	GS.add_card_to_hand(GS.card_3def_1)
+	GS.add_card_to_hand(GS.card_win_plant)
 	#GS.add_card_to_hand(GS.card_basic_plant)
 #	GS.add_card_to_hand(GS.card_basic_plant)
 #	GS.add_card_to_hand(GS.card_basic_plant)
