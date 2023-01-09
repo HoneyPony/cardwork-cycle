@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://ui/PauseMenu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://cursor/Cursor.tscn" type="PackedScene" id=2]
@@ -19,6 +19,10 @@
 [ext_resource path="res://shop/Shop.tscn" type="PackedScene" id=17]
 [ext_resource path="res://GoldLabel.gd" type="Script" id=18]
 [ext_resource path="res://InteractionHelper.gd" type="Script" id=19]
+[ext_resource path="res://farm/rock2.svg" type="Texture" id=20]
+[ext_resource path="res://farm/rock1.svg" type="Texture" id=21]
+[ext_resource path="res://farm/rock3.svg" type="Texture" id=22]
+[ext_resource path="res://farm/rock4.svg" type="Texture" id=23]
 
 [sub_resource type="TileSet" id=1]
 1/name = "plain_dirt.svg 1"
@@ -119,6 +123,34 @@ position = Vector2( -1664, -1408 )
 
 [node name="BRBound" type="Position2D" parent="TileMap"]
 position = Vector2( 1600, 832 )
+
+[node name="Rock1" type="Sprite" parent="TileMap"]
+position = Vector2( -907, 81 )
+texture = ExtResource( 21 )
+
+[node name="Rock5" type="Sprite" parent="TileMap"]
+position = Vector2( 849, -307 )
+texture = ExtResource( 21 )
+
+[node name="Rock2" type="Sprite" parent="TileMap"]
+position = Vector2( 1015, -541 )
+texture = ExtResource( 20 )
+
+[node name="Rock6" type="Sprite" parent="TileMap"]
+position = Vector2( -1237, -617 )
+texture = ExtResource( 20 )
+
+[node name="Rock3" type="Sprite" parent="TileMap"]
+position = Vector2( -681, -869 )
+texture = ExtResource( 22 )
+
+[node name="Rock7" type="Sprite" parent="TileMap"]
+position = Vector2( 997, 255 )
+texture = ExtResource( 22 )
+
+[node name="Rock4" type="Sprite" parent="TileMap"]
+position = Vector2( -273, 137 )
+texture = ExtResource( 23 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
