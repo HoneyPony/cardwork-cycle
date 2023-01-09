@@ -42,8 +42,19 @@ func _ready():
 	GS.turn_state = GS.TurnState.WAITING_FOR_TUTORIAL
 	GS.card_draw_count = 2 # Only draw the Whack! card plus some filler
 
+	if Flags.skip_tutorial:
+		call_deferred("tutorial_skip")
+
 	# DEBUGGING
 	# call_deferred("tutorial_debug")
+
+func tutorial_skip():
+	tutorial_cards()
+	GS.draw_card_to_hand()
+	GS.draw_card_to_hand()
+	GS.no_enemy_turns = 2
+	end_tutorial()
+	GS.turn_state = GS.TurnState.PLAYING_CARDS
 
 func tutorial_debug():
 	tutorial_cards()

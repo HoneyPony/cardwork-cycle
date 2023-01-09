@@ -43,6 +43,7 @@ CardCreation="*res://CardCreation.gd"
 TutorialSteps="*res://tutorial/TutorialSteps.gd"
 Music="*res://Music.tscn"
 SFX="*res://SFX.tscn"
+Flags="*res://Flags.gd"
 
 [gui]
 

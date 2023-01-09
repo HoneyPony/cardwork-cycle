@@ -777,4 +777,9 @@ func reset_all_state():
 	tutorial_mouse = false
 	new_cards_mouse = false
 	end_turn_mouse = false
+	
+	next_spawn = 0
+	if Flags.hard_mode:
+		# Start with much harder bugs
+		next_spawn = 12
 
