@@ -669,6 +669,12 @@ func draw_card():
 	shuffle_cards()
 	return draw_pile.pop_front()
 	
+func draw_card_to_hand():
+	var c = draw_card()
+	if c == null:
+		return
+	add_card_to_hand(c)
+	
 var card_draw_count = 5
 		
 func deal_new_hand():

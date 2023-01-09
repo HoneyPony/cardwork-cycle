@@ -85,9 +85,9 @@ func play_self():
 	if associated_card.action == GS.Action.SACRIF:
 		GS.cursor.sacrif(associated_card)
 	if associated_card.action == GS.Action.DRAW_3:
-		GS.draw_card()
-		GS.draw_card()
-		GS.draw_card()
+		GS.draw_card_to_hand()
+		GS.draw_card_to_hand()
+		GS.draw_card_to_hand()
 	if associated_card.action == GS.Action.PLUS_ENERGY:
 		GS.energy += 1
 		
