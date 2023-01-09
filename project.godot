@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Button",
+"class": "ButtonSFX",
+"language": "GDScript",
+"path": "res://ButtonSFX.gd"
+}, {
 "base": "Node2D",
 "class": "Cursor",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://cards/SelectableCard.gd"
 } ]
 _global_script_class_icons={
+"ButtonSFX": "",
 "Cursor": "",
 "SelectableCard": ""
 }

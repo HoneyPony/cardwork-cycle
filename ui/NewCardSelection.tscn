@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ui/MainUITheme.tres" type="Theme" id=1]
+[ext_resource path="res://ButtonSFX.gd" type="Script" id=2]
 [ext_resource path="res://ui/NewCardSelection.gd" type="Script" id=3]
 [ext_resource path="res://cards/SelectableCard.tscn" type="PackedScene" id=4]
 
@@ -155,6 +156,7 @@ margin_right = 62.0
 margin_bottom = -12.0
 toggle_mode = true
 text = "Earn 1 gold"
+script = ExtResource( 2 )
 
 [node name="ConfirmButton" type="Button" parent="Menu"]
 anchor_left = 0.5
@@ -166,6 +168,7 @@ margin_top = -56.0
 margin_right = 376.0
 margin_bottom = -14.0
 text = "Confirm"
+script = ExtResource( 2 )
 
 [node name="Cards" type="Control" parent="Menu"]
 anchor_top = 0.5
@@ -247,6 +250,7 @@ margin_top = -57.0
 margin_right = 54.5
 margin_bottom = -15.0
 text = "Dismiss"
+script = ExtResource( 2 )
 
 [node name="TipPanel" type="Panel" parent="Menu"]
 anchor_left = 0.5

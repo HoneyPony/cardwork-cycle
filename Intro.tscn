@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/MainUITheme.tres" type="Theme" id=1]
 [ext_resource path="res://Intro.gd" type="Script" id=2]
+[ext_resource path="res://ButtonSFX.gd" type="Script" id=3]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -37,5 +38,6 @@ margin_top = -118.0
 margin_right = 106.0
 margin_bottom = -76.0
 text = "Next"
+script = ExtResource( 3 )
 
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

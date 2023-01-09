@@ -18,6 +18,11 @@ export var anim_frames: SpriteFrames
 # shown, and the plant should be queue_freed()
 var consumed = false
 
+var spawn_sfx_timer = 0.15
+
+func nowater_sfx():
+	SFX.no_water.play_sfx()
+
 func _ready():
 	$Plant.frames = anim_frames
 	$Plant.scale = Vector2(plant_scale, plant_scale)
@@ -25,6 +30,7 @@ func _ready():
 	heart_update()
 	defense_update()
 	water_update()
+	
 
 func centered_lpf_noise(in_pos):
 	var r = rand_range(0, 32)
@@ -41,6 +47,7 @@ func sine_y_offset(node, offset):
 	
 func slash_health(amount):
 	$AnimationPlayer.play("Slash")
+	SFX.whack.play_sfx()
 	
 # Can be called from animations to explicitly update the visibility at some point.
 func update_markers_visibility():
@@ -75,6 +82,11 @@ func update_display():
 func _process(delta):
 	update_display()
 	
+	if spawn_sfx_timer > 0:
+		spawn_sfx_timer -= delta
+		if spawn_sfx_timer <= 0:
+			SFX.rand_seeds()
+	
 func take_turn():
 	var anim = $AnimationPlayer
 	
@@ -90,6 +102,9 @@ func take_turn():
 			anim.queue("WaterPlant")
 	else:
 		anim.queue("NoWater")
+		
+func water_sfx():
+	SFX.rand_water()
 	
 func dec_health():	
 	var amount = 1

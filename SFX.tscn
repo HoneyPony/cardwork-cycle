@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://SFX.gd" type="Script" id=1]
 [ext_resource path="res://SFXRand.gd" type="Script" id=2]
@@ -7,6 +7,17 @@
 [ext_resource path="res://sfx/card_1.wav" type="AudioStream" id=5]
 [ext_resource path="res://sfx/card_3.wav" type="AudioStream" id=6]
 [ext_resource path="res://sfx/card_play.wav" type="AudioStream" id=7]
+[ext_resource path="res://sfx/seed_plant_2.wav" type="AudioStream" id=8]
+[ext_resource path="res://sfx/seed_plant.wav" type="AudioStream" id=9]
+[ext_resource path="res://sfx/whack.wav" type="AudioStream" id=10]
+[ext_resource path="res://sfx/water_1.wav" type="AudioStream" id=11]
+[ext_resource path="res://sfx/water_2.wav" type="AudioStream" id=12]
+[ext_resource path="res://sfx/card_deal_short.wav" type="AudioStream" id=13]
+[ext_resource path="res://sfx/button_hover.wav" type="AudioStream" id=14]
+[ext_resource path="res://sfx/button_click.wav" type="AudioStream" id=15]
+[ext_resource path="res://sfx/end_turn.wav" type="AudioStream" id=16]
+[ext_resource path="res://sfx/plant_jingle.wav" type="AudioStream" id=17]
+[ext_resource path="res://sfx/nowater.wav" type="AudioStream" id=18]
 
 [node name="SFX" type="Node"]
 script = ExtResource( 1 )
@@ -34,5 +45,71 @@ script = ExtResource( 2 )
 [node name="CardPlay" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -6.0
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="CardDeal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -11.571
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="Seed1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -7.0
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="Seed2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -9.0
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="Whack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -9.619
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="Water1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -9.619
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="Water2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -9.619
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="ButtonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = -14.0
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="ButtonClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -12.0
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="EndTurn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -3.953
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="PlantJingle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+volume_db = -0.858
+bus = "SFX"
+script = ExtResource( 2 )
+
+[node name="NoWater" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+volume_db = -3.953
 bus = "SFX"
 script = ExtResource( 2 )

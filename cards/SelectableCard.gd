@@ -57,6 +57,7 @@ func _physics_process(delta):
 	if is_hovered:
 		if Input.is_action_just_released("mouse"):
 			is_selected = !is_selected
+			SFX.rand_card()
 			if is_selected:
 				get_parent().get_parent().deselect_others(self)
 			else:

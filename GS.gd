@@ -626,6 +626,8 @@ func end_turn():
 	if turn_state != TurnState.PLAYING_CARDS:
 		return
 	
+	SFX.end_turn.play_sfx()
+	
 	hand.clear_hand()
 	current_picked_up_card = null
 	
@@ -697,6 +699,8 @@ func deal_new_hand():
 	turn_state = TurnState.PLAYING_CARDS
 	
 	energy = energy_max
+	
+	SFX.card_deal.play_sfx()
 		
 func _physics_process(delta):
 	if current_turns != null:

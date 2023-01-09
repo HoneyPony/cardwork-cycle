@@ -45,6 +45,7 @@ func _ready():
 func popup():
 	get_parent().show()
 	$AnimationPlayer.play("Popup")
+	SFX.plant_jingle.play_usual()
 	
 func release_current_card():
 	if current_card == null:

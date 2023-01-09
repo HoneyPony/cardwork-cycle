@@ -76,9 +76,12 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.65 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.3, 0.65 ),
+"transitions": PoolRealArray( 1, 1 ),
 "values": [ {
+"args": [  ],
+"method": "nowater_sfx"
+}, {
 "args": [  ],
 "method": "dec_health"
 } ]
@@ -429,11 +432,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
 "method": "water_plant"
+}, {
+"args": [  ],
+"method": "water_sfx"
 }, {
 "args": [  ],
 "method": "update_markers_visibility"

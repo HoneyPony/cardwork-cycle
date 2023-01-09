@@ -1,4 +1,4 @@
-extends Button
+extends ButtonSFX
 
 func _ready():
 	connect("pressed", self, "_on_pressed")
