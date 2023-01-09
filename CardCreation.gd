@@ -53,6 +53,7 @@ func pick_cards(set: Array):
 
 func pick_plant1_cards(health):
 	var set = []
+	plant1_times += 1
 	
 	add_waters(set, 4, GS.card_water2_1x1)
 	add_waters(set, 4, GS.card_water1_2x2)
@@ -81,11 +82,23 @@ func pick_plant1_cards(health):
 		
 		add_defs(set, copies_rare, GS.card_heal2_dmg2)
 		add_defs(set, copies_rare, GS.card_def3_dmg3)
+		
+		add_atks(set, copies_rare, GS.card_add2)
+		add_atks(set, copies_rare, GS.card_sacrif2_2enem)
+		add_atks(set, copies_rare, GS.card_free_atk)
 	
-	return pick_cards(set)
+	var result = pick_cards(set)
+	
+	if plant1_times >= 16 and not has_win_card:
+		set[randi() % set.size()] = GS.card_win_plant
+	return result
+	
+var plant2_times = 0
+var plant1_times = 0
 	
 func pick_plant2_cards(health):
 	var set = []
+	plant2_times += 1
 	
 	add_waters(set, 4, GS.card_water1_3x3)
 	add_waters(set, 4, GS.card_water2_2x2)
@@ -98,12 +111,31 @@ func pick_plant2_cards(health):
 	add_atks(set, 4, GS.card_sacrif2_2enem)
 	add_atks(set, 4, GS.card_free_atk)
 	
-	return pick_cards(set)
+	add_copies(set, 8, GS.card_cards)
+	
+	if health > 2:
+		add_waters(set, 1, GS.card_water5)
+		add_waters(set, 1, GS.card_drain7_dmgall5)
+		add_waters(set, 1, GS.card_drain3_dmgall1)
+		
+		add_defs(set, 1, GS.card_def2_all)
+		add_defs(set, 1, GS.card_heal_attack_all)
+		
+		add_atks(set, 1, GS.card_add1_cheap)
+		add_atks(set, 1, GS.card_sacrifice)
+	
+	var result = pick_cards(set)
+	
+	if plant2_times >= 6 and not has_win_card:
+		set[randi() % set.size()] = GS.card_win_plant
+	return result
 	
 var plant3_times = 0
 var has_win_card = false
 
 func reset_all_state():
+	plant2_times = 0
+	plant1_times = 0
 	plant3_times = 0
 	has_win_card = false
 	water_multiplier = 1
@@ -137,6 +169,23 @@ func pick_plant3_cards(health):
 	
 	add_atks(set, 4, GS.card_add1_cheap)
 	add_atks(set, 4, GS.card_sacrifice)
+	
+	add_copies(set, 8, GS.card_energy)
+	
+	if plant2_times < (plant3_times + 3):
+		# Add some lower cards when they haven't been touched
+		add_waters(set, 2, GS.card_water1_3x3)
+		add_waters(set, 2, GS.card_water2_2x2)
+		add_waters(set, 2, GS.card_drain3_rng5)
+		
+		add_defs(set, 2, GS.card_heal2_dmg2)
+		add_defs(set, 2, GS.card_def3_dmg3)
+		
+		add_atks(set, 2, GS.card_add2)
+		add_atks(set, 2, GS.card_sacrif2_2enem)
+		add_atks(set, 2, GS.card_free_atk)
+		
+		add_copies(set, 4, GS.card_cards)
 	
 	# Force the player to go through a couple plants first...
 	if plant3_times >= 3:

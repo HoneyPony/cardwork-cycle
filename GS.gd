@@ -15,7 +15,10 @@ enum Action {
 	DEF_ALL,
 	HEAL_ALL_DMG,
 	
-	SACRIF
+	SACRIF,
+	
+	DRAW_3,
+	PLUS_ENERGY
 }
 
 enum Water {
@@ -221,10 +224,10 @@ var card_water5 : Card = Card.new(
 
 var card_drain7_dmgall5 : Card = Card.new(
 	"Tsunami",
-	"Drain 7 water from a plant, and do $DQ damage to all enemies",
-	5,
+	"Drain 5 water from a plant, and do $DQ damage to all enemies",
+	4,
 	Action.DRAIN_WATER_DMG_ALL
-).with_quantity(5).with_drain(7).with_cat(CAT_WATER)
+).with_quantity(5).with_drain(5).with_cat(CAT_WATER)
 
 var card_drain3_dmgall1 : Card = Card.new(
 	"Overflow",
@@ -359,7 +362,21 @@ var card_win_plant : Card = Card.new(
 	Action.PLANT
 ).with_cat(CAT_SEED)
 
+var card_energy : Card = Card.new(
+	"Free Energy",
+	"Gain 1 ENERGY",
+	0,
+	Action.PLUS_ENERGY
+)
 
+# GENERAL MED CARDS
+
+var card_cards : Card = Card.new(
+	"Cool Drawing",
+	"Draw 3 cards",
+	1,
+	Action.DRAW_3
+)
 
 var Game = preload("res://Game.tscn")
 var MainMenu = preload("res://MainMenu.tscn")

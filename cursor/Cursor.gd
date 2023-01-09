@@ -326,7 +326,9 @@ func update_playable_and_display():
 			
 	if card.action == GS.Action.ADD_DAMAGE \
 		or card.action == GS.Action.DEF_ALL \
-		or card.action == GS.Action.HEAL_ALL_DMG:
+		or card.action == GS.Action.HEAL_ALL_DMG \
+		or card.action == GS.Action.DRAW_3 \
+		or card.action == GS.Action.PLUS_ENERGY:
 		var bottom = GS.camera.global_position.y + get_viewport().size.y * 0.5
 		var thresh = bottom - 360
 		
