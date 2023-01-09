@@ -204,21 +204,21 @@ var card_water1_3x3 : Card = Card.new(
 	"Apply 1 water to a 3x3 square of tiles",
 	3,
 	Action.WATER
-).shape(Water.W3x3).with_cat(CAT_WATER)
+).shape(Water.W3x3).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/water_barrel.svg"))
 
 var card_water2_2x2 : Card = Card.new(
 	"Hose",
 	"Apply 2 water to a 2x2 square of tiles",
 	4,
 	Action.WATER
-).shape(Water.W2x2).with_quantity(2).with_cat(CAT_WATER)
+).shape(Water.W2x2).with_quantity(2).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/hose.svg"))
 
 var card_drain3_rng5 : Card = Card.new(
 	"Water Blast",
 	"Drain 3 water from a plant, and do $DQ damage to a random enemy",
 	2,
 	Action.DRAIN_WATER_DMG_RNG
-).with_drain(3).with_quantity(5).with_cat(CAT_WATER)
+).with_drain(3).with_quantity(5).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/water_blast.svg"))
 
 # High water cards
 
@@ -227,21 +227,21 @@ var card_water5 : Card = Card.new(
 	"Apply 5 water to a single plant",
 	3,
 	Action.WATER
-).shape(Water.W1x1).with_quantity(5).with_cat(CAT_WATER)
+).shape(Water.W1x1).with_quantity(5).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/rainfall.svg"))
 
 var card_drain7_dmgall5 : Card = Card.new(
 	"Tsunami",
 	"Drain 5 water from a plant, and do $DQ damage to all enemies",
 	4,
 	Action.DRAIN_WATER_DMG_ALL
-).with_quantity(5).with_drain(5).with_cat(CAT_WATER)
+).with_quantity(5).with_drain(5).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/tsunami.svg"))
 
 var card_drain3_dmgall1 : Card = Card.new(
 	"Overflow",
 	"Drain 3 water from a plant, and do $DQ damage to all enemies",
 	3,
 	Action.DRAIN_WATER_DMG_ALL
-).with_quantity(1).with_drain(3).with_cat(CAT_WATER)
+).with_quantity(1).with_drain(3).with_cat(CAT_WATER).with_icon(preload("res://cards/icons/overflow.svg"))
 
 # Low tank cards
 
@@ -250,21 +250,21 @@ var card_3def_1 : Card = Card.new(
 	"Apply 3 immunity to a single plant",
 	1,
 	Action.DEFEND
-).with_quantity(3).with_cat(CAT_DEF)
+).with_quantity(3).with_cat(CAT_DEF).with_icon(preload("res://cards/icons/tough_shield.svg"))
 
 var card_heal1_dmg1 : Card = Card.new(
 	"Vampire Fang",
 	"Heal a plant for 1 health, and do $DQ damage to the nearest enemy",
 	1,
 	Action.HEAL_DMG_NEAR
-).with_quantity(1).with_drain(1).with_cat(CAT_DEF) # Drain is healing for this
+).with_quantity(1).with_drain(1).with_cat(CAT_DEF).with_icon(preload("res://cards/icons/vampire_fang.svg")) # Drain is healing for this
 
 var card_def2_dmg1 : Card = Card.new(
 	"Spiked Shield",
 	"Apply 2 immunity to a plant, and do $DQ damage to the nearest enemy",
 	1,
 	Action.DEF_DMG_NEAR
-).with_quantity(1).with_drain(2).with_cat(CAT_DEF) # Drain is healing for this
+).with_quantity(1).with_drain(2).with_cat(CAT_DEF).with_icon(preload("res://cards/icons/spiked_shield.svg")) # Drain is healing for this # Drain is healing for this
 
 # Medium tank cards
 
@@ -273,14 +273,14 @@ var card_heal2_dmg2 : Card = Card.new(
 	"Heal a plant for 2 health, and do $DQ damage to the nearest enemy",
 	3,
 	Action.HEAL_DMG_NEAR
-).with_quantity(2).with_drain(2).with_cat(CAT_DEF) # Drain is healing for this
+).with_quantity(2).with_drain(2).with_cat(CAT_DEF).with_icon(preload("res://cards/icons/vampire_slash.svg")) # Drain is healing for this # Drain is healing for this
 
 var card_def3_dmg3 : Card = Card.new(
 	"Thorns",
 	"Apply 3 immunity to a plant, and do $DQ damage to the nearest enemy",
 	4,
 	Action.DEF_DMG_NEAR
-).with_quantity(3).with_drain(3).with_cat(CAT_DEF)
+).with_quantity(3).with_drain(3).with_cat(CAT_DEF).with_icon(preload("res://cards/icons/thorns.svg")) # Drain is healing for this
 
 # Rare tank cards: TODO
 
@@ -289,14 +289,14 @@ var card_def2_all : Card = Card.new(
 	"Apply 2 immunity to all plants",
 	4,
 	Action.DEF_ALL
-).with_quantity(2).with_cat(CAT_DEF)
+).with_quantity(2).with_cat(CAT_DEF).with_icon(preload("res://cards/icons/magic_shield.svg")) # Drain is healing for this
 
 var card_heal_attack_all : Card = Card.new(
 	"Vampire Blast",
-	"Heal all plants for 1 health and do $DQ damage to all enemies",
+	"Heal all plants for 2 health and do $DQ damage to all enemies",
 	5,
 	Action.HEAL_ALL_DMG
-).with_drain(1).with_quantity(1).with_cat(CAT_DEF)
+).with_drain(2).with_quantity(1).with_cat(CAT_DEF).with_icon(preload("res://cards/icons/vampire_blast.svg"))
 
 # Low attack-focs cards
 
