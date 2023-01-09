@@ -488,11 +488,15 @@ enum SpawnOpt {
 	Bug2,
 	Bug3
 }
+var spawn_1bug2 = [SpawnOpt.Bug2]
 var spawn_2bug2 = [SpawnOpt.Bug2, SpawnOpt.Bug2]
 var spawn_3bug2 = [SpawnOpt.Bug2, SpawnOpt.Bug2, SpawnOpt.Bug2]
 var spawn_2bug3 = [SpawnOpt.Bug3, SpawnOpt.Bug3]
 var spawn_3bug3 = [SpawnOpt.Bug3, SpawnOpt.Bug3, SpawnOpt.Bug3]
 var spawn_configs = [
+	spawn_1bug2,
+	spawn_1bug2,
+	spawn_1bug2,
 	spawn_2bug2,
 	spawn_2bug2,
 	spawn_2bug2,
@@ -517,7 +521,7 @@ func spawn_enemies():
 	# TODO: Keep using "difficult" configs
 	next_spawn += 1
 	if next_spawn > spawn_configs.size():
-		next_spawn = 8
+		next_spawn = 11
 	
 	# Enemies are spawned near plants
 	var plants = get_tree().get_nodes_in_group("Plant")
@@ -550,9 +554,10 @@ func end_turn():
 	current_picked_up_card = null
 	
 	# You get 3 free turns between enemies...?
-	if no_enemy_turns >= 3:
+	if no_enemy_turns >= 3 or some_enemy_turns >= 9:
 		spawn_enemies()
 		no_enemy_turns = 0
+		some_enemy_turns = 0
 	
 	turn_state = TurnState.UPDATING
 	current_turns = turn_processor()
@@ -592,6 +597,8 @@ var card_draw_count = 5
 func deal_new_hand():
 	if get_tree().get_nodes_in_group("Enemy").empty():
 		no_enemy_turns += 1
+	else:
+		some_enemy_turns += 1
 	
 	TutorialSteps.mark_have_ended_turn()
 	
@@ -635,6 +642,8 @@ var tutorial = true
 # Number of turns without any enemies...
 # Enemies will be spawned regularly
 var no_enemy_turns = 0
+
+var some_enemy_turns = 0
 	
 func reset_all_state():
 	tutorial = true # SHould this get reset?
@@ -669,6 +678,7 @@ func reset_all_state():
 	card_draw_count = 5 # Will be set by tutorial
 	
 	no_enemy_turns = 0
+	some_enemy_turns = 0
 	
 	shop_open = false
 	upper_panel_mouse = false

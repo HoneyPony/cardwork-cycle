@@ -17,4 +17,5 @@ animations = [ {
 } ]
 
 [node name="Plant" instance=ExtResource( 1 )]
+card_level = 3
 anim_frames = SubResource( 1 )

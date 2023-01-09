@@ -135,6 +135,8 @@ func popup_menu():
 		GS.popup_card_selection(CardCreation.pick_plant1_cards(health))
 	elif card_level == 2:
 		GS.popup_card_selection(CardCreation.pick_plant2_cards(health))
+	elif card_level == 3:
+		GS.popup_card_selection(CardCreation.pick_plant3_cards(health))
 	elif card_level == 4:
 		GS.popup_card_winner()
 	
