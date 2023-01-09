@@ -316,7 +316,7 @@ var card_add1_expensive: Card = Card.new(
 
 var card_sacrif1_1enem : Card = Card.new(
 	"Blood Dagger",
-	"Take 1 plant health, and do $DQ damage to the lowest-health enemy.",
+	"Take 1 plant health, and do $DQ damage to the lowest-health enemy",
 	1,
 	Action.SACRIF
 ).with_quantity(4).with_drain(2).with_mult(1).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/blood_dagger.svg"))
@@ -332,7 +332,7 @@ var card_add2 : Card = Card.new(
 
 var card_sacrif2_2enem : Card = Card.new(
 	"Blood Blade",
-	"Take 2 plant health, and do $DQ damage to the 2 lowest-health enemies.",
+	"Take 2 plant health, and do $DQ damage to the 2 lowest-health enemies",
 	3,
 	Action.SACRIF
 ).with_quantity(4).with_drain(2).with_mult(2).with_cat(CAT_ATK).with_icon(preload("res://cards/icons/blood_blade.svg"))
