@@ -194,7 +194,9 @@ script = ExtResource( 10 )
 [node name="Shop" parent="CanvasLayer" instance=ExtResource( 17 )]
 anchor_top = 0.5
 anchor_bottom = 0.5
+margin_left = -504.5
 margin_top = -217.0
+margin_right = 504.5
 margin_bottom = 217.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer"]

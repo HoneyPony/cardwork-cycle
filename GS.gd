@@ -591,6 +591,10 @@ func spawn_enemies():
 	# Enemies are spawned near plants
 	var plants = get_tree().get_nodes_in_group("Plant")
 	
+	# Can't spawn if there are no plants, also wil cause div by zero
+	if plants.size() == 0:
+		return
+	
 	var count_enemys = get_tree().get_nodes_in_group("Enemy").size()
 	
 	# Three times

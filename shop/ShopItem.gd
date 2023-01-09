@@ -28,8 +28,10 @@ func _on_buy():
 		else:
 			if up_num == 1:
 				GS.tilemap.up1()
-			else:
+			elif up_num == 2:
 				GS.tilemap.up2()
+			elif up_num == 3:
+				GS.card_draw_count += 1
 			
 
 
